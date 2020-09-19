@@ -15,31 +15,44 @@ class TasksController{
     }
 
     function Home(){
-        $tasks = $this->model->GetTasks();
-        $this->view->ShowHome($tasks);
+        $this->view->ShowHome();
     }
 
-    function InsertTask(){
-
-        $completed = 0;
-        if(isset($_POST['input_completed'])){
-            $completed = 1;
-        }
-
-        $this->model->InsertTask($_POST['input_title'],$_POST['input_description'],$completed,$_POST['input_priority']);
-        $this->view->ShowHomeLocation();
+    function Contacto(){
+        $this->view->ShowContacto();
     }
 
-    function BorrarLaTaskQueVienePorParametro($params = null){
-        $task_id = $params[':ID'];
-        $this->model->DeleteTaskDelModelo($task_id);
-        $this->view->ShowHomeLocation();
+    function Faq(){
+        $this->view->ShowFaq();
     }
 
-    function MarkAsCompletedTask($params = null){
-        $task_id = $params[':ID'];
-        $this->model->MarkAsCompletedTask($task_id);
-        $this->view->ShowHomeLocation();
+    function Servicios(){
+        $servicios = $this->model->GetServicios();
+        $profesionales = $this->model->GetProfesionales();
+        $this->view->ShowServicios($servicios,$profesionales);
+    }
+
+    function Login(){
+        $this->view->Login();
+    }
+
+
+    function InsertProfesionalController(){
+        $this->model->InsertProfesional($_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);
+        $this->view->ShowServicios(); // nos manda a la tabla (SERVICIOS)
+    }
+
+    function DeleteProfesionalController($params = null){
+        $id = $params[':ID'];
+        $this->model->DeleteProfesional($id);
+        $this->view->ShowServicios();
+    }
+
+    // revisar si esta bien
+    function EditProfesionalController($params = null){
+        $id = $params[':ID'];
+        $this->model->EditProfesional($id,$_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);
+        $this->view->ShowServicios();
     }
 }
 
