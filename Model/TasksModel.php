@@ -16,31 +16,31 @@ class TasksModel{
           return $sentencia->fetchAll(PDO::FETCH_OBJ);
       }
 
-      function GetProfesionales(){
-        $sentencia = $this->db->prepare("SELECT * FROM profesional");
+      function GetCategorias(){
+        $sentencia = $this->db->prepare("SELECT * FROM categoria");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function GetProfesional($id){
-        $sentencia = $this->db->prepare("SELECT * FROM profesional WHERE id=?");
+    function GetCategoria($id){
+        $sentencia = $this->db->prepare("SELECT * FROM categoria WHERE id=?");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);  // revisar si esta bien . solo traigo 1, no all.
     }
       
-      function InsertProfesional($nombre,$matricula,$imagen){
-          $sentencia = $this->db->prepare("INSERT INTO profesional(nombre,matricula,imagen) VALUES(?,?,?)");
-          $sentencia->execute(array($nombre,$matricula,$imagen));
+      function InsertServicio($nombre,$descripcion,$honorario){
+          $sentencia = $this->db->prepare("INSERT INTO servicio(nombre,descripcion,honorario) VALUES(?,?,?)");
+          $sentencia->execute(array($nombre,$descripcion,$honorario));
       }
       
-      function DeleteProfesional($id){
-          $sentencia = $this->db->prepare("DELETE FROM profesional WHERE id=?");
+      function DeleteServicio($id){
+          $sentencia = $this->db->prepare("DELETE FROM servicio WHERE id=?");
           $sentencia->execute(array($id));
       }
       
-      function EditProfesional($id,$nombre,$matricula,$imagen){
-          $sentencia = $this->db->prepare("UPDATE profesional SET nombre=?,matricula=?,imagen=? WHERE id=?");
-          $sentencia->execute(array($id,$nombre,$matricula,$imagen));
+      function EditServicio($id,$nombre,$descripcion,$honorario){
+          $sentencia = $this->db->prepare("UPDATE servicio SET nombre=?,descripcion=?,honorario=? WHERE id=?");
+          $sentencia->execute(array($id,$nombre,$descripcion,$honorario));
       }
       
 }

@@ -3,10 +3,10 @@
 <nav>
         <ul class="navigation">
             <li>
-                <a id="indexPartial" href="#">HOME</a>
+                <a id="indexPartial" href="home">HOME</a>
             </li>
             <li>
-                <a id="serviciosPartial" href="#">SERVICIOS</a>
+                <a id="serviciosPartial" href="servicios">SERVICIOS</a>
             </li>
             <li>
                 <a id="faqPartial" href="#">FAQ</a>

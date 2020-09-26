@@ -6,11 +6,11 @@ body{
 
 @font-face{
     font-family: 'Baloo';
-    src: url("fonts/BalooBhaina2-Regular.ttf") format("truetype");
+    src: url('https://fonts.gstatic.com/s/raleway/v11/0dTEPzkLWceF7z0koJaX1A.woff2');
 }
 @font-face{
     font-family: 'Wingding';
-    src: url("fonts/wingding.ttf") format("truetype");
+    src: url('https://fonts.gstatic.com/s/bungeeinline/v2/Tb-1914q4rFpjT-F66PLCTxObtw73-qQgbr7Be51v5c.woff2');
 }
 
 /*HEADER*/
@@ -344,12 +344,14 @@ input{
 .primero{
     display: flex;
     flex-direction: column;
-    margin: 0 10px;   
+    margin: 0 10px; 
+    width: 40%;  
 }
 .segundo{
     display: flex;
     flex-direction: column;
     margin: 0 10px;
+    width: 40%; 
 }
 
 /*FAQ*/

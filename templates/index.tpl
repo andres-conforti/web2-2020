@@ -1,3 +1,5 @@
+{include file="header.tpl"}
+{include file="navbar.tpl"}
 <section class="contenido">
     <figure class="imgcontenido">
         <img src="img/aboutus.jpg" alt="trabajo en equipo">
@@ -128,3 +130,5 @@
         </form>
     </div>
 </section>
+
+{include file="footer.tpl"}

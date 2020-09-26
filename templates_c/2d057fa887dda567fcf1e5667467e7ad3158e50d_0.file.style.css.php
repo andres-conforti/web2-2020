@@ -1,4 +1,27 @@
-body{
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-09-26 16:23:29
+  from 'C:\TUDAI\PROGRAMAS\xampp\htdocs\web2\tpe\css\style.css' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5f6f4ee155e885_45469225',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '2d057fa887dda567fcf1e5667467e7ad3158e50d' => 
+    array (
+      0 => 'C:\\TUDAI\\PROGRAMAS\\xampp\\htdocs\\web2\\tpe\\css\\style.css',
+      1 => 1601130133,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5f6f4ee155e885_45469225 (Smarty_Internal_Template $_smarty_tpl) {
+?>body{
     font-family: 'Baloo';
     margin: 2%;
     padding: 0;
@@ -6,11 +29,11 @@ body{
 
 @font-face{
     font-family: 'Baloo';
-    src: url("../fonts/BalooBhaina2-Regular.ttf");
+    src: url('https://fonts.gstatic.com/s/raleway/v11/0dTEPzkLWceF7z0koJaX1A.woff2');
 }
 @font-face{
     font-family: 'Wingding';
-    src: url("../fonts/wingding.ttf");
+    src: url('https://fonts.gstatic.com/s/bungeeinline/v2/Tb-1914q4rFpjT-F66PLCTxObtw73-qQgbr7Be51v5c.woff2');
 }
 
 /*HEADER*/
@@ -489,4 +512,5 @@ footer {
         padding: 2%;
         width: 40%;
     }
+}<?php }
 }

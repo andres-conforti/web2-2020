@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-26 03:31:00
+/* Smarty version 3.1.34-dev-7, created on 2020-09-26 16:11:16
   from 'C:\TUDAI\PROGRAMAS\xampp\htdocs\web2\tpe\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6e99d4330eb9_85753103',
+  'unifunc' => 'content_5f6f4c048864b0_46410980',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a44b093ebe6932afa95441b4fa99f74dc9c7c623' => 
     array (
       0 => 'C:\\TUDAI\\PROGRAMAS\\xampp\\htdocs\\web2\\tpe\\templates\\index.tpl',
-      1 => 1601083858,
+      1 => 1601129466,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f6e99d4330eb9_85753103 (Smarty_Internal_Template $_smarty_tpl) {
-?><section class="contenido">
+function content_5f6f4c048864b0_46410980 (Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+<section class="contenido">
     <figure class="imgcontenido">
         <img src="img/aboutus.jpg" alt="trabajo en equipo">
     </figure>

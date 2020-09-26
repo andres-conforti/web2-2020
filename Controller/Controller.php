@@ -3,7 +3,7 @@
 require_once "./View/TasksView.php";
 require_once "./Model/TasksModel.php";
 
-class TasksController{
+class Controller{
 
     private $view;
     private $model;
@@ -29,8 +29,8 @@ class TasksController{
 
     function Servicios(){
         $servicios = $this->model->GetServicios();
-        $profesionales = $this->model->GetProfesionales();
-        $this->view->ShowServicios($servicios,$profesionales);
+        $categorias = $this->model->GetCategorias();
+        $this->view->ShowServicios($servicios,$categorias);
     }
 
     function Login(){
@@ -38,21 +38,21 @@ class TasksController{
     }
 
 
-    function InsertProfesionalController(){
-        $this->model->InsertProfesional($_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);
+    function InsertCategoriaController(){
+        $this->model->InsertCategoria($_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);
         $this->view->ShowServicios(); // nos manda a la tabla (SERVICIOS)
     }
 
-    function DeleteProfesionalController($params = null){
+    function DeleteCategoriaController($params = null){
         $id = $params[':ID'];
-        $this->model->DeleteProfesional($id);
+        $this->model->DeleteCategoria($id);
         $this->view->ShowServicios();
     }
 
     // revisar si esta bien
-    function EditProfesionalController($params = null){
+    function EditCategoriaController($params = null){
         $id = $params[':ID'];
-        $this->model->EditProfesional($id,$_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);
+        $this->model->EditCategoria($id,$_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);
         $this->view->ShowServicios();
     }
 }

@@ -13,15 +13,17 @@ class TasksView{
 
     
     function ShowHome(){
-
         $smarty = new Smarty();
-        $smarty->display('templates/header.tpl');
-        $smarty->display('templates/navbar.tpl');
         $smarty->display('templates/index.tpl');
-        $smarty->display('templates/footer.tpl');
-         // muestro el template 
     }
 
+    function ShowServicios($servicios,$categorias){
+        $smarty = new Smarty();
+        $smarty->assign('servicios',$servicios);
+        $smarty->assign('categorias',$categorias);
+        $smarty->display('templates/servicios.tpl');
+    }
+    
     function ShowHomeLocation(){
         header("Location: ".BASE_URL."home");
     }
