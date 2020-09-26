@@ -16,6 +16,7 @@ class TasksController{
 
     function Home(){
         $this->view->ShowHome();
+        
     }
 
     function Contacto(){
