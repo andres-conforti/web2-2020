@@ -1,7 +1,7 @@
 <?php
     require_once 'Controller/TasksController.php';
-    require_once 'Controller/TasksAdvanceController.php';
     require_once 'RouterClass.php';
+    //require_once 'Controller/TasksAdvanceController.php';
     
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -10,21 +10,21 @@
 
     // rutas
     $r->addRoute("home", "GET", "TasksController", "Home");
-    $r->addRoute("servicios", "GET", "TasksController", "Servicios");
-    $r->addRoute("faq", "GET", "TasksController", "Faq");
-    $r->addRoute("contacto", "GET", "TasksController", "Contacto");
-    $r->addRoute("//", "GET", "TasksController", "Contacto");
+    //$r->addRoute("servicios", "GET", "TasksController", "Servicios");
+    //$r->addRoute("faq", "GET", "TasksController", "Faq");
+    //$r->addRoute("contacto", "GET", "TasksController", "Contacto");
+    //$r->addRoute("//", "GET", "TasksController", "Contacto");
 
     //Esto lo veo en TasksView
-    $r->addRoute("insert", "POST", "TasksController", "InsertTask");
-    $r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
-    $r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
+    //$r->addRoute("insert", "POST", "TasksController", "InsertTask");
+    //$r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
+    //$r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
 
     //Ruta por defecto.
-    $r->setDefaultRoute("TasksController", "Home");
+    //$r->setDefaultRoute("TasksController", "Home");
 
     //Advance
-    $r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
+    //$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
 
     //run
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
