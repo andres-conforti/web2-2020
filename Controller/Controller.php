@@ -33,8 +33,15 @@ class Controller{
         $this->view->ShowServicios($servicios,$categorias);
     }
 
+    function ServicioDetalle($params = null){
+        $id = $params[':ID'];
+        $servicios = $this->model->GetServicios();
+        $categorias = $this->model->GetCategorias();
+        $this->view->ShowServicios($servicios,$categorias);
+    }
+
     function Login(){
-        $this->view->Login();
+        $this->view->ShowLogin();
     }
 
 

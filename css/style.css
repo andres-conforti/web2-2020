@@ -315,9 +315,10 @@ input{
 /*HTML SERVICIOS*/
 .servicios{
     display:flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-flow: row wrap;
     margin: 80px 0;
+    
 }
 .servicios ul{
     list-style-type: circle;
@@ -345,7 +346,9 @@ input{
     display: flex;
     flex-direction: column;
     margin: 0 10px; 
-    width: 40%;  
+    width: 40%;
+    border: 3px solid red;
+    margin-bottom: 40px;
 }
 .segundo{
     display: flex;
@@ -430,7 +433,17 @@ footer {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
+        
     }
+
+    .navbar{
+        position: sticky;
+        top: 0;
+        background-color: rgb(9, 2, 112);
+        border: 2px solid #000000;
+        
+    }
+
     .btnmenu{
         display: none;
     }
@@ -491,4 +504,19 @@ footer {
         padding: 2%;
         width: 40%;
     }
+
+    /*LOGIN*/
+
+      .FormContent {
+        margin: auto;
+        width: 25%;
+        height: 25%;
+        border: 3px solid rgb(241, 80, 58);
+        background-color: grey;
+        color: red;
+        font-size: 20px;
+        padding: 2%;
+      }
+
+
 }

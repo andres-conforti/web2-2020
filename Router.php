@@ -10,9 +10,9 @@
 
     // rutas
     $r->addRoute("home", "GET", "Controller", "Home");
+    $r->addRoute("login", "GET", "Controller", "Login");
     $r->addRoute("servicios", "GET", "Controller", "Servicios");
-    //$r->addRoute("servicios", "GET", "Controller", "Servicios");
-    //$r->addRoute("servicios", "GET", "Controller", "Servicios");
+    $r->addRoute("servicios/:ID", "GET", "Controller", "ServicioDetalle");
     //$r->addRoute("faq", "GET", "Controller", "Faq");
     //$r->addRoute("contacto", "GET", "Controller", "Contacto");
     //$r->addRoute("//", "GET", "Controller", "Contacto");
@@ -23,7 +23,7 @@
     //$r->addRoute("completar/:ID", "GET", "Controller", "MarkAsCompletedTask");
 
     //Ruta por defecto.
-    //$r->setDefaultRoute("Controller", "Home");
+    $r->setDefaultRoute("Controller", "Home");
 
     //Advance
     //$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");

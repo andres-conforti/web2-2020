@@ -10,11 +10,17 @@ class TasksModel{
         $this->db = new PDO('mysql:host=localhost;'.'dbname=estudio_perez;charset=utf8', 'root', '');
     }
          
-      function GetServicios(){
-          $sentencia = $this->db->prepare("SELECT * FROM servicio");
-          $sentencia->execute();
-          return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    function GetServicios(){
+        $sentencia = $this->db->prepare("SELECT * FROM servicio");
+        $sentencia->execute();
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
       }
+
+    function GetServicio($id){
+        $sentencia = $this->db->prepare( "SELECT * from servicio where id=?");
+        $sentencia->execute(array($id_servicio));
+        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    }
 
       function GetCategorias(){
         $sentencia = $this->db->prepare("SELECT * FROM categoria");
@@ -22,25 +28,27 @@ class TasksModel{
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function GetCategoria($id){
+    function GetCategoria($id){ // comparar con el GetServicio
         $sentencia = $this->db->prepare("SELECT * FROM categoria WHERE id=?");
         $sentencia->execute();
-        return $sentencia->fetchAll(PDO::FETCH_OBJ);  // revisar si esta bien . solo traigo 1, no all.
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
+
+
       
-      function InsertServicio($nombre,$descripcion,$honorario){
-          $sentencia = $this->db->prepare("INSERT INTO servicio(nombre,descripcion,honorario) VALUES(?,?,?)");
-          $sentencia->execute(array($nombre,$descripcion,$honorario));
+    function InsertServicio($nombre,$descripcion,$honorario){
+        $sentencia = $this->db->prepare("INSERT INTO servicio(nombre,descripcion,honorario) VALUES(?,?,?)");
+        $sentencia->execute(array($nombre,$descripcion,$honorario));
       }
       
-      function DeleteServicio($id){
-          $sentencia = $this->db->prepare("DELETE FROM servicio WHERE id=?");
-          $sentencia->execute(array($id));
+    function DeleteServicio($id){
+        $sentencia = $this->db->prepare("DELETE FROM servicio WHERE id=?");
+        $sentencia->execute(array($id));
       }
       
-      function EditServicio($id,$nombre,$descripcion,$honorario){
-          $sentencia = $this->db->prepare("UPDATE servicio SET nombre=?,descripcion=?,honorario=? WHERE id=?");
-          $sentencia->execute(array($id,$nombre,$descripcion,$honorario));
+    function EditServicio($id,$nombre,$descripcion,$honorario){
+        $sentencia = $this->db->prepare("UPDATE servicio SET nombre=?,descripcion=?,honorario=? WHERE id=?");
+        $sentencia->execute(array($id,$nombre,$descripcion,$honorario));
       }
       
 }

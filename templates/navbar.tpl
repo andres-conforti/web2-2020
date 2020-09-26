@@ -1,18 +1,21 @@
 
 
-<nav>
+<nav class="navbar">
         <ul class="navigation">
             <li>
-                <a id="indexPartial" href="home">HOME</a>
+                <a href="home">HOME</a>
             </li>
             <li>
-                <a id="serviciosPartial" href="servicios">SERVICIOS</a>
+                <a href="servicios">SERVICIOS</a>
             </li>
             <li>
-                <a id="faqPartial" href="#">FAQ</a>
+                <a href="#">FAQ</a>
             </li>
             <li>
-                <a  id="contactoPartial" href="#">CONTACTO</a>
+                <a  href="#">CONTACTO</a>
+            </li>
+            <li>
+                <a href="login">LOGIN</a>
             </li>
         </ul>
     </nav>

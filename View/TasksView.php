@@ -28,6 +28,11 @@ class TasksView{
         header("Location: ".BASE_URL."home");
     }
 
+    function ShowLogin(){
+        $smarty = new Smarty();   
+        $smarty->display('templates/login.tpl');
+      }
+
     
 }
 

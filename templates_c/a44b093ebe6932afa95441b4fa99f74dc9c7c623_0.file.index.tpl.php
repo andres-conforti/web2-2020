@@ -1,28 +1,32 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-26 16:11:16
+/* Smarty version 3.1.34-dev-7, created on 2020-09-26 23:18:43
   from 'C:\TUDAI\PROGRAMAS\xampp\htdocs\web2\tpe\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6f4c048864b0_46410980',
+  'unifunc' => 'content_5f6fb0331d43b6_74195296',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a44b093ebe6932afa95441b4fa99f74dc9c7c623' => 
     array (
       0 => 'C:\\TUDAI\\PROGRAMAS\\xampp\\htdocs\\web2\\tpe\\templates\\index.tpl',
-      1 => 1601129466,
+      1 => 1601132235,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:header.tpl' => 1,
+    'file:navbar.tpl' => 1,
+    'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f6f4c048864b0_46410980 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f6fb0331d43b6_74195296 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+$_smarty_tpl->_subTemplateRender("file:navbar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-
 <section class="contenido">
     <figure class="imgcontenido">
         <img src="img/aboutus.jpg" alt="trabajo en equipo">
@@ -152,5 +156,8 @@ function content_5f6f4c048864b0_46410980 (Smarty_Internal_Template $_smarty_tpl)
             <input class="deshabilitado" id="btnContacto" type="submit" value="Enviar" />
         </form>
     </div>
-</section><?php }
+</section>
+
+<?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
 }
