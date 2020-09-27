@@ -44,6 +44,10 @@ class Controller{
         $this->view->ShowLogin();
     }
 
+    function Register(){
+        $this->view->ShowRegister();
+    }
+
 
     function InsertCategoriaController(){
         $this->model->InsertCategoria($_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);

@@ -33,6 +33,21 @@ class TasksView{
         $smarty->display('templates/login.tpl');
       }
 
+    function ShowRegister(){
+        $smarty = new Smarty();   
+        $smarty->display('templates/register.tpl');
+      }
+
+      function ShowFaq(){
+        $smarty = new Smarty();
+        $smarty->display('templates/faq.tpl');
+    }
+
+    function ShowContacto(){
+        $smarty = new Smarty();
+        $smarty->display('templates/contact.tpl');
+    }
+
     
 }
 

@@ -12,7 +12,7 @@
 
 <div class="primero">
         <div>
-            <img src="img/{$categoria->img}" alt="{$categoria->nombre}">
+            <img src="img/servicios/{$categoria->img}" alt="{$categoria->nombre}">
         </div>
 
         <h3>{$categoria->nombre}</h3>

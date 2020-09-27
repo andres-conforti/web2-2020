@@ -9,13 +9,17 @@
                 <a href="servicios">SERVICIOS</a>
             </li>
             <li>
-                <a href="#">FAQ</a>
+                <a href="faq">FAQ</a>
             </li>
             <li>
-                <a  href="#">CONTACTO</a>
+                <a  href="contacto">CONTACTO</a>
             </li>
             <li>
                 <a href="login">LOGIN</a>
+            </li>
+            </li>
+            <li>
+                <a href="register">REGISTRARSE</a>
             </li>
         </ul>
     </nav>

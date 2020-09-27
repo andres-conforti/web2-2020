@@ -8,22 +8,25 @@
 
     $r = new Router();
 
+    //Ruta por defecto.
+    $r->setDefaultRoute("Controller", "Home");
+
     // rutas
     $r->addRoute("home", "GET", "Controller", "Home");
     $r->addRoute("login", "GET", "Controller", "Login");
+    $r->addRoute("register", "GET", "Controller", "Register");
+    $r->addRoute("faq", "GET", "Controller", "Faq");
+    $r->addRoute("contacto", "GET", "Controller", "Contacto");
     $r->addRoute("servicios", "GET", "Controller", "Servicios");
     $r->addRoute("servicios/:ID", "GET", "Controller", "ServicioDetalle");
-    //$r->addRoute("faq", "GET", "Controller", "Faq");
-    //$r->addRoute("contacto", "GET", "Controller", "Contacto");
-    //$r->addRoute("//", "GET", "Controller", "Contacto");
+
 
     //Esto lo veo en TasksView
     //$r->addRoute("insert", "POST", "Controller", "InsertTask");
     //$r->addRoute("delete/:ID", "GET", "Controller", "BorrarLaTaskQueVienePorParametro");
     //$r->addRoute("completar/:ID", "GET", "Controller", "MarkAsCompletedTask");
 
-    //Ruta por defecto.
-    $r->setDefaultRoute("Controller", "Home");
+
 
     //Advance
     //$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");

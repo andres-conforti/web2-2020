@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2020 a las 01:15:53
+-- Tiempo de generación: 27-09-2020 a las 03:35:28
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -29,15 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categoria` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(80) NOT NULL
+  `nombre` varchar(255) NOT NULL,
+  `img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id`, `nombre`) VALUES
-(0, 'Impuestos');
+INSERT INTO `categoria` (`id`, `nombre`, `img`) VALUES
+(1, 'Asesoramiento Impositivo\r\n', 'impuestos.png'),
+(2, 'Asesoramiento Contable\r\n', 'conta.png'),
+(3, 'Liquidacion del sueldos y jornales\r\n', 'sueldos.png'),
+(4, 'Sociedades', 'soc.png');
 
 -- --------------------------------------------------------
 
@@ -47,16 +51,27 @@ INSERT INTO `categoria` (`id`, `nombre`) VALUES
 
 CREATE TABLE `servicio` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(80) NOT NULL,
-  `id_categoria` int(11) NOT NULL
+  `nombre` varchar(255) NOT NULL,
+  `id_categoria_fk` int(11) NOT NULL,
+  `honorarios` int(11) NOT NULL,
+  `descripcion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `servicio`
 --
 
-INSERT INTO `servicio` (`id`, `nombre`, `id_categoria`) VALUES
-(0, 'Liquidacion IVA', 0);
+INSERT INTO `servicio` (`id`, `nombre`, `id_categoria_fk`, `honorarios`, `descripcion`) VALUES
+(1, 'Liquidación mensual y anual de tributos\r\n', 1, 150, 'esta es la descripcion'),
+(2, 'Preparación de Estados Contables\r\n', 2, 0, ''),
+(3, 'Liquidación de sueldos, jornales y cargas sociales\r\n', 3, 0, ''),
+(4, 'Determinación del encuadre societario apropiado para su empresa\r\n\r\n', 4, 0, ''),
+(55, '1 LOREM IPSUM HOLA QUE TAL ASDASDASD', 1, 0, ''),
+(56, '2 LOREM IPSUM HOLA QUE TAL ASDASDASD', 1, 0, ''),
+(57, '3 LOREM IPSUM HOLA QUE TAL ASDASDASD', 4, 0, ''),
+(58, '4 LOREM IPSUM HOLA QUE TAL ASDASDASD', 1, 0, ''),
+(59, '6 LOREM IPSUM HOLA QUE TAL ASDASDASD', 3, 0, ''),
+(60, '15 LOREM IPSUM HOLA QUE TAL ASDASDASD', 2, 0, '');
 
 --
 -- Índices para tablas volcadas
@@ -72,18 +87,23 @@ ALTER TABLE `categoria`
 -- Indices de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_categoria` (`id_categoria`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Restricciones para tablas volcadas
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- Filtros para la tabla `categoria`
+-- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`id`) REFERENCES `servicio` (`id_categoria`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=445;
+
+--
+-- AUTO_INCREMENT de la tabla `servicio`
+--
+ALTER TABLE `servicio`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
