@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-27 02:02:44
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 02:37:51
   from 'C:\TUDAI\PROGRAMAS\xampp\htdocs\web2\tpe\templates\navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fd6a4960700_16764839',
+  'unifunc' => 'content_5f71305fb8b554_13427707',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5899c76afd279f3a00c45ec7eab0f789c307fba0' => 
     array (
       0 => 'C:\\TUDAI\\PROGRAMAS\\xampp\\htdocs\\web2\\tpe\\templates\\navbar.tpl',
-      1 => 1601164962,
+      1 => 1601253168,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f6fd6a4960700_16764839 (Smarty_Internal_Template $_smarty_tpl) {
-?>
-
-<nav class="navbar">
+function content_5f71305fb8b554_13427707 (Smarty_Internal_Template $_smarty_tpl) {
+?><nav class="navbar">
         <ul class="navigation">
             <li>
                 <a href="home">HOME</a>
@@ -45,5 +43,7 @@ function content_5f6fd6a4960700_16764839 (Smarty_Internal_Template $_smarty_tpl)
                 <a href="register">REGISTRARSE</a>
             </li>
         </ul>
-    </nav><?php }
+    </nav>
+
+<?php }
 }

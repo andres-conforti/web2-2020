@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-28 01:28:42
-  from 'D:\Users\Usuario\AppData\Local\Programs\xampp\htdocs\web2-2020\templates\headerFix.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 02:37:51
+  from 'C:\TUDAI\PROGRAMAS\xampp\htdocs\web2\tpe\templates\headerFix.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f71202af29621_70463527',
+  'unifunc' => 'content_5f71305fb843b1_40663587',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '159fba02bc4ab72015ea0667f162a2185bb912df' => 
+    '3858fdd3f9b7c698fcf9ad974b3018bc782938dc' => 
     array (
-      0 => 'D:\\Users\\Usuario\\AppData\\Local\\Programs\\xampp\\htdocs\\web2-2020\\templates\\headerFix.tpl',
-      1 => 1601249319,
+      0 => 'C:\\TUDAI\\PROGRAMAS\\xampp\\htdocs\\web2\\tpe\\templates\\headerFix.tpl',
+      1 => 1601252888,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f71202af29621_70463527 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f71305fb843b1_40663587 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 

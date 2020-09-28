@@ -24,9 +24,10 @@ class TasksView{
         $smarty->display('templates/servicios.tpl');
     }
 
-    function ShowDetalleServicios($id){
+    function ShowDetalleServicio($servicio,$categoria){
         $smarty = new Smarty();
-        $smarty->assign('infoServicios',$id);
+        $smarty->assign('servicio',$servicio[0]);
+        $smarty->assign('categoria',$categoria[0]);
         $smarty->display('templates/detalleServicio.tpl');
     }
 

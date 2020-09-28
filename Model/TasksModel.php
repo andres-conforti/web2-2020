@@ -28,11 +28,18 @@ class TasksModel{
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function GetCategoria($id){ // comparar con el GetServicio
-        $sentencia = $this->db->prepare("SELECT * FROM categoria WHERE id=?");
-        $sentencia->execute();
-        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    function GetCategoria($id){
+      $sentencia = $this->db->prepare( "SELECT * from categoria where id=?");
+      $sentencia->execute(array($id));
+      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    function GetServicioFiltrado($id){ // comparar con el GetServicio fk
+      $sentencia = $this->db->prepare("SELECT * FROM categoria, servicio WHERE servicio.id=categoria.id_categoria_fk");
+      $sentencia->execute();
+      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+      }
+   
  
     function InsertServicio($nombre,$descripcion,$honorario){
         $sentencia = $this->db->prepare("INSERT INTO servicio(nombre,descripcion,honorario) VALUES(?,?,?)");

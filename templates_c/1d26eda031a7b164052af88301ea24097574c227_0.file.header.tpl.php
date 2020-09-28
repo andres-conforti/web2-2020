@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-27 01:34:59
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 23:47:33
   from 'C:\TUDAI\PROGRAMAS\xampp\htdocs\web2\tpe\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fd023224d22_59520263',
+  'unifunc' => 'content_5f7259f5498d42_19708693',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1d26eda031a7b164052af88301ea24097574c227' => 
     array (
       0 => 'C:\\TUDAI\\PROGRAMAS\\xampp\\htdocs\\web2\\tpe\\templates\\header.tpl',
-      1 => 1601163186,
+      1 => 1601252888,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f6fd023224d22_59520263 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7259f5498d42_19708693 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -33,8 +33,7 @@ function content_5f6fd023224d22_59520263 (Smarty_Internal_Template $_smarty_tpl)
     </head>
 
 <body>
-
-    <header>
+        <header>
         <div class="logo">
             <img src="img/logo.png" alt="logo">
         </div>
@@ -42,5 +41,6 @@ function content_5f6fd023224d22_59520263 (Smarty_Internal_Template $_smarty_tpl)
             <h1>ESTUDIO CONTABLE</h1>
         </div>
         <button class="btnmenu">&#9776</button>
-    </header><?php }
+    </header>
+<?php }
 }

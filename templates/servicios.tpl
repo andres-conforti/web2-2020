@@ -4,13 +4,15 @@
 <section class="servicios">
         
 <div class="filtrar">
-    <h5>Filtrar por categoria</h5>
+<form>
+<button type="button">Filtrar por categoria</button>
     <select name="filtro" class="filtroCategoria">
     <option value=" "> </option>
     {foreach from=$categorias item=categoria}
         <option value="{$categoria->id}">{$categoria->nombre}</option>
     {/foreach}
     </select>
+    </form>
 </div>
 
 {foreach from=$categorias item=categoria}

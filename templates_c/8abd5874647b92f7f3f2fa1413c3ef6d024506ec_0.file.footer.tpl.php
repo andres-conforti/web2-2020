@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-27 02:53:48
+/* Smarty version 3.1.34-dev-7, created on 2020-09-28 02:37:51
   from 'C:\TUDAI\PROGRAMAS\xampp\htdocs\web2\tpe\templates\footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f6fe29c3e29f9_70627820',
+  'unifunc' => 'content_5f71305fb92353_84844405',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f6fe29c3e29f9_70627820 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f71305fb92353_84844405 (Smarty_Internal_Template $_smarty_tpl) {
 ?>    <footer>
         <h3>Copyright TUDAI - WEB 2 - TPE 2020 © | Eugenia Jorge y Andres Conforti</h3>
     </footer>

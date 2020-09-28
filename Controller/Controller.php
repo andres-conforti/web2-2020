@@ -33,17 +33,14 @@ class Controller{
         $this->view->ShowServicios($servicios,$categorias);
     }
 
-    function ServicioDetalle($params = null){
+    function ServicioDetalle($params){
         $id = $params[':ID'];
-        $servicio = $this->model->GetServicio($id);
-        //$test = var_dump($servicio[0]);
-        $test = var_dump($servicio[0][id_categoria_fk]);  // string 1
-        $test2 = intval($test); // string a int
-        
-        echo "este es el test2: ".$test2;
-        
-        //$categoria = $this->model->GetCategoria($test); 
-        $this->view->ShowDetalleServicios($servicio, $categoria);
+        $servicio =$this->model->GetServicio($id);
+        $id_cat = $servicio[0]["id_categoria_fk"];
+        $categoria=$this->model->GetCategoria($id_cat);
+        echo "Servicio:   ".print_r($servicio)."<br>";
+        echo "Categoria:   ".print_r($categoria)."<br>";
+        $this->view->ShowDetalleServicio($servicio,$categoria);
     }
 
     function Login(){
