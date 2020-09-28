@@ -18,7 +18,7 @@ class TasksModel{
 
     function GetServicio($id){
         $sentencia = $this->db->prepare( "SELECT * from servicio where id=?");
-        $sentencia->execute(array($id_servicio));
+        $sentencia->execute(array($id));
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -31,26 +31,38 @@ class TasksModel{
     function GetCategoria($id){ // comparar con el GetServicio
         $sentencia = $this->db->prepare("SELECT * FROM categoria WHERE id=?");
         $sentencia->execute();
-        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
-
-
-      
+ 
     function InsertServicio($nombre,$descripcion,$honorario){
         $sentencia = $this->db->prepare("INSERT INTO servicio(nombre,descripcion,honorario) VALUES(?,?,?)");
         $sentencia->execute(array($nombre,$descripcion,$honorario));
-      }
+    }
       
     function DeleteServicio($id){
         $sentencia = $this->db->prepare("DELETE FROM servicio WHERE id=?");
         $sentencia->execute(array($id));
-      }
+    }
       
     function EditServicio($id,$nombre,$descripcion,$honorario){
         $sentencia = $this->db->prepare("UPDATE servicio SET nombre=?,descripcion=?,honorario=? WHERE id=?");
         $sentencia->execute(array($id,$nombre,$descripcion,$honorario));
-      }
-      
+    }
+
+    function InsertCategoria($nombre,$imagen){
+      $sentencia = $this->db->prepare("INSERT INTO categoria(nombre,img) VALUES(?,?,?)");
+      $sentencia->execute(array($nombre,$imagen));
+    }  
+
+    function DeleteCategoria($id){
+      $sentencia = $this->db->prepare("DELETE FROM categoria WHERE id=?");
+      $sentencia->execute(array($id));
+    }
+
+    function EditCategoria($id,$nombre,$imagen){
+      $sentencia = $this->db->prepare("UPDATE categoria SET nombre=?,img=? WHERE id=?");
+      $sentencia->execute(array($id,$nombre,$imagen));
+  }
 }
 
 ?>

@@ -2,9 +2,16 @@
 {include file="navbar.tpl"}
 
 <section class="servicios">
-    
         
-
+<div class="filtrar">
+    <h5>Filtrar por categoria</h5>
+    <select name="filtro" class="filtroCategoria">
+    <option value=" "> </option>
+    {foreach from=$categorias item=categoria}
+        <option value="{$categoria->id}">{$categoria->nombre}</option>
+    {/foreach}
+    </select>
+</div>
 
 {foreach from=$categorias item=categoria}
 
@@ -21,7 +28,7 @@
         {foreach from=$servicios item=servicio}
         {if $categoria->id == $servicio->id_categoria_fk}
         <ul>
-        <li>{$servicio->nombre}</li>
+            <li><a href='infoServicio/{$servicio->id}'>{$servicio->nombre}</a></li>
         </ul>
         {/if}
         {/foreach}

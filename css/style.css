@@ -378,7 +378,23 @@ input{
     margin: 0 10px;
     width: 40%; 
 }
-
+.filtrar{
+    display: flex;
+    width: 80%;
+    margin-bottom: 2%;
+}
+.filtrar h5{
+    margin-right: 1%;
+}
+.filtrar select{
+    display: table-column;
+    background-color:   #041131;
+    color: white;
+    text-align-last: center;
+    font-weight: bold;
+    padding: 2px;
+    border-radius: 10px;
+}
 /*FAQ*/
 
 h4{

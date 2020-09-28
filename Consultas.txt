@@ -1,0 +1,3 @@
+PREGUNTAR SI ES BUENA PRACTICA LO DE HEADERFIX.TLP Y COMO SOLUCIONARLO EN EL CASO QUE NO SEA BUENA.BUENA
+
+como hacer para que funcione el select con un evento de JS

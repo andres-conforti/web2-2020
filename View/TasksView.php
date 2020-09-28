@@ -23,7 +23,13 @@ class TasksView{
         $smarty->assign('categorias',$categorias);
         $smarty->display('templates/servicios.tpl');
     }
-    
+
+    function ShowDetalleServicios($id){
+        $smarty = new Smarty();
+        $smarty->assign('infoServicios',$id);
+        $smarty->display('templates/detalleServicio.tpl');
+    }
+
     function ShowHomeLocation(){
         header("Location: ".BASE_URL."home");
     }
