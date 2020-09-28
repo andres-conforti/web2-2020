@@ -28,7 +28,7 @@
         {foreach from=$servicios item=servicio}
         {if $categoria->id == $servicio->id_categoria_fk}
         <ul>
-            <li><a href='infoServicio/{$servicio->id}'>{$servicio->nombre}</a></li>
+            <li><a href='detalleServicio/{$servicio->id}'>{$servicio->nombre}</a></li>
         </ul>
         {/if}
         {/foreach}

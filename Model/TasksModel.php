@@ -19,7 +19,7 @@ class TasksModel{
     function GetServicio($id){
         $sentencia = $this->db->prepare( "SELECT * from servicio where id=?");
         $sentencia->execute(array($id));
-        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
       function GetCategorias(){
