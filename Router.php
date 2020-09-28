@@ -18,7 +18,7 @@
     $r->addRoute("faq", "GET", "Controller", "Faq");
     $r->addRoute("contacto", "GET", "Controller", "Contacto");
     $r->addRoute("servicios", "GET", "Controller", "Servicios");
-    $r->addRoute("infoServicio/:ID", "GET", "Controller", "ServicioDetalle");
+    $r->addRoute("detalleServicio/:ID", "GET", "Controller", "ServicioDetalle");
 
 
     //Esto lo veo en TasksView
