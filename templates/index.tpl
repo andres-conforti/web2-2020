@@ -6,7 +6,7 @@
         <img src="img/home/home1.jpg" alt="trabajo en equipo">
     </figure>
     <div class="textcontenido">
-        <h2>ESTUDIO CONTABLE MONTOTO</h2>
+        <h2>ESTUDIO CONTABLE PEREZ</h2>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi at doloribus dolore eaque.
             Perferendis
             harum provident quas perspiciatis quis nam deserunt! Ea veritatis, placeat nam enim rem aspernatur

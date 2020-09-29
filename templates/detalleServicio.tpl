@@ -1,23 +1,31 @@
 {include file="header.tpl"}
 {include file="navbar.tpl"}
 
-<div>
-  <div>
-    <div>
-
-
-      <ul class="detalleServicio">
+  <section class="servicios">
+    <div class="primero">
+      <h3>{$servicio['nombre']}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Descripcion</th>
+            <th>Honorarios Minimos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{$servicio['descripcion']}</td>
+            <td>{$servicio['honorarios']}</td>
+          </tr>
+        </tbody>
+      </table>
+      {*<ul class="detalleServicio">
 
         <li class="list-group-item">
-          <h3>{$servicio['nombre']} - ${$servicio['honorarios']} - {$categoria['nombre']}<h3>
+          <h3> - ${$servicio['honorarios']} - {$categoria['nombre']}<h3>
         </li>
         <li class="list-group-item">{$servicio['descripcion']}</li>
-      </ul>
+      </ul>*}
     </div>
-  </div>
-  <br>
-  <br>
-</div>
-
+  </section>
 
 {include file="footer.tpl"}
