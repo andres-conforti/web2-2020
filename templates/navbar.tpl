@@ -1,23 +1,23 @@
 <nav class="navbar">
         <ul class="navigation">
             <li>
-                <a href="home">HOME</a>
+                <a href="{$BASE_URL}home">HOME</a>
             </li>
             <li>
-                <a href="servicios">SERVICIOS</a>
+                <a href="{$BASE_URL}servicios">SERVICIOS</a>
             </li>
             <li>
-                <a href="faq">FAQ</a>
+                <a href="{$BASE_URL}faq">FAQ</a>
             </li>
             <li>
-                <a  href="contacto">CONTACTO</a>
+                <a  href="{$BASE_URL}contacto">CONTACTO</a>
             </li>
             <li>
-                <a href="login">LOGIN</a>
+                <a href="{$BASE_URL}login">LOGIN</a>
             </li>
             </li>
             <li>
-                <a href="register">REGISTRARSE</a>
+                <a href="{$BASE_URL}register">REGISTRARSE</a>
             </li>
         </ul>
     </nav>

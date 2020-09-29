@@ -1,7 +1,6 @@
-{include file="headerFix.tpl"}
+{include file="header.tpl"}
 {include file="navbar.tpl"}
 
-<<<<<<< HEAD
 <div>
   <div>
     <div>
@@ -21,10 +20,4 @@
 </div>
 
 
-=======
-<h3>Hola</h3>
-{foreach from=$servicio item=nombre}
-<h3>{$nombre->nombre}</h3>
-{/foreach}
->>>>>>> 227833993cc8ee8c1f10eb52576177b3fb411c1c
 {include file="footer.tpl"}
