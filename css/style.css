@@ -395,6 +395,9 @@ input{
     padding: 2px;
     border-radius: 10px;
 }
+.desaparecer{
+    display: none;
+}
 .servicios ul li a{
     text-decoration: none;
 }

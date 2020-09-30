@@ -7,7 +7,7 @@
     <title>Estudio Contable</title>
     <link rel="stylesheet" href="{$BASE_URL}css/style.css">
     <link rel="shortcut icon" href="{$BASE_URL}img/favicon.png" />
-    {*<script src="js/partialrender.js"></script>*}
+    <script src="js/funciones.js"></script>
 </head>
 
 <body>
