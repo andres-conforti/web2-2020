@@ -8,18 +8,13 @@
     <select name="filtro" class="filtroCategoria">
         <option value=" "> </option>
     {foreach from=$categorias item=categoria}
-        <option value="{$categoria->id}"><a href='#/{$categoria->id}'>{$categoria->nombre}</a></option>
+        <option value="{$categoria->id}">{$categoria->nombre}</option>
     {/foreach}
     </select>
     </form>
 </div>
-<div class="filtro desaparecer" > 
-    <h1>HOLAAAA</h1>
-    {*<h1>{$categoria->nombre}</h1>*}
-</div>
+
 {foreach from=$categorias item=categoria}
-
-
 
 <div class="primero">
         <div>

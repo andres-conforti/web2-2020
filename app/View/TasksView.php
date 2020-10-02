@@ -55,9 +55,9 @@ class TasksView{
         $smarty->display('templates/contact.tpl');
     }
 
-    function Header(){
+    function Header($login){
         $smarty = new Smarty();
-        $smarty->assign('BASE_URL',BASE_URL);
+        $smarty->assign('login',$login);
         $smarty->display('templates/header.tpl');
     }
 

@@ -24,7 +24,6 @@
 
     <nav class="navbar">
         <ul class="navigation">
-        
             <li>
                 <a href="home">HOME</a>
             </li>
@@ -37,21 +36,20 @@
             <li>
                 <a  href="contacto">CONTACTO</a>
             </li>
-          
+        
             <li>
                 <a href="login">LOGIN</a>
-            </li>
             </li>
             <li>
                 <a href="register">REGISTRARSE</a>
             </li>
-           
+
             <li>
                 <a href="administrar">ADMINISTRAR</a>
             </li>
             <li>
                 <a href="logout">LOGOUT</a>
             </li>
-           
+      
         </ul>
     </nav>

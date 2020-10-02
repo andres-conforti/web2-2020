@@ -8,12 +8,10 @@ function cargarPagina(){
                 div[i].classList.remove("desaparecer");
             }
         }
-        if ( id == 1 || id == 2 || id == 3 || id == 4){
+        if ( id > 0){ //condicion de prueba
+            // como hacemos para pasarle devolver la ID como $categoria
             let filtro = document.querySelector(".filtro");
             filtro.classList.remove("desaparecer");
-            let test = "<h1>{$categoria->id}</h1>";
-            document.querySelector(".filtro").innerHTML = test;
-            
             
             let div = document.querySelectorAll(".primero");
             for(let i=0; div.length;i++){

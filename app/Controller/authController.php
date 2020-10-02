@@ -36,7 +36,7 @@ class authController{
 
         // si el usuario existe, y las contraseñas coinciden
         if ($user && password_verify($password, $user->pass)) {
-            echo "acceso exitoso";
+            $this->view->ShowHome();
         } else {
             echo "acceso denegado";
         }

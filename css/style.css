@@ -372,6 +372,18 @@ input{
     border: 2px solid #041131;
     padding: 20px;
 }
+
+.mostrar{
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px; 
+    width: 40%;
+    margin-bottom: 40px;
+
+    border-radius: 25px;
+    border: 2px solid #041131;
+    padding: 20px;
+}
 .segundo{
     display: flex;
     flex-direction: column;

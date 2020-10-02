@@ -3,7 +3,7 @@
   <section class="servicios">
     
     <div class="primero">
-      <h3>{$categoria->nombre}</h3>
+      <h2>{$categoria->nombre}</h2>
       <h4>{$servicio->nombre}</h4>
       <table>
         <thead>
