@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2020 a las 05:02:24
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.9
+-- Tiempo de generación: 02-10-2020 a las 16:05:15
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,26 +65,12 @@ INSERT INTO `servicio` (`id`, `nombre`, `id_categoria_fk`, `honorarios`, `descri
 (1, 'Liquidación mensual y anual de tributos\r\n', 1, 150, 'esta es la descripcion'),
 (2, 'Preparación de Estados Contables\r\n', 2, 0, ''),
 (3, 'Liquidación de sueldos, jornales y cargas sociales\r\n', 3, 0, ''),
-(4, 'Determinación del encuadre societario apropiado para su empresa\r\n\r\n', 4, 0, ''),
 (55, 'Monotributistas', 1, 0, 'Asesoramiento y atención a Monotributistas, liquidaciones.'),
 (56, 'Moratorias y planes de facilidades de pago', 1, 0, 'Asesoramiento sobre financiamiento de deudas tributarias, planes de pagos, entre otros.'),
-(57, 'Constitución de sociedades', 4, 0, 'Elección del tipo societario, tramites en la DPPJ, etc.'),
 (58, 'Inscripciones impositivas', 1, 0, 'Tramitación de inscripciones ante distintos organismos públicos.'),
 (59, 'Inscripciones, altas y bajas de empleados.', 3, 0, 'Confección de formulario 931, certificación de servicios, entre otros.'),
-(60, 'Auditoría de Estados Contables.', 2, 0, 'Auditoria sobre estados contables anuales, o de periodos intermedios.');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario`
---
-
-CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
-  `user` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
-  `isAdmin` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(60, 'Auditoría de Estados Contables.', 2, 0, 'Auditoria sobre estados contables anuales, o de periodos intermedios.'),
+(61, 'Determinación del encuadre societario apropiado para su empresa', 4, 1500, 'Elegir el tipo societario adecuado');
 
 --
 -- Índices para tablas volcadas
@@ -104,12 +90,6 @@ ALTER TABLE `servicio`
   ADD KEY `id_categoria_fk` (`id_categoria_fk`);
 
 --
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -117,19 +97,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=445;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=446;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- Restricciones para tablas volcadas
@@ -139,7 +113,7 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  ADD CONSTRAINT `servicio_ibfk_1` FOREIGN KEY (`id_categoria_fk`) REFERENCES `categoria` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `servicio_ibfk_1` FOREIGN KEY (`id_categoria_fk`) REFERENCES `categoria` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

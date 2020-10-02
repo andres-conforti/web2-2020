@@ -2,9 +2,10 @@
 {include file="navbar.tpl"}
 
   <section class="servicios">
+    
     <div class="primero">
-      <h3>{$servicio->nombre}</h3>
-      <h5>{$categoria->nombre}</h5>
+      <h3>{$categoria->nombre}</h3>
+      <h4>{$servicio->nombre}</h4>
       <table>
         <thead>
           <tr>

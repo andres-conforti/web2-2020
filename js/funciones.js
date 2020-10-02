@@ -9,10 +9,13 @@ function cargarPagina(){
             }
         }
         if ( id == 1 || id == 2 || id == 3 || id == 4){
-            document.querySelector(".filtro").classList.remove("desaparecer");
+            let filtro = document.querySelector(".filtro");
+            filtro.classList.remove("desaparecer");
+            filtro.innerHTML = "<p>chau</p>";
             let div = document.querySelectorAll(".primero");
             for(let i=0; div.length;i++){
                 div[i].classList.add("desaparecer");
+                
             }
         }
         console.log(id)

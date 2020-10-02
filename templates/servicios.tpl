@@ -16,6 +16,7 @@
 </div>
 <div class="filtro desaparecer" > 
     <h1>HOLAAAA</h1>
+    {*<h1>{$categoria->nombre}</h1>*}
 </div>
 {foreach from=$categorias item=categoria}
 
