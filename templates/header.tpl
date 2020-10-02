@@ -36,20 +36,20 @@
             <li>
                 <a  href="contacto">CONTACTO</a>
             </li>
-        
+        {if !$Login}
             <li>
                 <a href="login">LOGIN</a>
             </li>
             <li>
                 <a href="register">REGISTRARSE</a>
             </li>
-
+        {else}
             <li>
                 <a href="administrar">ADMINISTRAR</a>
             </li>
             <li>
                 <a href="logout">LOGOUT</a>
             </li>
-      
+        {/if} 
         </ul>
     </nav>

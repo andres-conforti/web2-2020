@@ -2,16 +2,18 @@
 
 require_once 'app/View/TasksView.php';
 require_once 'app/Model/TasksModel.php';
+require_once 'helpers/authHelper.php';
 
 class Controller{
 
     private $view;
     private $model;
+    
 
     function __construct(){
+        $authHelper = new AuthHelper();
         $this->view = new TasksView();
         $this->model = new TasksModel();
-
     }
 
     function Home(){

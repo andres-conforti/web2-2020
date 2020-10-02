@@ -5,7 +5,7 @@
     
     // CONSTANTES PARA RUTEO
     define('BASE_URL', 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
-
+    define("LOGIN", BASE_URL . 'login');
     $r = new Router();
 
     //Ruta por defecto.
@@ -15,7 +15,7 @@
     $r->addRoute("home", "GET", "Controller", "Home");
     $r->addRoute("login", "GET", "authController", "Login");
    
-    $r->addRoute("verificar", "POST", "authController", "loginUser");
+    $r->addRoute("verificar", "POST", "authController", "verifyLogin");
     
     $r->addRoute("register", "GET", "authController", "Register");
     
