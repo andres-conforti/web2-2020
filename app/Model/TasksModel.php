@@ -4,8 +4,6 @@ class TasksModel{
 
     private $db;
 
-    // REVISAR QUE TENGA CONTRASEÑA "ROOT"
-
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=estudio_perez;charset=utf8', 'root', '');
     }

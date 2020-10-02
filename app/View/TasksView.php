@@ -1,7 +1,6 @@
 <?php
 
 require_once "./libs/Smarty.class.php";
-require_once "router.php";
 
 class TasksView{
 
@@ -9,7 +8,7 @@ class TasksView{
     
 
     function __construct(){
-        $this->title = "Lista de Tareas";
+        //$this->title = "Lista de Tareas";
     }
 
     

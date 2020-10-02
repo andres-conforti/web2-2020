@@ -1,5 +1,4 @@
 {include file="header.tpl"}
-{include file="navbar.tpl"}
 
   <section class="servicios">
     

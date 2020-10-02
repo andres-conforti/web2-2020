@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-{include file="navbar.tpl"}
+
 
 <section>
     <div class="FAQEncabezado">

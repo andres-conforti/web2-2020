@@ -1,31 +1,29 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-02 16:15:33
+/* Smarty version 3.1.34-dev-7, created on 2020-10-02 19:32:45
   from 'D:\Users\Usuario\AppData\Local\Programs\xampp\htdocs\web2-2020\templates\servicios.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f773605954eb7_64770475',
+  'unifunc' => 'content_5f77643d2d0349_37775244',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '02076021b8fcf8fa1edff5e2fd5694905e1feddf' => 
     array (
       0 => 'D:\\Users\\Usuario\\AppData\\Local\\Programs\\xampp\\htdocs\\web2-2020\\templates\\servicios.tpl',
-      1 => 1601648114,
+      1 => 1601659961,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:header.tpl' => 1,
-    'file:navbar.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f773605954eb7_64770475 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f77643d2d0349_37775244 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-$_smarty_tpl->_subTemplateRender("file:navbar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
 <section class="servicios">
