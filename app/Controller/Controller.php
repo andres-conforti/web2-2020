@@ -1,7 +1,7 @@
 <?php
 
-require_once "./app/View/TasksView.php";
-require_once "./app/Model/TasksModel.php";
+require_once "app/View/TasksView.php";
+require_once "app/Model/TasksModel.php";
 
 class Controller{
 
@@ -45,15 +45,6 @@ class Controller{
         //var_dump($categoria);
         $this->view->ShowDetalleServicio($servicio,$categoria);
     }
-
-    function Login(){
-        $this->view->ShowLogin();
-    }
-
-    function Register(){
-        $this->view->ShowRegister();
-    }
-
 
     function InsertCategoriaController(){
         $this->model->InsertCategoria($_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);

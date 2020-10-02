@@ -9,7 +9,7 @@
     <select name="filtro" class="filtroCategoria">
         <option value=" "> </option>
     {foreach from=$categorias item=categoria}
-        <option value="{$categoria->id}">{$categoria->nombre}</option>
+        <option value="{$categoria->id}"><a href='#/{$categoria->id}'>{$categoria->nombre}</a></option>
     {/foreach}
     </select>
     </form>

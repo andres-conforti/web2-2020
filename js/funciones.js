@@ -11,7 +11,10 @@ function cargarPagina(){
         if ( id == 1 || id == 2 || id == 3 || id == 4){
             let filtro = document.querySelector(".filtro");
             filtro.classList.remove("desaparecer");
-            filtro.innerHTML = "<p>chau</p>";
+            let test = "<h1>{$categoria->id}</h1>";
+            document.querySelector(".filtro").innerHTML = test;
+            
+            
             let div = document.querySelectorAll(".primero");
             for(let i=0; div.length;i++){
                 div[i].classList.add("desaparecer");

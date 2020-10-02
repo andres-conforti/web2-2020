@@ -1,5 +1,6 @@
 <?php
     require_once 'app/Controller/Controller.php';
+    require_once 'app/Controller/authController.php';
     require_once 'RouterClass.php';
     //require_once 'Controller/TasksAdvanceController.php';
     
@@ -13,8 +14,9 @@
 
     // rutas
     $r->addRoute("home", "GET", "Controller", "Home");
-    $r->addRoute("login", "GET", "Controller", "Login");
-    $r->addRoute("register", "GET", "Controller", "Register");
+    $r->addRoute("login", "GET", "authController", "Login");
+    $r->addRoute("verificar", "POST", "authController", "loginUser");
+    $r->addRoute("register", "GET", "authController", "Register");
     $r->addRoute("faq", "GET", "Controller", "Faq");
     $r->addRoute("contacto", "GET", "Controller", "Contacto");
     $r->addRoute("servicios", "GET", "Controller", "Servicios");

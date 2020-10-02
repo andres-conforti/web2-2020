@@ -1,6 +1,7 @@
 <?php
 
 require_once "./libs/Smarty.class.php";
+require_once "router.php";
 
 class TasksView{
 
@@ -14,13 +15,11 @@ class TasksView{
     
     function ShowHome(){
         $smarty = new Smarty();
-        $smarty->assign('BASE_URL',BASE_URL);
         $smarty->display('templates/index.tpl');
     }
 
     function ShowServicios($servicios,$categorias){
         $smarty = new Smarty();
-        $smarty->assign('BASE_URL',BASE_URL);
         $smarty->assign('servicios',$servicios);
         $smarty->assign('categorias',$categorias);
         $smarty->display('templates/servicios.tpl');
@@ -28,7 +27,6 @@ class TasksView{
 
     function ShowDetalleServicio($servicio,$categoria){
         $smarty = new Smarty();
-        $smarty->assign('BASE_URL',BASE_URL);
         $smarty->assign('servicio',$servicio);
         $smarty->assign('categoria',$categoria);
         $smarty->display('templates/detalleServicio.tpl');
@@ -40,25 +38,21 @@ class TasksView{
 
     function ShowLogin(){
         $smarty = new Smarty();   
-        $smarty->assign('BASE_URL',BASE_URL);
         $smarty->display('templates/login.tpl');
       }
 
     function ShowRegister(){
-        $smarty = new Smarty(); 
-        $smarty->assign('BASE_URL',BASE_URL);  
+        $smarty = new Smarty();   
         $smarty->display('templates/register.tpl');
       }
 
       function ShowFaq(){
         $smarty = new Smarty();
-        $smarty->assign('BASE_URL',BASE_URL);
         $smarty->display('templates/faq.tpl');
     }
 
     function ShowContacto(){
         $smarty = new Smarty();
-        $smarty->assign('BASE_URL',BASE_URL);
         $smarty->display('templates/contact.tpl');
     }
 
@@ -66,7 +60,6 @@ class TasksView{
         $smarty = new Smarty();
         $smarty->assign('BASE_URL',BASE_URL);
         $smarty->display('templates/header.tpl');
-        $smarty->display('templates/navbar.tpl');
     }
 
     

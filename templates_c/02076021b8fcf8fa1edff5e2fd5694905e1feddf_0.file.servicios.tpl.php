@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-30 18:31:48
+/* Smarty version 3.1.34-dev-7, created on 2020-10-02 16:15:33
   from 'D:\Users\Usuario\AppData\Local\Programs\xampp\htdocs\web2-2020\templates\servicios.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f74b2f4cf7682_99740019',
+  'unifunc' => 'content_5f773605954eb7_64770475',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '02076021b8fcf8fa1edff5e2fd5694905e1feddf' => 
     array (
       0 => 'D:\\Users\\Usuario\\AppData\\Local\\Programs\\xampp\\htdocs\\web2-2020\\templates\\servicios.tpl',
-      1 => 1601483505,
+      1 => 1601648114,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f74b2f4cf7682_99740019 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f773605954eb7_64770475 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:navbar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -42,8 +42,9 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['categoria']->val
 $_smarty_tpl->tpl_vars['categoria']->do_else = false;
 ?>
         <option value="<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id;?>
-"><?php echo $_smarty_tpl->tpl_vars['categoria']->value->nombre;?>
-</option>
+"><a href='#/<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id;?>
+'><?php echo $_smarty_tpl->tpl_vars['categoria']->value->nombre;?>
+</a></option>
     <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
@@ -52,7 +53,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </div>
 <div class="filtro desaparecer" > 
     <h1>HOLAAAA</h1>
-</div>
+    </div>
 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categorias']->value, 'categoria');
 $_smarty_tpl->tpl_vars['categoria']->do_else = true;
