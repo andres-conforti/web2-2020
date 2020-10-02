@@ -1,20 +1,29 @@
 {include file="header.tpl"}
-{include file="navbar.tpl"}
 
 <section class="servicios">
         
-<div class="filtrar">
-<form>
-<button type="button">Filtrar por categoria</button>
+{*<div class="filtrar">
+<form method="get" action="filtrar">
     <select name="filtro" class="filtroCategoria">
         <option value=" "> </option>
     {foreach from=$categorias item=categoria}
         <option value="{$categoria->id}">{$categoria->nombre}</option>
     {/foreach}
     </select>
+    <button type="button">Filtrar</button>
     </form>
-</div>
+</div>*}
+<div class="filtrar">
 
+<form  method="post" action="filtrar/">
+    <select name="filtrar" class="filtroCategoria">
+    {foreach from=$categorias item=categoria}
+        <option value="{$categoria->id}">{$categoria->nombre}</option>
+    {/foreach}
+    </select>
+  <button type="submit">FILTRAR</button>
+</form>
+</div>
 
 {foreach from=$categorias item=categoria}
 

@@ -1,10 +1,11 @@
 <?php
 
 require_once "./libs/Smarty.class.php";
+//require_once 'helpers/authHelper.php';
 
 class TasksView{
 
-    private $title;
+    //private $title;
     
 
     function __construct(){
@@ -34,20 +35,23 @@ class TasksView{
         $smarty->display('templates/detalleServicio.tpl');
     }
 
-    function ShowDetalleCategoria($categoria,$servicios){
+    function ShowDetalleCategoria($categoria,$servicios,$categoriaFiltrada){
         $smarty = new Smarty();
-        $smarty->assign('categoria',$categoria);
+        $smarty->assign('Login', isset($_SESSION));
+        $smarty->assign('categorias',$categoria);
         $smarty->assign('servicios',$servicios);
+        $smarty->assign('categoriaFiltrada',$categoriaFiltrada);
         $smarty->display('templates/filtrado.tpl');
     }
 
-    function ShowHomeLocation(){
-        header("Location: ".BASE_URL."home");
-    }
+    //function ShowHomeLocation(){
+    //    header("Location: ".BASE_URL."home");
+    //}
 
     function ShowLogin(){
         $smarty = new Smarty();   
         $smarty->assign('Login', isset($_SESSION));
+        $smarty->assign('isAdmin',0);
         $smarty->display('templates/login.tpl');
       }
 

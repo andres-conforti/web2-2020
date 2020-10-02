@@ -25,6 +25,8 @@
     $r->addRoute("servicios", "GET", "Controller", "Servicios");
     $r->addRoute("infoServicio/:ID", "GET", "Controller", "ServicioDetalle");
 
+    $r->addRoute("filtrar", "POST", "Controller", "CategoriaDetalle");
+
 
     //Esto lo veo en TasksView
     //$r->addRoute("insert", "POST", "Controller", "InsertTask");

@@ -8,7 +8,6 @@
     <title>Estudio Contable</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/favicon.png" />
-    <script src="js/funciones.js"></script>
 </head>
 
 <body>
@@ -24,6 +23,7 @@
 
     <nav class="navbar">
         <ul class="navigation">
+        {if $Login}
             <li>
                 <a href="home">HOME</a>
             </li>
@@ -36,20 +36,21 @@
             <li>
                 <a  href="contacto">CONTACTO</a>
             </li>
-        {if !$Login}
+        {else}
             <li>
                 <a href="login">LOGIN</a>
             </li>
             <li>
                 <a href="register">REGISTRARSE</a>
             </li>
-        {else}
+        {/if}
+        
             <li>
                 <a href="administrar">ADMINISTRAR</a>
             </li>
             <li>
                 <a href="logout">LOGOUT</a>
             </li>
-        {/if} 
+        
         </ul>
     </nav>

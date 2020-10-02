@@ -12,6 +12,7 @@ class Controller{
 
     function __construct(){
         $authHelper = new AuthHelper();
+        $authHelper->checkLoggedIn();
         $this->view = new TasksView();
         $this->model = new TasksModel();
     }
@@ -42,12 +43,27 @@ class Controller{
         $this->view->ShowDetalleServicio($servicio,$categoria);
     }
 
-    function CategoriaDetalle($params){
-        $id = $params[':ID'];
-        $categoria = $this->model->GetCategoria($id);
+    function CategoriaDetalle(){
+        if (isset($_POST['filtrar'])) {
+            $categoriaFiltrada = $_POST['filtrar'];
+    
+        $categoria = $this->model->GetCategorias();
         $servicios = $this->model->GetServicios();
-        $this->view->ShowDetalleCategoria($categoria,$servicios);
+        $this->view->ShowDetalleCategoria($categoria,$servicios,$categoriaFiltrada);
+        }else {
+            header('Location: '.HOME);
+        }
     }
+    /*public function filtrarProductos(){
+        if (isset($_POST['filtrar'])) {
+          $categoriaFiltrada = $_POST['filtrar'];
+          $productos = $this->model->GetProductos();
+          $marcas = $this->marcaModel->GetMarcas();
+          $this->view->productosFiltrados($this->titulo,$marcas,$productos,$categoriaFiltrada);
+        }else {
+          header('Location: '.HOME);
+        }
+      }*/
 
     function InsertCategoriaController(){
         $this->model->InsertCategoria($_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);

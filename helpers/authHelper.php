@@ -4,7 +4,6 @@
         public function __construct() {}
 
         public function login($user) {
-            echo "entre";
             // INICIO LA SESSION Y LOGUEO AL USUARIO
             session_start();
             $_SESSION['ID_USER'] = $user->id;
@@ -15,6 +14,7 @@
         public function logout() {
             session_start();
             session_destroy();
+            header('Location: '.LOGIN);
         }
     
         public function checkLoggedIn() {
