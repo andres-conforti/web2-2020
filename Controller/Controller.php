@@ -36,10 +36,13 @@ class Controller{
     function ServicioDetalle($params){
         $id = $params[':ID'];
         $servicio =$this->model->GetServicio($id);
-        $id_cat = $servicio[0]["id_categoria_fk"];
-        $categoria=$this->model->GetCategoria($id_cat);
+        //$id_cat = $servicio[0]["id_categoria_fk"];
+        $categoria = $this->model->GetCategoria($id);
+        //$categoria=$this->model->GetCategoria($id_cat);
         //echo "Servicio:   ".print_r($servicio)."<br>";
         //echo "Categoria:   ".print_r($categoria)."<br>";
+        //var_dump($servicio);
+        //var_dump($categoria);
         $this->view->ShowDetalleServicio($servicio,$categoria);
     }
 

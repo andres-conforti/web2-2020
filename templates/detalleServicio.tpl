@@ -3,7 +3,8 @@
 
   <section class="servicios">
     <div class="primero">
-      <h3>{$servicio['nombre']}</h3>
+      <h3>{$servicio->nombre}</h3>
+      <h5>{$categoria->nombre}</h5>
       <table>
         <thead>
           <tr>
@@ -13,8 +14,8 @@
         </thead>
         <tbody>
           <tr>
-            <td>{$servicio['descripcion']}</td>
-            <td>{$servicio['honorarios']}</td>
+            <td>{$servicio->descripcion}</td>
+            <td>{$servicio->honorarios}</td>
           </tr>
         </tbody>
       </table>
