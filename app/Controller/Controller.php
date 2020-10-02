@@ -42,6 +42,13 @@ class Controller{
         $this->view->ShowDetalleServicio($servicio,$categoria);
     }
 
+    function CategoriaDetalle($params){
+        $id = $params[':ID'];
+        $categoria = $this->model->GetCategoria($id);
+        $servicios = $this->model->GetServicios();
+        $this->view->ShowDetalleCategoria($categoria,$servicios);
+    }
+
     function InsertCategoriaController(){
         $this->model->InsertCategoria($_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);
         $this->view->ShowServicios(); // nos manda a la tabla (SERVICIOS)

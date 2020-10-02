@@ -34,6 +34,13 @@ class TasksView{
         $smarty->display('templates/detalleServicio.tpl');
     }
 
+    function ShowDetalleCategoria($categoria,$servicios){
+        $smarty = new Smarty();
+        $smarty->assign('categoria',$categoria);
+        $smarty->assign('servicios',$servicios);
+        $smarty->display('templates/filtrado.tpl');
+    }
+
     function ShowHomeLocation(){
         header("Location: ".BASE_URL."home");
     }

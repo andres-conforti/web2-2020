@@ -25,11 +25,13 @@ class TasksModel{
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
-    /*function GetCategoria($id){
-      $sentencia = $this->db->prepare( "SELECT * from categoria where id=?");
-      $sentencia->execute(array($id));
-      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
-    }*/
+
+    function ShowFiltradoCategoria($id){
+      $sentencia = $this->db->prepare( "SELECT * from servicio where id_categoria_fk=?");
+      $sentencia->execute([$id]);
+      return $sentencia->fetch(PDO::FETCH_OBJ);
+    }
+
     function GetCategoria($id){
       $sentencia = $this->db->prepare( "SELECT * from categoria where id=?");
       $sentencia->execute([$id]);
