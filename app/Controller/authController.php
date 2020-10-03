@@ -19,6 +19,7 @@ class authController{
     }
     public function Login() {
         $this->view->ShowLogin();
+      
     }
 
     function Register(){
@@ -39,6 +40,7 @@ class authController{
         $user = $this->model->getByEmail($email);
 
         // si el usuario existe, y las contraseñas coinciden
+        //echo "<br>".$user."<br>";
         if ($user && password_verify($password, $user->pass)) {
             $this->authHelper->login($user);
             header('Location: ' . BASE_URL);

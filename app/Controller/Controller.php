@@ -19,6 +19,7 @@ class Controller{
 
     function Home(){
         $this->view->ShowHome();
+
         
     }
 

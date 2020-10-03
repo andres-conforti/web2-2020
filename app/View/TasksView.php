@@ -50,8 +50,7 @@ class TasksView{
 
     function ShowLogin(){
         $smarty = new Smarty();   
-        $smarty->assign('Login', isset($_SESSION));
-        $smarty->assign('isAdmin',0);
+        $smarty->assign('Login', "1");
         $smarty->display('templates/login.tpl');
       }
 

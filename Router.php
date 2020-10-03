@@ -14,6 +14,7 @@
     // rutas
     $r->addRoute("home", "GET", "Controller", "Home");
     $r->addRoute("login", "GET", "authController", "Login");
+    $r->addRoute("logout", "GET", "authController", "logout");
    
     $r->addRoute("verificar", "POST", "authController", "verifyLogin");
     
