@@ -1,4 +1,4 @@
-{include file="headerLogin.tpl"}
+{include file="header.tpl"}
 
     <div class="login">
     

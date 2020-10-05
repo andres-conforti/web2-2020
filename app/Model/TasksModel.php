@@ -44,36 +44,53 @@ class TasksModel{
       return $sentencia->fetchAll(PDO::FETCH_ASSOC);
       }
    
- 
-    function InsertServicio($nombre,$descripcion,$honorario){
-        $sentencia = $this->db->prepare("INSERT INTO servicio(nombre,descripcion,honorario) VALUES(?,?,?)");
-        $sentencia->execute(array($nombre,$descripcion,$honorario));
-    }
+
+
+
+
+
+
       
     function DeleteServicio($id){
         $sentencia = $this->db->prepare("DELETE FROM servicio WHERE id=?");
         $sentencia->execute(array($id));
     }
       
-    function EditServicio($id,$nombre,$descripcion,$honorario){
-        $sentencia = $this->db->prepare("UPDATE servicio SET nombre=?,descripcion=?,honorario=? WHERE id=?");
-        $sentencia->execute(array($id,$nombre,$descripcion,$honorario));
+
+
+    function EditServicio($nombre,$descripcion,$honorarios,$id_categoria_fk,$id){
+        $sentencia = $this->db->prepare("UPDATE servicio SET nombre=?,descripcion=?,honorarios=?,id_categoria_fk=? WHERE id=?");
+        $sentencia->execute(array($nombre,$descripcion,$honorarios,$id_categoria_fk,$id));
     }
 
-    function InsertCategoria($nombre,$imagen){
-      $sentencia = $this->db->prepare("INSERT INTO categoria(nombre,img) VALUES(?,?,?)");
-      $sentencia->execute(array($nombre,$imagen));
-    }  
 
-    function DeleteCategoria($id){
+    function EditarCategoria($id,$nombre,$imagen){
+    $sentencia = $this->db->prepare("UPDATE categoria SET nombre=?,img=? WHERE id=?");
+    $sentencia->execute(array($id,$nombre,$imagen));
+    }
+
+    function borrarServicio($id){
+      $sentencia = $this->db->prepare("DELETE FROM servicio WHERE id=?");
+      $sentencia->execute(array($id));
+    }
+
+    function borrarCategoria($id){
       $sentencia = $this->db->prepare("DELETE FROM categoria WHERE id=?");
       $sentencia->execute(array($id));
     }
 
-    function EditCategoria($id,$nombre,$imagen){
-      $sentencia = $this->db->prepare("UPDATE categoria SET nombre=?,img=? WHERE id=?");
-      $sentencia->execute(array($id,$nombre,$imagen));
-  }
+    function InsertServicio($nombre,$categoria,$honorarios,$descripcion){
+      $sentencia = $this->db->prepare("INSERT INTO servicio(nombre,id_categoria_fk,honorarios,descripcion) VALUES(?,?,?,?)");
+      $sentencia->execute(array($nombre,$categoria,$honorarios,$descripcion));
+    }
+
+    function InsertCategoria($nombre,$imagen){
+      $sentencia = $this->db->prepare("INSERT INTO categoria(nombre,img) VALUES(?,?)");
+      $sentencia->execute(array($nombre,$imagen));
+    } 
+
+    
+
 }
 
 ?>

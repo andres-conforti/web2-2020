@@ -2,54 +2,57 @@
 
 <section class="servicios">
         
-{*<div class="filtrar">
-<form method="get" action="filtrar">
-    <select name="filtro" class="filtroCategoria">
-        <option value=" "> </option>
-    {foreach from=$categorias item=categoria}
-        <option value="{$categoria->id}">{$categoria->nombre}</option>
-    {/foreach}
-    </select>
-    <button type="button">Filtrar</button>
-    </form>
-</div>*}
-<div class="filtrar">
+        <div class="primeroTOP">
+        <form method="post" action="filtrar/" class="select">
+        <a href="agregarCategoria" class="myButtonAdd cat">AGREGAR CATEGORIA</a>
 
-<form  method="post" action="filtrar/">
+        <a href="agregarServicio" class="myButtonAdd">AGREGAR SERVICIO</a>
+
     <select name="filtrar" class="filtroCategoria">
     {foreach from=$categorias item=categoria}
         <option value="{$categoria->id}">{$categoria->nombre}</option>
     {/foreach}
     </select>
-  <button type="submit">FILTRAR</button>
+  <button type="submit" class="myButtonFiltrar">FILTRAR</button>
 </form>
-</div>
+        </div>
+
+
+
 
 {foreach from=$categorias item=categoria}
 
 <div class="primero">
         <div>
             <img src="img/servicios/{$categoria->img}" alt="{$categoria->nombre}">
+            
         </div>
 
-        <h3>{$categoria->nombre}</h3>
+        <h3>{$categoria->nombre} <br>
+        <a href="editarCategoria/{$categoria->id}" class="myButtonEditarCAT">EDITAR</a>
+        <a href="borrarCategoria/{$categoria->id}" class="myButtonBorrarCAT">BORRAR</a>
+        </h3>
+        
         
         
         {foreach from=$servicios item=servicio}
         {if $categoria->id == $servicio->id_categoria_fk}
+        
         <ul>
-            <li><a href='infoServicio/{$servicio->id}'>{$servicio->nombre}</a></li>
+            <a href="editarServicio/{$servicio->id}" class="myButtonEditar">EDITAR</a>
+            <a href="borrarServicio/{$servicio->id}" class="myButtonBorrar">BORRAR</a>
+            <br>
+            <li class="ServicioStyle" ><a href='infoServicio/{$servicio->id}'>{$servicio->nombre}</a></li>
         </ul>
+
         {/if}
         {/foreach}
-    </div>
+        </div>
 
 
         {/foreach}
 
 
-
-    
 </section>
 
 {include file="footer.tpl"}
