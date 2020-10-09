@@ -23,6 +23,7 @@ class TasksView{
     function ShowServicios($servicios,$categorias){
         $smarty = new Smarty();
         $smarty->assign('Login', isset($_SESSION));
+        //$smarty->assign('Admin', $_SESSION['ISADMIN']); para proxima entrega
         $smarty->assign('servicios',$servicios);
         $smarty->assign('categorias',$categorias);
         $smarty->display('templates/servicios.tpl');
@@ -73,10 +74,9 @@ class TasksView{
         $smarty->display('templates/contact.tpl');
     }
 
-    function Header($login){
+    function Header(){
         $smarty = new Smarty();
         $smarty->assign('Login', isset($_SESSION));
-        $smarty->assign('login',$login);
         $smarty->display('templates/header.tpl');
     }
 

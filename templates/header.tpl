@@ -23,8 +23,7 @@
 
     <nav class="navbar">
         <ul class="navigation">
-        {if $Login}
-            <li>
+             <li>
                 <a href="home">HOME</a>
             </li>
             <li>
@@ -36,20 +35,24 @@
             <li>
                 <a  href="contacto">CONTACTO</a>
             </li>
-            <li>
-                <a href="administrar">ADMINISTRAR</a>
-            </li>
-            <li>
-                <a href="logout">LOGOUT</a>
-            </li>
-            {else}
+            {if !$Login}
             <li>
                 <a href="login">LOGIN</a>
             </li>
+            {else}
+            {*
             <li>
-                <a href="register">REGISTRARSE</a>
+                <a href="administrar">ADMINISTRAR</a>
+            </li>
+            *}
+            <li>
+                <a href="logout">LOGOUT</a>
             </li>
             {/if}
         
         </ul>
     </nav>
+
+            {*<li>
+                <a href="register">REGISTRARSE</a>
+            </li>*}

@@ -20,6 +20,13 @@ class TasksModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
+    function getAll() {
+      $sentencia = $db->prepare("SELECT servicio.*, categoria.nombre as categorias FROM servicio JOIN categorias ON servicio.id_categoria_fk = categoria.id");
+      $sentencia->execute();
+      return $sentencia->fetchAll(PDO::FETCH_OBJ);
+  }
+
+
       function GetCategorias(){
         $sentencia = $this->db->prepare("SELECT * FROM categoria");
         $sentencia->execute();

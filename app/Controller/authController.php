@@ -4,6 +4,7 @@ require_once ("app/View/TasksView.php");
 require_once ("app/Model/UserModel.php");
 require_once ('helpers/authHelper.php');
 
+
 class authController{
 
     private $view;

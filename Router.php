@@ -8,6 +8,7 @@
     define("LOGIN", BASE_URL . 'login');
     define("SERVICIOS", BASE_URL . 'servicios');
     
+    
     $r = new Router();
 
     //Ruta por defecto.
@@ -30,7 +31,7 @@
 
     $r->addRoute("filtrar", "POST", "Controller", "CategoriaDetalle");
 
-    $r->addRoute("administrar", "GET", "Controller", "Administrar");
+    $r->addRoute("administrar", "GET", "adminController", "Administrar");
 
     //$r->addRoute("insert", "POST", "Controller", "InsertTask");
     $r->addRoute("borrarCategoria/:ID", "GET", "Controller", "borrarCategoria");

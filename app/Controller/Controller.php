@@ -19,7 +19,7 @@ class Controller{
 
     function Home(){
         $this->view->ShowHome();
-
+        
         
     }
 
@@ -36,6 +36,7 @@ class Controller{
     }
 
     function Servicios(){
+        
         $servicios = $this->model->GetServicios();
         $categorias = $this->model->GetCategorias();
         $this->view->ShowServicios($servicios,$categorias);
