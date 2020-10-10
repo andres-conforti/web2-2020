@@ -10,6 +10,13 @@
             $_SESSION['EMAIL'] = $user->email;
             $_SESSION['ISADMIN'] = $user->isAdmin;
         }
+
+        public function guest($user) {
+            session_start();
+            $_SESSION['ID_USER'] = $user->id;
+            $_SESSION['EMAIL'] = $user->email;
+            $_SESSION['ISADMIN'] = $user->isAdmin;
+        }
     
         public function logout() {
             session_start();
@@ -21,16 +28,12 @@
         public function checkLoggedIn() {
             session_start();
             if (!isset($_SESSION['ID_USER'])) {
-                header('Location: ' .LOGIN);
-                
-            }       
+                header('Location: '.LOGIN);
+                die();
+            }   
         }
     
-        public function getLoggedUserName() {
-            if (session_status() != PHP_SESSION_ACTIVE)
-                session_start();
-            return $_SESSION['EMAIL'];
-        }
+
     
     }
 

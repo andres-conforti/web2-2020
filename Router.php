@@ -20,6 +20,7 @@
     $r->addRoute("logout", "GET", "authController", "logout");
    
     $r->addRoute("verificar", "POST", "authController", "verifyLogin");
+    $r->addRoute("invitado", "POST", "authController", "guestLogin");
     
     $r->addRoute("register", "GET", "authController", "Register");
     

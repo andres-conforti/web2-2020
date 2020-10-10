@@ -37,12 +37,10 @@ class TasksView{
         $smarty->display('templates/detalleServicio.tpl');
     }
 
-    function ShowDetalleCategoria($categoria,$servicios,$categoriaFiltrada){
+    function ShowDetalleCategoria($servicios){
         $smarty = new Smarty();
         $smarty->assign('Login', isset($_SESSION));
-        $smarty->assign('categorias',$categoria);
         $smarty->assign('servicios',$servicios);
-        $smarty->assign('categoriaFiltrada',$categoriaFiltrada);
         $smarty->display('templates/filtrado.tpl');
     }
 

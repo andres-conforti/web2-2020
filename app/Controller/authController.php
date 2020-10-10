@@ -51,6 +51,30 @@ class authController{
 
         
     }
+
+    public function guestLogins() {
+        $email = $_POST['invitado'];
+        $user = $this->model->getByEmail($email);
+        $this->authHelper->guest($user);
+        header('Location: ' . BASE_URL);        
+    }
+
+    
+    public function guestLogin() {
+        $email = $_POST['invitado'];
+
+        $user = $this->model->getByEmail($email);
+
+        if (!empty($user)) {
+            $this->authHelper->guest($user);
+
+            header('Location: ' . BASE_URL);
+        } else {
+            $this->view->showLogin("Login incorrecto");
+        }
+    }
+
+
     public function logout() {
         $this->authHelper->logout();
         header('Location: ' . LOGIN);

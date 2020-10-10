@@ -607,8 +607,8 @@ footer {
     .FormContent {
         margin: auto;
         width: 25%;
-        margin-top: 60px;
-        margin-bottom: 60px;
+        margin-top: 10px;
+        margin-bottom: 10px;
         border: 2px solid black;
         background-color: rgb(224, 224, 224);
         color: black;
@@ -616,20 +616,33 @@ footer {
         font-weight: 600;
         
       }
-      .FormContent label{
+
+      .FormContent2 {
+        margin: auto;
+        width: 25%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 2px solid black;
+        background-color: rgb(230, 255, 138);
+        color: black;
+        padding: 2%;
+        font-weight: 600;
+        
+      }
+      .FormContent label, .FormContent label{
         font-size:25px;
       }
 
-      .FormContent h1{
+      .FormContent h1, .FormContent h1{
         margin: auto;
         margin-bottom: 5%;
       }
 
-      .FormContent input{
+      .FormContent input, .FormContent input{
         font-size:28px;
       }
 
-      .FormContent .botonEnviar{
+      .FormContent .botonEnviar, .FormContent .botonEnviar{
         padding-top: 5%;
         margin-top: 5%;
       }

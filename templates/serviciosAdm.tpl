@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 
-
+{debug}
 
 VARIABLE LOGIN:  {$Login}<br>
 
@@ -10,11 +10,9 @@ VARIABLE LOGIN:  {$Login}<br>
         
         <div class="primeroTOP">
         <form method="post" action="filtrar/" class="select">
-        {if ($smarty.session.ISADMIN)==1}
         <a href="agregarCategoria" class="myButtonAdd cat">AGREGAR CATEGORIA</a>
 
         <a href="agregarServicio" class="myButtonAdd">AGREGAR SERVICIO</a>
-        {/if}
     <select name="filtrar" class="filtroCategoria">
     {foreach from=$categorias item=categoria}
         <option value="{$categoria->id}">{$categoria->nombre}</option>
@@ -36,10 +34,8 @@ VARIABLE LOGIN:  {$Login}<br>
         </div>
 
         <h3>{$categoria->nombre} <br>
-        {if ($smarty.session.ISADMIN)==1}
         <a href="editarCategoria/{$categoria->id}" class="myButtonEditarCAT">EDITAR</a>
         <a href="borrarCategoria/{$categoria->id}" class="myButtonBorrarCAT">BORRAR</a>
-        {/if}
         </h3>
         
         
@@ -48,10 +44,9 @@ VARIABLE LOGIN:  {$Login}<br>
         {if $categoria->id == $servicio->id_categoria_fk}
         
         <ul>
-        {if ($smarty.session.ISADMIN)==1}
             <a href="editarServicio/{$servicio->id}" class="myButtonEditar">EDITAR</a>
             <a href="borrarServicio/{$servicio->id}" class="myButtonBorrar">BORRAR</a>
-            {/if}
+         
             
             <li class="ServicioStyle" ><a href='infoServicio/{$servicio->id}'>{$servicio->nombre}</a></li>
         </ul>

@@ -14,6 +14,11 @@
 
         </form>
 
+        <form class="FormContent" method="post" action="invitado">
+        <input value="invitado" name="invitado" type="hidden">
+        <button class="botonEnviar" type="submit"><h1>INGRESAR COMO INVITADO</h1></button>
+        </form>
+
         
     </div>
 
