@@ -3,7 +3,7 @@
 require_once "./libs/Smarty.class.php";
 require_once './helpers/authHelper.php';
 
-class TasksView{
+class ServiciosView{
 
     //private $title;
     
@@ -43,10 +43,6 @@ class TasksView{
         $smarty->assign('servicios',$servicios);
         $smarty->display('templates/filtrado.tpl');
     }
-
-    //function ShowHomeLocation(){
-    //    header("Location: ".BASE_URL."home");
-    //}
 
     function ShowLogin(){
         $smarty = new Smarty();   

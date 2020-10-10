@@ -1,9 +1,6 @@
 {include file="header.tpl"}
 
 
-
-VARIABLE LOGIN:  {$Login}<br>
-
 {*VARIABLE ADMIN:  {$Admin}*}
 
 <section class="servicios">

@@ -1,6 +1,6 @@
 <?php
 
-class TasksModel{
+class ServiciosModel{
 
     private $db;
 
@@ -20,23 +20,16 @@ class TasksModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
-  function getServiciosConCategoria($id){
-    $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE categoria.id = ? ");
-    $sentencia->execute([$id]);
-    return $sentencia->fetchAll(PDO::FETCH_OBJ);
-  }
-
-
-      function GetCategorias(){
-        $sentencia = $this->db->prepare("SELECT * FROM categoria");
-        $sentencia->execute();
-        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    function getServiciosConCategoria($id){
+      $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE categoria.id = ? ");
+      $sentencia->execute([$id]);
+      return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function ShowFiltradoCategoria($id){
-      $sentencia = $this->db->prepare( "SELECT * from servicio where id_categoria_fk=?");
-      $sentencia->execute([$id]);
-      return $sentencia->fetch(PDO::FETCH_OBJ);
+    function GetCategorias(){
+      $sentencia = $this->db->prepare("SELECT * FROM categoria");
+      $sentencia->execute();
+      return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
     function GetCategoria($id){
@@ -44,32 +37,16 @@ class TasksModel{
       $sentencia->execute([$id]);
       return $sentencia->fetch(PDO::FETCH_OBJ);
     }
-
-    function GetServicioFiltrado($id){ // comparar con el GetServicio fk
-      $sentencia = $this->db->prepare("SELECT * FROM categoria, servicio WHERE servicio.id=categoria.id_categoria_fk");
-      $sentencia->execute();
-      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
-      }
    
-
-
-
-
-
-
-      
     function DeleteServicio($id){
         $sentencia = $this->db->prepare("DELETE FROM servicio WHERE id=?");
         $sentencia->execute(array($id));
     }
-      
-
-
+  
     function EditServicio($nombre,$descripcion,$honorarios,$id_categoria_fk,$id){
         $sentencia = $this->db->prepare("UPDATE servicio SET nombre=?,descripcion=?,honorarios=?,id_categoria_fk=? WHERE id=?");
         $sentencia->execute(array($nombre,$descripcion,$honorarios,$id_categoria_fk,$id));
     }
-
 
     function EditarCategoria($id,$nombre,$imagen){
     $sentencia = $this->db->prepare("UPDATE categoria SET nombre=?,img=? WHERE id=?");

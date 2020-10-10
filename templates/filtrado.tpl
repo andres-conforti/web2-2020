@@ -4,7 +4,7 @@
         
  <div class="primero">
         <h3>{$servicios[0]->categoria}</h3>
-    {foreach from=$categorias item=categoria}
+    {foreach from=$servicios item=servicio}
     <ul>
     <li><a href='infoServicio/{$servicio->id}'>{$servicio->nombre}</a></li>
     </ul>

@@ -13,8 +13,8 @@ class Controller{
     function __construct(){
         $authHelper = new AuthHelper();
         $authHelper->checkLoggedIn();
-        $this->view = new TasksView();
-        $this->model = new TasksModel();
+        $this->view = new ServiciosView();
+        $this->model = new ServiciosModel();
     }
 
     function Home(){
@@ -51,7 +51,6 @@ class Controller{
     function CategoriaDetalle(){
         if (isset($_POST['filtrar'])) {
             $categoriaFiltrada = $_POST['filtrar'];
-    
             $servicios = $this->model->getServiciosConCategoria($categoriaFiltrada);
             $this->view->ShowDetalleCategoria($servicios);
         }else {
