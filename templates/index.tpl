@@ -1,7 +1,13 @@
 {include file="header.tpl"}
 
+NOMBRE: {$smarty.session.EMAIL}<br>
+isAdmin: {$smarty.session.ISADMIN}<br>
 
 <section class="contenido">
+
+
+
+
     <figure class="imgcontenido">
         <img src="img/home/home1.jpg" alt="trabajo en equipo">
     </figure>

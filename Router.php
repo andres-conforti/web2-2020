@@ -1,5 +1,6 @@
 <?php
     require_once 'app/Controller/Controller.php';
+    require_once 'app/Controller/admController.php';
     require_once 'app/Controller/authController.php';
     require_once 'RouterClass.php';
     
@@ -20,7 +21,7 @@
     $r->addRoute("logout", "GET", "authController", "logout");
    
     $r->addRoute("verificar", "POST", "authController", "verifyLogin");
-    $r->addRoute("invitado", "POST", "authController", "guestLogin");
+    $r->addRoute("invitado", "POST", "Controller", "guestLogin");
     
     $r->addRoute("register", "GET", "authController", "Register");
     
@@ -30,23 +31,27 @@
     $r->addRoute("servicios", "GET", "Controller", "Servicios");
     $r->addRoute("infoServicio/:ID", "GET", "Controller", "ServicioDetalle");
 
+    //$r->addRoute("serviciosAdm", "GET", "Controller", "ServiciosAdm");
+    //$r->addRoute("infoServicioAdm/:ID", "GET", "Controller", "ServicioDetalleAdm");
+
     $r->addRoute("filtrar", "POST", "Controller", "CategoriaDetalle");
 
-    $r->addRoute("administrar", "GET", "adminController", "Administrar");
+    //$r->addRoute("administrar", "GET", "admController", "Administrar");
 
     //$r->addRoute("insert", "POST", "Controller", "InsertTask");
-    $r->addRoute("borrarCategoria/:ID", "GET", "Controller", "borrarCategoria");
-    $r->addRoute("editarCategoria/:ID", "GET", "Controller", "editarCategoria"); // view de editar
-    $r->addRoute("editCategoria/:ID", "POST", "Controller", "editCategoria"); // llamado a editar de lo anterior
 
-    $r->addRoute("borrarServicio/:ID", "GET", "Controller", "borrarServicio");
-    $r->addRoute("editarServicio/:ID", "GET", "Controller", "editarServicio"); // view de editar
-    $r->addRoute("editServicio/:ID", "POST", "Controller", "editServicio"); // llamado a editar de lo anterior
+    $r->addRoute("borrarCategoria/:ID", "GET", "admController", "borrarCategoria");
+    $r->addRoute("editarCategoria/:ID", "GET", "admController", "editarCategoria"); // view de editar
+    $r->addRoute("editCategoria/:ID", "POST", "admController", "editCategoria"); // llamado a editar de lo anterior
+
+    $r->addRoute("borrarServicio/:ID", "GET", "admController", "borrarServicio");
+    $r->addRoute("editarServicio/:ID", "GET", "admController", "editarServicio"); // view de editar
+    $r->addRoute("editServicio/:ID", "POST", "admController", "editServicio"); // llamado a editar de lo anterior
     
-    $r->addRoute("agregarServicio", "GET", "Controller", "addServicio"); // view
-    $r->addRoute("nuevoServicio", "POST", "Controller", "newServicio"); // funcion
-    $r->addRoute("agregarCategoria", "GET", "Controller", "addCategoria"); // view
-    $r->addRoute("nuevaCategoria", "POST", "Controller", "newCategoria"); // funcion
+    $r->addRoute("agregarServicio", "GET", "admController", "addServicio"); // view
+    $r->addRoute("nuevoServicio", "POST", "admController", "newServicio"); // funcion
+    $r->addRoute("agregarCategoria", "GET", "admController", "addCategoria"); // view
+    $r->addRoute("nuevaCategoria", "POST", "admController", "newCategoria"); // funcion
 
 
     //Advance

@@ -1,18 +1,18 @@
 <?php
 
-require_once ("app/View/TasksView.php");
+require_once ("app/View/ServiciosView.php");
 require_once ("app/Model/UserModel.php");
 require_once ('helpers/authHelper.php');
 
 
 class authController{
 
-    private $view;
-    private $model;
-    private $authHelper;
+    protected $view;
+    protected $model;
+    protected $authHelper;
     
     public function __construct(){
-        $this->view = new TasksView();
+        $this->view = new ServiciosView();
         $this->model = new UserModel();
         $this->authHelper = new AuthHelper();
        
@@ -52,28 +52,13 @@ class authController{
         
     }
 
-    public function guestLogins() {
-        $email = $_POST['invitado'];
-        $user = $this->model->getByEmail($email);
-        $this->authHelper->guest($user);
-        header('Location: ' . BASE_URL);        
-    }
-
-    
     public function guestLogin() {
-        $email = $_POST['invitado'];
-
-        $user = $this->model->getByEmail($email);
-
-        if (!empty($user)) {
-            $this->authHelper->guest($user);
-
-            header('Location: ' . BASE_URL);
-        } else {
-            $this->view->showLogin("Login incorrecto");
-        }
+        session_start();
+        $_SESSION['ID_USER'] = 0;
+        $_SESSION['ISADMIN'] = 0;
+        $_SESSION['EMAIL'] = "invitado";
+        header('Location: ' . BASE_URL);    
     }
-
 
     public function logout() {
         $this->authHelper->logout();

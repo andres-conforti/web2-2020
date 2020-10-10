@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 
     <div class="login">
-    
+
         <form class="FormContent" method="post" action="verificar">
         <h1>INGRESE SUS DATOS</h1>
 
