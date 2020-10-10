@@ -36,7 +36,6 @@ class Controller{
     }
 
     function Servicios(){
-        
         $servicios = $this->model->GetServicios();
         $categorias = $this->model->GetCategorias();
         $this->view->ShowServicios($servicios,$categorias);
@@ -52,10 +51,8 @@ class Controller{
     function CategoriaDetalle(){
         if (isset($_POST['filtrar'])) {
             $categoriaFiltrada = $_POST['filtrar'];
-    
-        $categoria = $this->model->GetCategorias();
-        $servicios = $this->model->GetServicios();
-        $this->view->ShowDetalleCategoria($categoria,$servicios,$categoriaFiltrada);
+            $servicios = $this->model->getServiciosConCategoria($categoriaFiltrada);
+            $this->view->ShowDetalleCategoria($servicios);
         }else {
             header('Location: '.HOME);
         }
@@ -145,7 +142,7 @@ class Controller{
         //echo "<br>"."NOMBRE A SUBIR EN BBDD:   ".$name."<br>";
         
         return $name;
-  }
+    }
 }
     
     

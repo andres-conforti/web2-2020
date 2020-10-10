@@ -20,11 +20,17 @@ class TasksModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
+    function getServiciosConCategoria($id){
+      $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE categoria.id = ? ");
+      $sentencia->execute([$id]);
+      return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+    
     function getAll() {
       $sentencia = $db->prepare("SELECT servicio.*, categoria.nombre as categorias FROM servicio JOIN categorias ON servicio.id_categoria_fk = categoria.id");
       $sentencia->execute();
       return $sentencia->fetchAll(PDO::FETCH_OBJ);
-  }
+    }
 
 
       function GetCategorias(){
