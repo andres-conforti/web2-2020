@@ -36,7 +36,6 @@ class Controller{
     }
 
     function Servicios(){
-        
         $servicios = $this->model->GetServicios();
         $categorias = $this->model->GetCategorias();
         $this->view->ShowServicios($servicios,$categorias);
@@ -144,7 +143,7 @@ class Controller{
         //echo "<br>"."NOMBRE A SUBIR EN BBDD:   ".$name."<br>";
         
         return $name;
-  }
+    }
 }
     
     
