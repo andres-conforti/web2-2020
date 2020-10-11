@@ -18,9 +18,7 @@ class Controller{
     }
 
     function Home(){
-        $this->view->ShowHome();
-        
-        
+        $this->view->ShowHome();        
     }
 
     function Administrar(){

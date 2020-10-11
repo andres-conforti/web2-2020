@@ -15,12 +15,10 @@ class authController{
         $this->view = new ServiciosView();
         $this->model = new UserModel();
         $this->authHelper = new AuthHelper();
-       
-
     }
+
     public function Login() {
         $this->view->ShowLogin();
-      
     }
 
     function Register(){
@@ -48,10 +46,8 @@ class authController{
         } else {
             echo "acceso denegado";
         }
-
-        
     }
-
+    
     public function guestLogin() {
         session_start();
         $_SESSION['ID_USER'] = 0;
