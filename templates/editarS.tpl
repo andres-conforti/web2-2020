@@ -1,11 +1,13 @@
 {include file="header.tpl"}
+{if $msg!=''}<div class="errorMensaje"><h2>{$msg}</h2></div>{/if}
+
 
 <div class="vencimientos">
 <div class="tblvencimientos">
 
 <form action="editServicio/{$servicio->id}" method="post">
  <h3>NOMBRE:</h3>
- <textarea name="nombre" rows="3" cols="75">{$servicio->nombre}</textarea> <br>
+<textarea name="nombre" rows="3" cols="75">{$servicio->nombre}</textarea> <br>
 
   <h3>HONORARIOS:</h3>
   <input type="number" name="honorarios" value="{$servicio->honorarios}">
@@ -23,7 +25,7 @@
     {/foreach}
     </select>
 
-<br><h3><input type="submit" value="EDITAR" name="submit"></h3>
+<br><h3><input type="submit" value="EDITAR" name="submit" class="myButtonAdd"></h3>
 </form>
 </div>
 </div>

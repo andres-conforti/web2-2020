@@ -1,18 +1,17 @@
 {include file="header.tpl"}
+{if $msg!=''}<div class="errorMensaje"><h2>{$msg}</h2></div>{/if}
 
 <div class="vencimientos">
+
 <div class="tblvencimientos">
-
-
 <form action="editCategoria/{$categoria->id}" method="post" enctype="multipart/form-data">
  <h3>NOMBRE:</h3>
- <textarea name="nombre" rows="3" cols="75">
- {$categoria->nombre}
- </textarea> <br>
+ <p>(CAMPO OBLIGATORIO)</p>
+ <textarea name="nombre" rows="3" cols="75">{$categoria->nombre}</textarea> <br>
 
 <h3>IMAGEN:</h3>
-  <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
-  <h3><input type="submit" value="EDITAR" name="submit"></h3>
+  <input type="file" name="imagen"><br><br>
+  <h3><input type="submit" value="EDITAR" name="submit" class="myButtonAdd2"></h3>
 </form>
 </div>
 </div>

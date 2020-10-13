@@ -8,6 +8,7 @@
     <title>Estudio Contable</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/favicon.png" />
+    <script src="https://kit.fontawesome.com/47a87c56e2.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -40,11 +41,7 @@
                 <a href="login">LOGIN</a>
             </li>
             {else}
-            {*
-            <li>
-                <a href="administrar">ADMINISTRAR</a>
-            </li>
-            *}
+
             <li>
                 <a href="logout">LOGOUT</a>
             </li>
@@ -52,7 +49,3 @@
         
         </ul>
     </nav>
-
-            {*<li>
-                <a href="register">REGISTRARSE</a>
-            </li>*}

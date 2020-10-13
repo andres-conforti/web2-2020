@@ -9,10 +9,8 @@ class ServiciosView{
     
 
     function __construct(){
-        //$this->title = "Lista de Tareas";
     }
 
-    //$smarty->assign('Login', $_SESSION['ISADMIN']);  - para proxima entrega.
 
     function ShowHome(){
         $smarty = new Smarty();
@@ -23,17 +21,15 @@ class ServiciosView{
     function ShowServicios($servicios,$categorias){
         $smarty = new Smarty();
         $smarty->assign('Login', isset($_SESSION));
-        //$smarty->assign('Admin', $_SESSION['ISADMIN']); para proxima entrega
         $smarty->assign('servicios',$servicios);
         $smarty->assign('categorias',$categorias);
         $smarty->display('templates/servicios.tpl');
     }
 
-    function ShowDetalleServicio($servicio,$categoria){
+    function ShowDetalleServicio($servicio){
         $smarty = new Smarty();
         $smarty->assign('Login', isset($_SESSION));
         $smarty->assign('servicio',$servicio);
-        $smarty->assign('categoria',$categoria);
         $smarty->display('templates/detalleServicio.tpl');
     }
 
@@ -44,8 +40,9 @@ class ServiciosView{
         $smarty->display('templates/filtrado.tpl');
     }
 
-    function ShowLogin(){
-        $smarty = new Smarty();   
+    function ShowLogin($msg = ''){
+        $smarty = new Smarty();
+        $smarty->assign('msg', $msg);
         $smarty->assign('Login', isset($_SESSION));
         $smarty->display('templates/login.tpl');
       }
@@ -74,18 +71,20 @@ class ServiciosView{
         $smarty->display('templates/header.tpl');
     }
 
-    function ShowEditarServicio($servicio,$categorias){
+    function ShowEditarServicio($servicio,$categorias,$msg=''){
         $smarty = new Smarty();
         $smarty->assign('Login', isset($_SESSION));
-        $smarty->assign('categorias',$categorias);
         $smarty->assign('servicio',$servicio);
+        $smarty->assign('categorias',$categorias);
+        $smarty->assign('msg',$msg);
         $smarty->display('templates/editarS.tpl');
     }
 
-    function ShowEditarCategoria($categoria){
+    function ShowEditarCategoria($categoria,$msg=''){
         $smarty = new Smarty();
         $smarty->assign('Login', isset($_SESSION));
         $smarty->assign('categoria',$categoria);
+        $smarty->assign('msg',$msg);
         $smarty->display('templates/editarC.tpl');
     }
 
@@ -96,19 +95,20 @@ class ServiciosView{
         $smarty->display('templates/administrar.tpl');
     }
     
-    function ShowAddServicio($categorias){
+    function ShowAddServicio($categorias,$msg=''){
         $smarty = new Smarty();
         $smarty->assign('Login', isset($_SESSION));
+        $smarty->assign('msg',$msg);
         $smarty->assign('categorias',$categorias);
         $smarty->display('templates/addServicio.tpl');
     }
 
-    function ShowAddCategoria(){
+    function ShowAddCategoria($msg=''){
         $smarty = new Smarty();
         $smarty->assign('Login', isset($_SESSION));
+        $smarty->assign('msg',$msg);
         $smarty->display('templates/addCategoria.tpl');
     }
-
     
 }
 

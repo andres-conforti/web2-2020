@@ -31,7 +31,8 @@ class authController{
 
         // verifico campos obligatorios
         if (empty($email) || empty($password)) {
-            echo "Faltan datos obligatorios";
+            $msg = " DATOS FALTANTES ";
+            $this->view->ShowLogin($msg);
             die();
         }
 
@@ -39,12 +40,12 @@ class authController{
         $user = $this->model->getByEmail($email);
 
         // si el usuario existe, y las contraseñas coinciden
-        //echo "<br>".$user."<br>";
         if ($user && password_verify($password, $user->pass)) {
             $this->authHelper->login($user);
             header('Location: ' . BASE_URL);
         } else {
-            echo "acceso denegado";
+            $msg = " DATOS INCORRECTOS ";
+            $this->view->ShowLogin($msg);
         }
     }
     
@@ -58,7 +59,6 @@ class authController{
 
     public function logout() {
         $this->authHelper->logout();
-        header('Location: ' . LOGIN);
     }
 }
 

@@ -7,7 +7,9 @@
     // CONSTANTES PARA RUTEO
     define('BASE_URL', 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
     define("LOGIN", BASE_URL . 'login');
+    define("LOGOUT", BASE_URL . 'logout');
     define("SERVICIOS", BASE_URL . 'servicios');
+    define("EDITAR", BASE_URL . 'editarCategoria/');
     
     
     $r = new Router();
@@ -31,14 +33,7 @@
     $r->addRoute("servicios", "GET", "Controller", "Servicios");
     $r->addRoute("infoServicio/:ID", "GET", "Controller", "ServicioDetalle");
 
-    //$r->addRoute("serviciosAdm", "GET", "Controller", "ServiciosAdm");
-    //$r->addRoute("infoServicioAdm/:ID", "GET", "Controller", "ServicioDetalleAdm");
-
     $r->addRoute("filtrar", "POST", "Controller", "CategoriaDetalle");
-
-    //$r->addRoute("administrar", "GET", "admController", "Administrar");
-
-    //$r->addRoute("insert", "POST", "Controller", "InsertTask");
 
     $r->addRoute("borrarCategoria/:ID", "GET", "admController", "borrarCategoria");
     $r->addRoute("editarCategoria/:ID", "GET", "admController", "editarCategoria"); // view de editar
@@ -52,10 +47,6 @@
     $r->addRoute("nuevoServicio", "POST", "admController", "newServicio"); // funcion
     $r->addRoute("agregarCategoria", "GET", "admController", "addCategoria"); // view
     $r->addRoute("nuevaCategoria", "POST", "admController", "newCategoria"); // funcion
-
-
-    //Advance
-    //$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
 
     //run
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 

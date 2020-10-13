@@ -1,5 +1,7 @@
 /* 041131 es el color tema de todo, cambiar si no gusta*/
 
+
+
 body{
     font-family: 'Baloo';
     margin: 0%;
@@ -60,15 +62,26 @@ header .btnmenu:hover{
 /*NAV*/
 .navigation {
     list-style: none;
-    display: none;
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     background: #041131;
     color: white;
     font-size: x-large;
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 20px;
-    margin: 0;
+    margin: 0;    
+}
+
+
+
+.navbar{
+    position: sticky;
+    top: 0;
+    background-color: rgb(9, 2, 112);
+   
+    
 }
 
 ul.navigation.show{
@@ -135,8 +148,8 @@ p{
 }
 
 .tblvencimientos {
-    margin-top: 9%;
-    margin-bottom: 9%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     text-align: center;
     background-color: #DAEFF8;
     border-radius: 3%;
@@ -502,6 +515,8 @@ footer {
 
 }
 
+
+
 @media only screen and (min-width: 800px){
     
 /*header*/
@@ -520,20 +535,7 @@ footer {
 
 /*NAV*/
 
-    .navigation{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        
-    }
 
-    .navbar{
-        position: sticky;
-        top: 0;
-        background-color: rgb(9, 2, 112);
-       
-        
-    }
 
     .btnmenu{
         display: none;
@@ -599,23 +601,38 @@ footer {
     /*LOGIN*/
 
 
+      .incorrecto{
+        display: inline-block;
+        justify-content: center;
+        padding: 6px;
+        border-radius:17px;
+        background-color: rgb(255, 64, 64);
+        text-align: center;
+        margin-bottom: 10%;
+      }
+
+      
+
+      
+
     .login {
         display: flex;
         flex-direction: column;
         margin: 0 10px;   
-    }
-    .FormContent {
         margin: auto;
         width: 25%;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 3%;
+        margin-bottom: 3%;
         border: 2px solid black;
-        background-color: rgb(224, 224, 224);
-        color: black;
+        border-radius:17px;
+        background-color: #041131;
+        color: white;
         padding: 2%;
         font-weight: 600;
         
       }
+
+
 
       .FormContent2 {
         margin: auto;
@@ -642,10 +659,33 @@ footer {
         font-size:28px;
       }
 
-      .FormContent .botonEnviar, .FormContent .botonEnviar{
+      .FormContent .botonEnviar {
+        color: white;
         padding-top: 5%;
         margin-top: 5%;
-      }
+        box-shadow:inset 0px 0px 15px 3px #23395e;
+        background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+        background-color:#2e466e;
+        border-radius:17px;
+        border:1px solid #1f2f47;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:15px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #263666;
+    }
+    .FormContent .botonEnviar:hover {
+        background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+        background-color:#415989;
+    }
+    .FormContent .botonEnviar:active {
+        position:relative;
+        top:1px;
+    }
+
+
 
       .register {
         background-color: rgb(155, 255, 250);
@@ -671,6 +711,20 @@ footer {
     margin-bottom: 5%;
     margin-right: 35px;
     margin-left: 35px;
+
+}
+
+.myButtonAdd2 {
+	background-color:#0a256b;
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:22px;
+	font-weight:bold;
+    padding:6px 10px;
+    text-decoration:none;
 
 }
 
@@ -786,11 +840,12 @@ footer {
 }
 
 .select {
-    position: relative;
     display: inline-block;
     margin-bottom: 10px;
     width: 100%;
-}    .select select {
+}
+
+.select select {
         font-family: 'Arial';
         display: inline-block;
         width: 100%;
@@ -809,3 +864,10 @@ footer {
 
 
 }
+
+.errorMensaje{
+    padding: 6px;
+    background-color: rgb(255, 64, 64);
+    text-align: center;
+    margin-bottom: 0px;
+  }

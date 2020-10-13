@@ -6,8 +6,8 @@ require_once 'helpers/authHelper.php';
 
 class Controller{
 
-    protected $view;
-    protected $model;
+    private $view;
+    private $model;
     
 
     function __construct(){
@@ -15,6 +15,8 @@ class Controller{
         $authHelper->checkLoggedIn();
         $this->view = new ServiciosView();
         $this->model = new ServiciosModel();
+       
+        
     }
 
     function Home(){
@@ -41,9 +43,8 @@ class Controller{
 
     function ServicioDetalle($params){
         $id = $params[':ID'];
-        $servicio =$this->model->GetServicio($id);
-        $categoria = $this->model->GetCategoria($servicio->id_categoria_fk);
-        $this->view->ShowDetalleServicio($servicio,$categoria);
+        $servicio =$this->model->getServicioConCategoria($id);
+        $this->view->ShowDetalleServicio($servicio);
     }
 
     function CategoriaDetalle(){

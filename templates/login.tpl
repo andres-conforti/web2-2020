@@ -1,8 +1,9 @@
 {include file="header.tpl"}
 
     <div class="login">
-
+        {if $msg!=''}<div class="incorrecto"><h2>{$msg}</h2></div>{/if}
         <form class="FormContent" method="post" action="verificar">
+        
         <h1>INGRESE SUS DATOS</h1>
 
             <label for="email">Email:</label>

@@ -20,6 +20,12 @@ class ServiciosModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
+    function getServicioConCategoria($id){
+      $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE servicio.id = ? ");
+      $sentencia->execute([$id]);
+      return $sentencia->fetch(PDO::FETCH_OBJ);
+    }
+
     function getServiciosConCategoria($id){
       $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE categoria.id = ? ");
       $sentencia->execute([$id]);
@@ -48,9 +54,9 @@ class ServiciosModel{
         $sentencia->execute(array($nombre,$descripcion,$honorarios,$id_categoria_fk,$id));
     }
 
-    function EditarCategoria($id,$nombre,$imagen){
+    function EditarCategoria($nombre,$imagen,$id){
     $sentencia = $this->db->prepare("UPDATE categoria SET nombre=?,img=? WHERE id=?");
-    $sentencia->execute(array($id,$nombre,$imagen));
+    $sentencia->execute(array($nombre,$imagen,$id));
     }
 
     function borrarServicio($id){

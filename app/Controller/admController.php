@@ -7,8 +7,8 @@ require_once 'helpers/authHelper.php';
 
 class admController extends Controller{
 
-    protected $view;
-    protected $model;
+    private $view;
+    private $model;
     
 
     function __construct(){
@@ -22,14 +22,13 @@ class admController extends Controller{
 
 
 function InsertCategoriaController(){
-        $this->model->InsertCategoria($_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);
+        $this->model->InsertCategoria($_POST['input_nombre'],$_POST['input_imagen']);
         $this->view->ShowServicios(); // nos manda a la tabla (SERVICIOS)
     }
 
     function borrarServicio($params = null){
         $id = $params[':ID'];
         $this->model->borrarServicio($id);
-        //$this->view->ShowServicios();
         header('Location: '.SERVICIOS);
         
     }
@@ -42,17 +41,17 @@ function InsertCategoriaController(){
 
     // revisar si esta bien
 
-    function editarServicio($params = null){
+    function editarServicio($params = null,$msg=''){
         $id = $params[':ID'];
         $servicio = $this->model->GetServicio($id);
         $categorias = $this->model->GetCategorias();
         $this->view->ShowEditarServicio($servicio,$categorias);
     }
 
-    function editarCategoria($params = null){
+    function editarCategoria($params = null,$msg=''){ //muetra el tpl, no es el editar
         $id = $params[':ID'];
         $categoria = $this->model->GetCategoria($id);
-        $this->view->ShowEditarCategoria($categoria);
+        $this->view->ShowEditarCategoria($categoria,$msg);
     }
 
     function editServicio($params = null){ //este es para la funcion luego de poner los datos, no para la pagina (tpl)
@@ -61,49 +60,97 @@ function InsertCategoriaController(){
         $honorarios = $_POST['honorarios'];
         $descripcion = $_POST['descripcion'];
         $categoria = $_POST['categoria'];
-        //echo $id."<br>".$nombre."<br>".$honorarios."<br>".$descripcion."<br>".$categoria."<br>";
-        $this->model->EditServicio($nombre,$descripcion,$honorarios,$categoria,$id);
-        echo "<br> PASO EL MODEL";
-        header('Location: '.SERVICIOS);
+
+        if($nombre=='' || $honorarios=='' || $descripcion==''){
+            
+            $msg = "CAMPOS FALTANTES - PRUEBE DE NUEVO";
+            $servicio = $this->model->GetServicio($id);
+            $categorias = $this->model->GetCategorias();
+            $this->view->ShowEditarServicio($servicio,$categorias,$msg);
+        }
+        else{
+            $this->model->EditServicio($nombre,$descripcion,$honorarios,$categoria,$id);
+            header('Location: '.SERVICIOS);
+        }
+
     }
 
     function editCategoria($params = null){ //este es para la funcion luego de poner los datos, no para la pagina (tpl)
+        
         $id = $params[':ID'];
-        $this->model->EditarCategoria($id,$_POST['input_nombre'],$_POST['input_matricula'],$_POST['input_imagen']);
-        header('Location: '.SERVICIOS);
+        $nombre = $_POST['nombre'];
+        $img = basename($_FILES["imagen"]["name"]);
+
+        if($nombre!=''){
+            if($img!=''){
+            $this->uploadImage();
+            }
+            else{
+                $img = "no-image.png";
+            }
+            $this->model->EditarCategoria($nombre,$img,$id);
+            header('Location: '.SERVICIOS);
+            }
+        else{
+            $msg = "NOMBRE OBLIGATORIO";
+            $categoria = $this->model->GetCategoria($id);
+            $this->view->ShowEditarCategoria($categoria,$msg);
+            }
+
+
     }
 
-    function addServicio(){
+    function addServicio($msg = ''){
         $categorias = $this->model->GetCategorias();
-        $this->view->ShowAddServicio($categorias);
+        $this->view->ShowAddServicio($categorias,$msg);
     }
 
-    function addCategoria(){
-        $this->view->ShowAddCategoria();
+    function addCategoria($msg = ''){
+        $this->view->ShowAddCategoria($msg);
     }
     
     function newServicio(){
         $nombre = $_POST['nombre'];
+        $categoria = $_POST['categoria'];
         $honorarios = $_POST['honorarios'];
         $descripcion = $_POST['descripcion'];
-        $categoria = $_POST['categoria'];
-        $this->model->InsertServicio($nombre,$categoria,$honorarios,$descripcion);
-        header('Location: '.SERVICIOS);
+        
+        if($nombre=='' || $honorarios=='' || $descripcion=='' || $categoria==''){
+            $msg = "CAMPOS FALTANTES - PRUEBE DE NUEVO";
+            $this->addServicio($msg);
+        }
+        else{
+            $this->model->InsertServicio($nombre,$categoria,$honorarios,$descripcion);
+            header('Location: '.SERVICIOS);
+        }
+
+        
     }
 
     function newCategoria(){
         $nombre = $_POST['nombre'];
-        $imagen = $this->uploadImage();
-        $this->model->InsertCategoria($nombre,$imagen);
-        header('Location: '.SERVICIOS);
+        $img = basename($_FILES["imagen"]["name"]);
+
+        if($nombre!=''){
+            if($img!=''){
+            $this->uploadImage();
+            }
+            else{
+                $img = "no-image.png";
+            }
+            $this->model->InsertCategoria($nombre,$img);
+            header('Location: '.SERVICIOS);
+            }
+        else{
+            $msg = "NOMBRE OBLIGATORIO";
+            $this->addCategoria($msg);
+            }
+
     }
 
     function uploadImage(){
-        $name = basename($_FILES["imagen"]["name"]);
-        move_uploaded_file($_FILES['imagen']['tmp_name'],"img/servicios/".$_FILES['imagen']['name']);
-
-        //echo "<br>"."NOMBRE A SUBIR EN BBDD:   ".$name."<br>";
-        
+        $name = basename($_FILES["imagen"]["name"]); //asignale a $name, el nombre de la imagen que subi (ej: imagen.png)
+        move_uploaded_file($_FILES['imagen']['tmp_name'],"img/servicios/".$_FILES['imagen']['name']);  //agrega la imagen a la carpeta "img/servicios/" de nuestra pagina   
         return $name;
     }
 }

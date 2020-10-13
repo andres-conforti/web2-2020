@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-
+{if $msg!=NULL}<div class="errorMensaje"><h2>{$msg}</h2></div>{/if}
 <div class="vencimientos">
 <div class="tblvencimientos">
 
@@ -9,11 +9,10 @@
 
 <h3>IMAGEN:</h3>
   <input type="file" name="imagen"><br><br>
-  <h3><input type="submit" value="CREAR CATEGORIA" name="imagen"></h3>
+  <h3><input type="submit" value="CREAR CATEGORIA" name="imagen" class="myButtonAdd2"></h3>
 </form>
 </div>
 </div>
-
 
 
 {include file="footer.tpl"}

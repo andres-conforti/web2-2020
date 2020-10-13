@@ -1,2 +1,2 @@
-
--Como hacer para que funcione el select con un evento de JS
+- ESTA BIEN UTILIZAR USUARIO INVITADO?
+- 
