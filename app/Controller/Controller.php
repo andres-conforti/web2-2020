@@ -8,23 +8,16 @@ class Controller{
 
     private $view;
     private $model;
-    
+    private $authHelper;
 
     function __construct(){
         $authHelper = new AuthHelper();
-        $authHelper->checkLoggedIn();
         $this->view = new ServiciosView();
         $this->model = new ServiciosModel();
-       
-        
     }
 
     function Home(){
         $this->view->ShowHome();        
-    }
-
-    function Administrar(){
-        $this->view->ShowAdmin();
     }
 
     function Contacto(){

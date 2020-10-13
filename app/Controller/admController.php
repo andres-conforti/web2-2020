@@ -9,17 +9,15 @@ class admController extends Controller{
 
     private $view;
     private $model;
-    
+    private $authHelper;
 
     function __construct(){
         $authHelper = new AuthHelper();
         $authHelper->checkLoggedIn();
-        $authHelper->checkAdmin();
         $this->view = new ServiciosView();
         $this->model = new ServiciosModel();
         
     }
-
 
 function InsertCategoriaController(){
         $this->model->InsertCategoria($_POST['input_nombre'],$_POST['input_imagen']);

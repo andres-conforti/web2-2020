@@ -36,14 +36,13 @@
             <li>
                 <a  href="contacto">CONTACTO</a>
             </li>
-            {if !$Login}
-            <li>
-                <a href="login">LOGIN</a>
-            </li>
-            {else}
-
+            {if ($smarty.session)}
             <li>
                 <a href="logout">LOGOUT</a>
+            </li>
+            {else}
+            <li>
+            <a href="login">LOGIN</a> 
             </li>
             {/if}
         

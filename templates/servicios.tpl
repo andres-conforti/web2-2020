@@ -4,7 +4,7 @@
         
         <div class="primeroTOP">
         <form method="post" action="filtrar/" class="select">
-        {if ($smarty.session.ISADMIN)==1}
+        {if ($smarty.session)}
         <a href="agregarCategoria" class="myButtonAdd">AGREGAR CATEGORIA</a>
 
         <a href="agregarServicio" class="myButtonAdd">AGREGAR SERVICIO</a>
@@ -30,7 +30,7 @@
         </div>
 
         <h3>{$categoria->nombre} <br>
-        {if ($smarty.session.ISADMIN)==1}
+        {if ($smarty.session) && ($smarty.session.ISADMIN)==1}
         <a href="editarCategoria/{$categoria->id}" class="myButtonEditarCAT"><i class="fas fa-edit"></i></a>
         <a href="borrarCategoria/{$categoria->id}" class="myButtonBorrarCAT"><i class="fas fa-trash-alt"></i></a>
         {/if}
@@ -44,7 +44,7 @@
         <ul>
 
             <li class="ServicioStyle" ><a href='infoServicio/{$servicio->id}'>{$servicio->nombre}</a></li>
-                    {if ($smarty.session.ISADMIN)==1}
+        {if ($smarty.session) && ($smarty.session.ISADMIN)==1}
             <a href="editarServicio/{$servicio->id}" class="myButtonEditar"><i class="fas fa-edit"></i></a>
             <a href="borrarServicio/{$servicio->id}" class="myButtonBorrar"><i class="fas fa-trash-alt"></i></a>
             {/if}
