@@ -5,7 +5,7 @@
     <div class="primero">
 
       <h2>{$servicio->categoria}</h2>
-      <h4>{$servicio->nombre}{if ($smarty.session.ISADMIN)==1}
+      <h4>{$servicio->nombre}{if ($smarty.session) && ($smarty.session.ISADMIN)==1}
             <a href="editarServicio/{$servicio->id}" class="myButtonEditar"><i class="fas fa-edit"></i></a>
             <a href="borrarServicio/{$servicio->id}" class="myButtonBorrar"><i class="fas fa-trash-alt"></i></a>
             {/if}</h4>

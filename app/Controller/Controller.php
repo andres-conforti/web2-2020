@@ -45,7 +45,8 @@ class Controller{
             $categoriaFiltrada = $_POST['filtrar'];
             $servicios = $this->model->getServiciosConCategoria($categoriaFiltrada);
             $this->view->ShowDetalleCategoria($servicios);
-        }else {
+        }
+        else {
             header('Location: '.HOME);
         }
     }

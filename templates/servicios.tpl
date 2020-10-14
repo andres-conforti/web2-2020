@@ -4,14 +4,14 @@
         
         <div class="primeroTOP">
         <form method="post" action="filtrar/" class="select">
-        {if ($smarty.session)}
+        {if ($smarty.session) && ($smarty.session.ISADMIN)==1}
         <a href="agregarCategoria" class="myButtonAdd">AGREGAR CATEGORIA</a>
 
         <a href="agregarServicio" class="myButtonAdd">AGREGAR SERVICIO</a>
         {/if}
     <select name="filtrar" class="filtroCategoria">
     {foreach from=$categorias item=categoria}
-        <option value="{$categoria->id}">{$categoria->nombre}</option>
+        <option value="{$categoria->id}">{$categoria->nombreC}</option>
     {/foreach}
     </select>
   <button type="submit" class="myButtonFiltrar">FILTRAR</button>
@@ -25,11 +25,11 @@
 
 <div class="primero">
         <div>
-            <img src="img/servicios/{$categoria->img}" alt="{$categoria->nombre}">
+            <img src="img/servicios/{$categoria->img}" alt="{$categoria->nombreC}">
             
         </div>
 
-        <h3>{$categoria->nombre} <br>
+        <h3>{$categoria->nombreC} <br>
         {if ($smarty.session) && ($smarty.session.ISADMIN)==1}
         <a href="editarCategoria/{$categoria->id}" class="myButtonEditarCAT"><i class="fas fa-edit"></i></a>
         <a href="borrarCategoria/{$categoria->id}" class="myButtonBorrarCAT"><i class="fas fa-trash-alt"></i></a>

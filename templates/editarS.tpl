@@ -20,7 +20,7 @@
     <option value="{$servicio->id_categoria_fk}"> - SIN CAMBIOS - </option>
     {foreach from=$categorias item=categoria}
         {if $categoria->id != $servicio->id_categoria_fk}
-        <option value="{$categoria->id}">{$categoria->nombre}</option>
+        <option value="{$categoria->id}">{$categoria->nombreC}</option>
         {/if}
     {/foreach}
     </select>

@@ -7,7 +7,7 @@
 <form action="editCategoria/{$categoria->id}" method="post" enctype="multipart/form-data">
  <h3>NOMBRE:</h3>
  <p>(CAMPO OBLIGATORIO)</p>
- <textarea name="nombre" rows="3" cols="75">{$categoria->nombre}</textarea> <br>
+ <textarea name="nombre" rows="3" cols="75">{$categoria->nombreC}</textarea> <br>
 
 <h3>IMAGEN:</h3>
   <input type="file" name="imagen"><br><br>

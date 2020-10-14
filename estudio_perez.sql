@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2020 a las 16:05:15
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.6
+-- Tiempo de generación: 14-10-2020 a las 02:53:01
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,19 +29,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categoria` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `img` varchar(255) NOT NULL
+  `nombreC` varchar(255) NOT NULL,
+  `img` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id`, `nombre`, `img`) VALUES
+INSERT INTO `categoria` (`id`, `nombreC`, `img`) VALUES
 (1, 'Asesoramiento Impositivo\r\n', 'impuestos.png'),
 (2, 'Asesoramiento Contable\r\n', 'conta.png'),
 (3, 'Liquidacion del sueldos y jornales\r\n', 'sueldos.png'),
-(4, 'Sociedades', 'soc.png');
+(4, 'Sociedades', 'soc.png'),
+(5, 'TEST CAT', '1.png'),
+(6, 'CAMBIO 3', 'no-image.png');
 
 -- --------------------------------------------------------
 
@@ -66,11 +68,31 @@ INSERT INTO `servicio` (`id`, `nombre`, `id_categoria_fk`, `honorarios`, `descri
 (2, 'Preparación de Estados Contables\r\n', 2, 0, ''),
 (3, 'Liquidación de sueldos, jornales y cargas sociales\r\n', 3, 0, ''),
 (55, 'Monotributistas', 1, 0, 'Asesoramiento y atención a Monotributistas, liquidaciones.'),
-(56, 'Moratorias y planes de facilidades de pago', 1, 0, 'Asesoramiento sobre financiamiento de deudas tributarias, planes de pagos, entre otros.'),
-(58, 'Inscripciones impositivas', 1, 0, 'Tramitación de inscripciones ante distintos organismos públicos.'),
-(59, 'Inscripciones, altas y bajas de empleados.', 3, 0, 'Confección de formulario 931, certificación de servicios, entre otros.'),
 (60, 'Auditoría de Estados Contables.', 2, 0, 'Auditoria sobre estados contables anuales, o de periodos intermedios.'),
-(61, 'Determinación del encuadre societario apropiado para su empresa', 4, 1500, 'Elegir el tipo societario adecuado');
+(61, 'Determinación del encuadre societario apropiado para su empresa', 4, 1500, 'Elegir el tipo societario adecuado'),
+(74, 'Servicio74...', 5, 44444, 'Desc74...'),
+(75, 'Servicio75...', 5, 55555, 'Desc75...');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `isAdmin` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `pass`, `isAdmin`) VALUES
+(1, 'admin', '$2y$10$R6jemoaOkkuCQoKq1t9FZ.yN3T9EvqHGAl0eZQjN/bIASZGPueisi', 1),
+(22, 'invitado', '$2y$10$R6jemoaOkkuCQoKq1t9FZ.yN3T9EvqHGAl0eZQjN/bIASZGPueisi', 0);
 
 --
 -- Índices para tablas volcadas
@@ -90,6 +112,12 @@ ALTER TABLE `servicio`
   ADD KEY `id_categoria_fk` (`id_categoria_fk`);
 
 --
+-- Indices de la tabla `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -97,13 +125,19 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=446;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=452;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+
+--
+-- AUTO_INCREMENT de la tabla `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas
@@ -113,7 +147,7 @@ ALTER TABLE `servicio`
 -- Filtros para la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  ADD CONSTRAINT `servicio_ibfk_1` FOREIGN KEY (`id_categoria_fk`) REFERENCES `categoria` (`id`);
+  ADD CONSTRAINT `servicio_ibfk_1` FOREIGN KEY (`id_categoria_fk`) REFERENCES `categoria` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

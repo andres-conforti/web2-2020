@@ -21,13 +21,13 @@ class ServiciosModel{
     }
 
     function getServicioConCategoria($id){
-      $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE servicio.id = ? ");
+      $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.nombreC as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE servicio.id = ? ");
       $sentencia->execute([$id]);
       return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
     function getServiciosConCategoria($id){
-      $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE categoria.id = ? ");
+      $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.nombreC, categoria.img as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE categoria.id = ? ");
       $sentencia->execute([$id]);
       return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
@@ -55,7 +55,7 @@ class ServiciosModel{
     }
 
     function EditarCategoria($nombre,$imagen,$id){
-    $sentencia = $this->db->prepare("UPDATE categoria SET nombre=?,img=? WHERE id=?");
+    $sentencia = $this->db->prepare("UPDATE categoria SET nombreC=?,img=? WHERE id=?");
     $sentencia->execute(array($nombre,$imagen,$id));
     }
 
@@ -75,7 +75,7 @@ class ServiciosModel{
     }
 
     function InsertCategoria($nombre,$imagen){
-      $sentencia = $this->db->prepare("INSERT INTO categoria(nombre,img) VALUES(?,?)");
+      $sentencia = $this->db->prepare("INSERT INTO categoria(nombreC,img) VALUES(?,?)");
       $sentencia->execute(array($nombre,$imagen));
     } 
 
