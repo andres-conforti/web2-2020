@@ -7,9 +7,9 @@ require_once ('helpers/authHelper.php');
 
 class authController{
 
-    protected $view;
-    protected $model;
-    protected $authHelper;
+    private $view;
+    private $model;
+    private $authHelper;
     
     public function __construct(){
         $this->view = new ServiciosView();

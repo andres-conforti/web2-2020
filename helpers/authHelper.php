@@ -6,10 +6,10 @@
         }
 
         public function isLogged() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
         }
-    }
 
         public function login($user) {
             // INICIO LA SESSION Y LOGUEO AL USUARIO
