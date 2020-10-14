@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2020 a las 02:53:01
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.9
+-- Tiempo de generación: 14-10-2020 a las 16:09:17
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,9 +41,7 @@ INSERT INTO `categoria` (`id`, `nombreC`, `img`) VALUES
 (1, 'Asesoramiento Impositivo\r\n', 'impuestos.png'),
 (2, 'Asesoramiento Contable\r\n', 'conta.png'),
 (3, 'Liquidacion del sueldos y jornales\r\n', 'sueldos.png'),
-(4, 'Sociedades', 'soc.png'),
-(5, 'TEST CAT', '1.png'),
-(6, 'CAMBIO 3', 'no-image.png');
+(4, 'Sociedades', 'soc.png');
 
 -- --------------------------------------------------------
 
@@ -64,14 +62,12 @@ CREATE TABLE `servicio` (
 --
 
 INSERT INTO `servicio` (`id`, `nombre`, `id_categoria_fk`, `honorarios`, `descripcion`) VALUES
-(1, 'Liquidación mensual y anual de tributos\r\n', 1, 150, 'esta es la descripcion'),
-(2, 'Preparación de Estados Contables\r\n', 2, 0, ''),
-(3, 'Liquidación de sueldos, jornales y cargas sociales\r\n', 3, 0, ''),
-(55, 'Monotributistas', 1, 0, 'Asesoramiento y atención a Monotributistas, liquidaciones.'),
-(60, 'Auditoría de Estados Contables.', 2, 0, 'Auditoria sobre estados contables anuales, o de periodos intermedios.'),
-(61, 'Determinación del encuadre societario apropiado para su empresa', 4, 1500, 'Elegir el tipo societario adecuado'),
-(74, 'Servicio74...', 5, 44444, 'Desc74...'),
-(75, 'Servicio75...', 5, 55555, 'Desc75...');
+(1, 'Liquidación mensual y anual de tributos\r\n', 1, 150, 'Control integral del estado de cumplimiento impositivo'),
+(2, 'Preparación de Estados Contables\r\n', 2, 1550, 'Armado y Confección de Estados Contables Auditados o Certificados y legalizados en el Consejo Profesional de Ciencias Económicas correspondiente.'),
+(3, 'Liquidación de sueldos, jornales y cargas sociales\r\n', 3, 220, 'Liquidación de Haberes; F. 931 y Planilla de aportes Sindicales; Convenios Colectivos de Trabajo.'),
+(55, 'Monotributistas', 1, 100, 'Asesoramiento y atención a Monotributistas, liquidaciones.'),
+(60, 'Auditoría de Estados Contables.', 2, 200, 'Auditoria sobre estados contables anuales, o de periodos intermedios.'),
+(61, 'Determinación del encuadre societario apropiado para su empresa', 4, 1500, 'Elegir el tipo societario adecuado');
 
 -- --------------------------------------------------------
 
