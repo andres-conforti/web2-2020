@@ -19,11 +19,6 @@ class admController extends Controller{
         
     }
 
-function InsertCategoriaController(){
-        $this->model->InsertCategoria($_POST['input_nombre'],$_POST['input_imagen']);
-        $this->view->ShowServicios(); // nos manda a la tabla (SERVICIOS)
-    }
-
     function borrarServicio($params = null){
         $id = $params[':ID'];
         $this->model->borrarServicio($id);
@@ -36,8 +31,6 @@ function InsertCategoriaController(){
         $this->model->borrarCategoria($id);
         header('Location: '.SERVICIOS);
     }
-
-    // revisar si esta bien
 
     function editarServicio($params = null,$msg=''){
         $id = $params[':ID'];
@@ -73,7 +66,7 @@ function InsertCategoriaController(){
 
     }
 
-    function editCategoria($params = null){ //este es para la funcion luego de poner los datos, no para la pagina (tpl)
+    function editCategoria($params){ //este es para la funcion luego de poner los datos, no para la pagina (tpl)
         
         $id = $params[':ID'];
         $nombre = $_POST['nombre'];

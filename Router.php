@@ -9,7 +9,6 @@
     define("LOGIN", BASE_URL . 'login');
     define("LOGOUT", BASE_URL . 'logout');
     define("SERVICIOS", BASE_URL . 'servicios');
-    define("EDITAR", BASE_URL . 'editarCategoria/');
     
     
     $r = new Router();
@@ -23,9 +22,6 @@
     $r->addRoute("logout", "GET", "authController", "logout");
    
     $r->addRoute("verificar", "POST", "authController", "verifyLogin");
-    $r->addRoute("invitado", "POST", "authController", "guestLogin");
-    
-    $r->addRoute("register", "GET", "authController", "Register");
     
     $r->addRoute("faq", "GET", "Controller", "Faq");
     $r->addRoute("contacto", "GET", "Controller", "Contacto");

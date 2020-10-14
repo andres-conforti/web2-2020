@@ -1,17 +1,12 @@
 <?php
 
 require_once "./libs/Smarty.class.php";
-require_once './helpers/authHelper.php';
 
 class ServiciosView{
-
-    //private $title;
-    
 
     function __construct(){
         
     }
-
 
     function ShowHome(){
         $smarty = new Smarty();
