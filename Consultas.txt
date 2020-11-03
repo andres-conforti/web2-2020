@@ -1,2 +1,1 @@
-- ESTA BIEN UTILIZAR USUARIO INVITADO?
-- 
+Mejorar: Separar un modelo por cada tabla, de ser posible usar un helper para conexion

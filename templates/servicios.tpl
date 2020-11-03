@@ -11,7 +11,7 @@
         {/if}
     <select name="filtrar" class="filtroCategoria">
     {foreach from=$categorias item=categoria}
-        <option value="{$categoria->id}">{$categoria->nombreC}</option>
+        <option value="{$categoria->id}">{$categoria->nombre}</option>
     {/foreach}
     </select>
   <button type="submit" class="myButtonFiltrar">FILTRAR</button>
@@ -25,11 +25,11 @@
 
 <div class="primero">
         <div>
-            <img src="img/servicios/{$categoria->img}" alt="{$categoria->nombreC}">
+            <img src="img/servicios/{$categoria->img}" alt="{$categoria->nombre}">
             
         </div>
 
-        <h3>{$categoria->nombreC} <br>
+        <h3>{$categoria->nombre} <br>
         {if ($smarty.session) && ($smarty.session.ISADMIN)==1}
         <a href="editarCategoria/{$categoria->id}" class="myButtonEditarCAT"><i class="fas fa-edit"></i></a>
         <a href="borrarCategoria/{$categoria->id}" class="myButtonBorrarCAT"><i class="fas fa-trash-alt"></i></a>

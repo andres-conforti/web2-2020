@@ -2,18 +2,21 @@
 
 require_once 'app/View/ServiciosView.php';
 require_once 'app/Model/ServiciosModel.php';
+require_once 'app/Model/CategoriasModel.php';
 require_once 'helpers/authHelper.php';
 
 class Controller{
 
     private $view;
-    private $model;
+    private $Smodel;
+    private $Cmodel;
     private $authHelper;
 
     function __construct(){
         $authHelper = new AuthHelper();
         $this->view = new ServiciosView();
-        $this->model = new ServiciosModel();
+        $this->Smodel = new ServiciosModel();
+        $this->Cmodel = new CategoriasModel();
     }
 
     function Home(){
@@ -29,21 +32,22 @@ class Controller{
     }
 
     function Servicios(){
-        $servicios = $this->model->GetServicios();
-        $categorias = $this->model->GetCategorias();
+        $servicios = $this->Smodel->GetServicios();
+        $categorias = $this->Cmodel->GetCategorias();
         $this->view->ShowServicios($servicios,$categorias);
     }
 
     function ServicioDetalle($params){
         $id = $params[':ID'];
-        $servicio =$this->model->getServicioConCategoria($id);
+        $servicio =$this->Smodel->getServicioConCategoria($id);
+        //print_r($servicio);
         $this->view->ShowDetalleServicio($servicio);
     }
 
     function CategoriaDetalle(){
         if (isset($_POST['filtrar'])) {
             $categoriaFiltrada = $_POST['filtrar'];
-            $servicios = $this->model->getServiciosConCategoria($categoriaFiltrada);
+            $servicios = $this->Smodel->getServiciosConCategoria($categoriaFiltrada);
             $this->view->ShowDetalleCategoria($servicios);
         }
         else {

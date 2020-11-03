@@ -17,7 +17,7 @@
     <select name="categoria" class="filtroCategoria">
     <option value="">ELIJA UNA CATEGORIA</option>
     {foreach from=$categorias item=categoria}
-        <option value="{$categoria->id}">{$categoria->nombreC}</option>
+        <option value="{$categoria->id}">{$categoria->nombre}</option>
     {/foreach}
     </select>
 

@@ -2,46 +2,49 @@
 
 require_once 'app/View/ServiciosView.php';
 require_once 'app/Model/ServiciosModel.php';
+require_once 'app/Model/CategoriasModel.php';
 require_once 'app/Controller/Controller.php';
 require_once 'helpers/authHelper.php';
 
 class admController extends Controller{
 
     private $view;
-    private $model;
+    private $Smodel;
+    private $Cmodel;
     private $authHelper;
 
     function __construct(){
         $authHelper = new AuthHelper();
         $authHelper->checkLoggedIn();
         $this->view = new ServiciosView();
-        $this->model = new ServiciosModel();
+        $this->Smodel = new ServiciosModel();
+        $this->Cmodel = new CategoriasModel();
         
     }
 
     function borrarServicio($params = null){
         $id = $params[':ID'];
-        $this->model->borrarServicio($id);
+        $this->Smodel->borrarServicio($id);
         header('Location: '.SERVICIOS);
         
     }
 
     function borrarCategoria($params = null){
         $id = $params[':ID'];
-        $this->model->borrarCategoria($id);
+        $this->Cmodel->borrarCategoria($id);
         header('Location: '.SERVICIOS);
     }
 
     function editarServicio($params = null,$msg=''){
         $id = $params[':ID'];
-        $servicio = $this->model->GetServicio($id);
-        $categorias = $this->model->GetCategorias();
+        $servicio = $this->Smodel->GetServicio($id);
+        $categorias = $this->Cmodel->GetCategorias();
         $this->view->ShowEditarServicio($servicio,$categorias);
     }
 
     function editarCategoria($params = null,$msg=''){ //muetra el tpl, no es el editar
         $id = $params[':ID'];
-        $categoria = $this->model->GetCategoria($id);
+        $categoria = $this->Cmodel->GetCategoria($id);
         $this->view->ShowEditarCategoria($categoria,$msg);
     }
 
@@ -55,12 +58,12 @@ class admController extends Controller{
         if($nombre=='' || $honorarios=='' || $descripcion==''){
             
             $msg = "CAMPOS FALTANTES - PRUEBE DE NUEVO";
-            $servicio = $this->model->GetServicio($id);
-            $categorias = $this->model->GetCategorias();
+            $servicio = $this->Smodel->GetServicio($id);
+            $categorias = $this->Cmodel->GetCategorias();
             $this->view->ShowEditarServicio($servicio,$categorias,$msg);
         }
         else{
-            $this->model->EditServicio($nombre,$descripcion,$honorarios,$categoria,$id);
+            $this->Smodel->EditServicio($nombre,$descripcion,$honorarios,$categoria,$id);
             header('Location: '.SERVICIOS);
         }
 
@@ -84,7 +87,7 @@ class admController extends Controller{
             }
         else{
             $msg = "NOMBRE OBLIGATORIO";
-            $categoria = $this->model->GetCategoria($id);
+            $categoria = $this->Cmodel->GetCategoria($id);
             $this->view->ShowEditarCategoria($categoria,$msg);
             }
 
@@ -92,7 +95,7 @@ class admController extends Controller{
     }
 
     function addServicio($msg = ''){
-        $categorias = $this->model->GetCategorias();
+        $categorias = $this->Cmodel->GetCategorias();
         $this->view->ShowAddServicio($categorias,$msg);
     }
 
@@ -111,7 +114,7 @@ class admController extends Controller{
             $this->addServicio($msg);
         }
         else{
-            $this->model->InsertServicio($nombre,$categoria,$honorarios,$descripcion);
+            $this->Smodel->InsertServicio($nombre,$categoria,$honorarios,$descripcion);
             header('Location: '.SERVICIOS);
         }
 
@@ -129,7 +132,7 @@ class admController extends Controller{
             else{
                 $img = "no-image.png";
             }
-            $this->model->InsertCategoria($nombre,$img);
+            $this->Cmodel->InsertCategoria($nombre,$img);
             header('Location: '.SERVICIOS);
             }
         else{

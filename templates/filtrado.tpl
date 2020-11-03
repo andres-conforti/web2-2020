@@ -4,11 +4,11 @@
         
  <div class="primero">
  <div>
-            <img src="img/servicios/{$servicios[0]->categoria}" alt="{$servicios[0]->nombreC}">
+            <img src="img/servicios/{$servicios[0]->categoria}" alt="{$servicios[0]->nombre}">
             
         </div>
 
-        <h3>{$servicios[0]->nombreC}<br>
+        <h3>{$servicios[0]->nombre}<br>
 
         {if ($smarty.session) && ($smarty.session.ISADMIN)==1}
         <a href="editarCategoria/{$servicios[0]->id_categoria_fk}" class="myButtonEditarCAT"><i class="fas fa-edit"></i></a>

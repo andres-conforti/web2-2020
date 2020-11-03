@@ -1,16 +1,11 @@
 <?php
-class UserModel {
+
+class UserModel{
     private $db;
 
-    function __construct() {
-        $this->db = $this->connect();
+    function __construct(){
+        $this->db = new PDO('mysql:host=localhost;'.'dbname=estudio_perez;charset=utf8', 'root', '');
     }
-
-    private function connect() {
-        $db = new PDO('mysql:host=localhost;'.'dbname=estudio_perez;charset=utf8', 'root', '');
-        return $db;
-    }
-
     /**
      * Devuelve un usuario dado un email.
      */
