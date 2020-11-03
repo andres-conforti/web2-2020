@@ -2,21 +2,22 @@
 
 <section class="servicios">
         
-        <div class="primeroTOP">
+    <div class="primeroTOP">
         <form method="post" action="filtrar/" class="select">
         {if ($smarty.session) && ($smarty.session.ISADMIN)==1}
         <a href="agregarCategoria" class="myButtonAdd">AGREGAR CATEGORIA</a>
 
         <a href="agregarServicio" class="myButtonAdd">AGREGAR SERVICIO</a>
         {/if}
-    <select name="filtrar" class="filtroCategoria">
-    {foreach from=$categorias item=categoria}
-        <option value="{$categoria->id}">{$categoria->nombre}</option>
-    {/foreach}
-    </select>
-  <button type="submit" class="myButtonFiltrar">FILTRAR</button>
-</form>
-        </div>
+        <select name="filtrar" class="filtroCategoria">
+        
+        {foreach from=$categorias item=categoria}
+            <option value="{$categoria->id}">{$categoria->nombre}</option>
+        {/foreach}
+        </select>
+        <button type="submit" class="myButtonFiltrar">FILTRAR</button>
+        </form>
+    </div>
 
 
 

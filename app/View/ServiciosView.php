@@ -3,86 +3,76 @@
 require_once "./libs/Smarty.class.php";
 
 class ServiciosView{
+    
+    private $smarty;
 
     function __construct(){ 
+        $this->smarty = new Smarty();
     }
 
     function ShowHome(){
-        $smarty = new Smarty();
-        $smarty->display('templates/index.tpl');
+        $this->smarty->display('templates/index.tpl');
     }
 
     function ShowServicios($servicios,$categorias){
-        $smarty = new Smarty();
-        $smarty->assign('servicios',$servicios);
-        $smarty->assign('categorias',$categorias);
-        $smarty->display('templates/servicios.tpl');
+        $this->smarty->assign('servicios',$servicios);
+        $this->smarty->assign('categorias',$categorias);
+        $this->smarty->display('templates/servicios.tpl');
     }
 
     function ShowDetalleServicio($servicio){
-        $smarty = new Smarty();
-        $smarty->assign('servicio',$servicio);
-        $smarty->display('templates/detalleServicio.tpl');
+        $this->smarty->assign('servicio',$servicio);
+        $this->smarty->display('templates/detalleServicio.tpl');
     }
 
     function ShowDetalleCategoria($servicios){
-        $smarty = new Smarty();
-        $smarty->assign('servicios',$servicios);
-        $smarty->display('templates/filtrado.tpl');
+        $this->smarty->assign('servicios',$servicios);
+        $this->smarty->display('templates/filtrado.tpl');
     }
 
     function ShowLogin($msg = ''){
-        $smarty = new Smarty();
-        $smarty->assign('msg', $msg);
-        $smarty->display('templates/login.tpl');
+        $this->smarty->assign('msg', $msg);
+        $this->smarty->display('templates/login.tpl');
       }
 
-    function ShowRegister(){
-        $smarty = new Smarty();   
-        $smarty->display('templates/register.tpl');
+    function ShowRegister(){  
+        $this->smarty->display('templates/register.tpl');
       }
 
       function ShowFaq(){
-        $smarty = new Smarty();
-        $smarty->display('templates/faq.tpl');
+        $this->smarty->display('templates/faq.tpl');
     }
 
     function ShowContacto(){
-        $smarty = new Smarty();
-        $smarty->display('templates/contact.tpl');
+        $this->smarty->display('templates/contact.tpl');
     }
 
     function Header(){
-        $smarty = new Smarty();
-        $smarty->display('templates/header.tpl');
+        $this->smarty->display('templates/header.tpl');
     }
 
     function ShowEditarServicio($servicio,$categorias,$msg=''){
-        $smarty = new Smarty();
-        $smarty->assign('servicio',$servicio);
-        $smarty->assign('categorias',$categorias);
-        $smarty->assign('msg',$msg);
-        $smarty->display('templates/editarS.tpl');
+        $this->smarty->assign('servicio',$servicio);
+        $this->smarty->assign('categorias',$categorias);
+        $this->smarty->assign('msg',$msg);
+        $this->smarty->display('templates/editarS.tpl');
     }
 
     function ShowEditarCategoria($categoria,$msg=''){
-        $smarty = new Smarty();
-        $smarty->assign('categoria',$categoria);
-        $smarty->assign('msg',$msg);
-        $smarty->display('templates/editarC.tpl');
+        $this->smarty->assign('categoria',$categoria);
+        $this->smarty->assign('msg',$msg);
+        $this->smarty->display('templates/editarC.tpl');
     }
     
     function ShowAddServicio($categorias,$msg=''){
-        $smarty = new Smarty();
-        $smarty->assign('msg',$msg);
-        $smarty->assign('categorias',$categorias);
-        $smarty->display('templates/addServicio.tpl');
+        $this->smarty->assign('msg',$msg);
+        $this->smarty->assign('categorias',$categorias);
+        $this->smarty->display('templates/addServicio.tpl');
     }
 
     function ShowAddCategoria($msg=''){
-        $smarty = new Smarty();
-        $smarty->assign('msg',$msg);
-        $smarty->display('templates/addCategoria.tpl');
+        $this->smarty->assign('msg',$msg);
+        $this->smarty->display('templates/addCategoria.tpl');
     }
     
 }
