@@ -49,6 +49,29 @@ class authController{
     public function logout() {
         $this->authHelper->logout();
     }
+    public function Registrar() {
+        $this->view->ShowRegistracion();
+    }
+
+
+    public function registracion(){
+        $email = $_POST['email'];
+        $password = $_POST['pass'];
+        $password2 = $_POST['pass2'];
+        
+        if($password == $password2){
+            $clave = password_hash($password, PASSWORD_DEFAULT);
+            $this->model->addUsuario($email,$clave);
+            //$user = $this->model->getByEmail($email);
+            //$this->authHelper->login($user);
+            $this->verifyLogin();
+            //header('Location: ' . BASE_URL);
+        }else{
+            $msg = " Las contraseñas no coinciden ";
+            $this->view->ShowRegistracion($msg);
+        }
+       
+    } 
 }
 
 

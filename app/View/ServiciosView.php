@@ -33,13 +33,14 @@ class ServiciosView{
     function ShowLogin($msg = ''){
         $this->smarty->assign('msg', $msg);
         $this->smarty->display('templates/login.tpl');
-      }
+    }
 
-    function ShowRegister(){  
-        $this->smarty->display('templates/register.tpl');
-      }
+    function ShowRegistracion($msg = ''){  
+        $this->smarty->assign('msg', $msg);
+        $this->smarty->display('templates/registracion.tpl');
+    }
 
-      function ShowFaq(){
+    function ShowFaq(){
         $this->smarty->display('templates/faq.tpl');
     }
 

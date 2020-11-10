@@ -21,6 +21,9 @@
     $r->addRoute("login", "GET", "authController", "Login");
     $r->addRoute("logout", "GET", "authController", "logout");
    
+    $r->addRoute("registrarse", "POST", "authController", "registracion");
+    $r->addRoute("registrar", "GET", "authController", "registrar");
+
     $r->addRoute("verificar", "POST", "authController", "verifyLogin");
     
     $r->addRoute("faq", "GET", "Controller", "Faq");

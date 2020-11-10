@@ -15,7 +15,10 @@ class UserModel{
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-
+    public function addUsuario($email,$pass){
+        $sentencia = $this->db->prepare("INSERT INTO user(email,pass) VALUES(?,?)");
+        $sentencia->execute(array($email,$pass));
+    }
 
 }
 ?>

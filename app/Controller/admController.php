@@ -147,6 +147,7 @@ class admController extends Controller{
         move_uploaded_file($_FILES['imagen']['tmp_name'],"img/servicios/".$_FILES['imagen']['name']);  //agrega la imagen a la carpeta "img/servicios/" de nuestra pagina   
         return $name;
     }
+
 }
     
     
