@@ -3,6 +3,8 @@
 require_once 'app/View/ServiciosView.php';
 require_once 'app/Model/ServiciosModel.php';
 require_once 'app/Model/CategoriasModel.php';
+require_once 'app/Model/UserModel.php';
+require_once 'app/View/AdminView.php';
 require_once 'app/Controller/Controller.php';
 require_once 'helpers/authHelper.php';
 
@@ -11,7 +13,9 @@ class admController extends Controller{
     private $view;
     private $Smodel;
     private $Cmodel;
+    private $userModel;
     private $authHelper;
+    private $adminView;
 
     function __construct(){
         $authHelper = new AuthHelper();
@@ -19,6 +23,8 @@ class admController extends Controller{
         $this->view = new ServiciosView();
         $this->Smodel = new ServiciosModel();
         $this->Cmodel = new CategoriasModel();
+        $this->userModel = new UserModel();
+        $this->adminView = new AdminView();
         
     }
 
@@ -147,7 +153,31 @@ class admController extends Controller{
         move_uploaded_file($_FILES['imagen']['tmp_name'],"img/servicios/".$_FILES['imagen']['name']);  //agrega la imagen a la carpeta "img/servicios/" de nuestra pagina   
         return $name;
     }
+    function administracion(){
+        $usuarios = $this->userModel->getAllUsers();
+        $this->adminView->ShowAdministracion($usuarios);
+    }
 
+
+
+    function editPermisos($params){
+        $id = $params[':A'];
+        $isAdmin = $params[':B'];
+        if($isAdmin==0){
+            $isAdmin=1;
+        }
+        else{
+            $isAdmin=0;
+        }
+        $this->userModel->EditUsuario($isAdmin,$id);
+        header('Location: '.ADM);
+    }
+
+    function deleteUser($params = null){
+        $id = $params[':ID'];
+        $this->userModel->borrarUsuario($id);
+        header('Location: '.ADM);
+    }
 }
     
     

@@ -8,25 +8,12 @@ class comentariosApiController extends apiController {
     
     function addComentario($params = null) {
         $body = $this->getData();
-        $valor = date("Y") . "-" . date("m") . "-" . date("d") . "-" . date("h:i:sa");
     $this->model->addComentario(/*$body->id_cerveza, $body->texto, $body->puntaje, $body->id_usuario,$valor, $orden*/);
         $this->view->response("El comentario se agrego con exito", 200);    
     }
 
     function getComentarios($params = null){
         $comentarios = $this->model->getComentarios();
-        if($comentarios != null){
-            if ($comentarios) {
-                $this->view->response($comentarios, 200);   
-            } else {
-                $this->view->response("No existe la tarea con el id=$id", 404);
-            }
-        }
-    }
-
-    function getComentario($params = null){
-        $id = $params[':ID'];
-        $comentarios = $this->model->getComentario($id);
         if($comentarios != null){
             if ($comentarios) {
                 $this->view->response($comentarios, 200);   

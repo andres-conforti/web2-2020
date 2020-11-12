@@ -15,12 +15,15 @@
             <option value="{$categoria->id}">{$categoria->nombre}</option>
         {/foreach}
         </select>
+        
         <button type="submit" class="myButtonFiltrar">FILTRAR</button>
         </form>
     </div>
 
-
-
+    <form method="post" action="buscar/">
+    <textarea name="buscar" placeholder="Buscar servicio ..."></textarea>
+    <button type="submit" class="myButtonFiltrar"> <i class="fas fa-search"></i></button>
+    </form>
 
 {foreach from=$categorias item=categoria}
 

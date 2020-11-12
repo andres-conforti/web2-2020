@@ -54,6 +54,11 @@ class Controller{
             header('Location: '.HOME);
         }
     }
+    function BusquedaServicios($params){
+        $id = $_POST['buscar'];
+        $servicios =$this->Smodel->BuscarServicio($id);
+        $this->view->ShowBusquedas($servicios);
+    }
 }
 
 

@@ -13,10 +13,10 @@
     $router->addRoute("/servicio/:id", "GET", "ServiciosApi", "getServicio");
 
 
-    $router->addRoute("/comentario/:id_categoria", "POST", "ComentariosApi", "insertarComentario");
-    $router->addRoute("/comentarios/:id_comentario/", "DELETE", "ComentariosApi", "borrarComentario");
-
-    $router->addRoute("/comentarios/:id_categoria/puntajeprom/", "GET", "ComentariosApi", "getPromPuntaje");
+    $router->addRoute("comentarios/:ID", "GET", "comentariosApiController", "getComentario");
+    $router->addRoute("comentarios", "GET", "comentariosApiController", "getComentarios");
+    $router->addRoute("comentarios", "POST", "comentariosApiController", "addComentario");
+    $router->addRoute("comentarios/:ID", "DELETE", "comentariosApiController", "deleteComentario");
 
 
     //run

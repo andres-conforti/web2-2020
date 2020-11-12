@@ -13,6 +13,17 @@
 </head>
 
 <body>
+
+     {if isset($smarty.session.EMAIL)}
+        <input type="hidden" id="datos-usuario" value='{json_encode($smarty.session.EMAIL)}'>
+        {if ($smarty.session.ISADMIN)}
+        <input type="hidden" id="esAdmin" value='{$smarty.session.ISADMIN}'>
+        {/if}
+      {else}
+      <input type="hidden" id="datos-usuario" value=''>
+      {/if}
+
+
         <header>
         <div class="logo">
             <img src="img/logo.png" alt="logo">

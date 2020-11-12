@@ -47,7 +47,11 @@ class ServiciosModel{
     $sentencia->execute(array($id));
   }
 
-
+  function BuscarServicio($id){
+    $sentencia = $this->db->prepare( "SELECT nombre, descripcion from servicio WHERE descripcion OR nombre LIKE '%$id%' ");
+    $sentencia->execute([$id]);
+    return $sentencia->fetchAll(PDO::FETCH_OBJ);
+  }
 
     
 

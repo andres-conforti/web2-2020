@@ -9,6 +9,7 @@
     define("LOGIN", BASE_URL . 'login');
     define("LOGOUT", BASE_URL . 'logout');
     define("SERVICIOS", BASE_URL . 'servicios');
+    define("ADM", BASE_URL . 'administrar');
     
     
     $r = new Router();
@@ -20,7 +21,12 @@
     $r->addRoute("home", "GET", "Controller", "Home");
     $r->addRoute("login", "GET", "authController", "Login");
     $r->addRoute("logout", "GET", "authController", "logout");
-   
+
+   $r->addRoute("administrar", "GET", "admController", "administracion");
+
+   $r->addRoute("editarPermisos/:A/:B", "GET", "admController", "editPermisos");
+   $r->addRoute("borrarUsuario/:ID", "GET", "admController", "deleteUser");
+
     $r->addRoute("registrarse", "POST", "authController", "registracion");
     $r->addRoute("registrar", "GET", "authController", "registrar");
 
@@ -33,6 +39,7 @@
     $r->addRoute("infoServicio/:ID", "GET", "Controller", "ServicioDetalle");
 
     $r->addRoute("filtrar", "POST", "Controller", "CategoriaDetalle");
+    $r->addRoute("buscar", "POST", "Controller", "BusquedaServicios");
 
     $r->addRoute("borrarCategoria/:ID", "GET", "admController", "borrarCategoria");
     $r->addRoute("editarCategoria/:ID", "GET", "admController", "editarCategoria"); // view de editar
