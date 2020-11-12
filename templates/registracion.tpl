@@ -20,6 +20,6 @@
         
     </div>
 
-    <script src="funciones.js"></script>
+    <script src="js/funciones.js"></script>
     
 {include file="footer.tpl"}
