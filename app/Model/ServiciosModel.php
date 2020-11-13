@@ -48,11 +48,20 @@ class ServiciosModel{
   }
 
   function BuscarServicio($id){
-    $sentencia = $this->db->prepare( "SELECT nombre, descripcion from servicio WHERE descripcion OR nombre LIKE '%$id%' ");
+    $sentencia = $this->db->prepare( "SELECT * from servicio WHERE descripcion OR nombre  LIKE '%$id%' ");
     $sentencia->execute([$id]);
     return $sentencia->fetchAll(PDO::FETCH_OBJ);
   }
-
+  function BuscarHonorarioMayor($id){
+    $sentencia = $this->db->prepare( "SELECT * from servicio WHERE honorarios > ? ");
+    $sentencia->execute([$id]);
+    return $sentencia->fetchAll(PDO::FETCH_OBJ);
+  }
+  function BuscarHonorarioMenor($id){
+    $sentencia = $this->db->prepare( "SELECT * from servicio WHERE honorarios < ?  ");
+    $sentencia->execute([$id]);
+    return $sentencia->fetchAll(PDO::FETCH_OBJ);
+  }
     
 
 }

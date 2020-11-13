@@ -2,7 +2,7 @@
 
 <section class="servicios">
         
-    <div class="primeroTOP">
+    <div class="primero">
         <form method="post" action="filtrar/" class="select">
         {if ($smarty.session) && ($smarty.session.ISADMIN)==1}
         <a href="agregarCategoria" class="myButtonAdd">AGREGAR CATEGORIA</a>
@@ -19,11 +19,22 @@
         <button type="submit" class="myButtonFiltrar">FILTRAR</button>
         </form>
     </div>
-
-    <form method="post" action="buscar/">
-    <textarea name="buscar" placeholder="Buscar servicio ..."></textarea>
-    <button type="submit" class="myButtonFiltrar"> <i class="fas fa-search"></i></button>
-    </form>
+    <div class="primero">
+        <form method="post" action="buscarServicio">
+            <textarea name="buscar" placeholder="Buscar servicio ..."></textarea>
+            <button type="submit" class="myButtonFiltrar"> <i class="fas fa-search"></i></button>
+        </form>
+        <form method="post" action="buscarHonorario">
+            <input type="radio" name="valor" value="mayor">
+            <label for="mayor">MAYOR A...</label>
+            
+            <input type="radio" name="valor" value="menor">
+            <label for="menor">MENOR A...</label>
+           
+            <input type="number" name="honorario" placeholder="Honorarios">
+            <button type="submit" class="myButtonFiltrar"> <i class="fas fa-search"></i></button>
+        </form>
+    </div>
 
 {foreach from=$categorias item=categoria}
 

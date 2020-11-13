@@ -76,8 +76,9 @@ class ServiciosView{
         $this->smarty->display('templates/addCategoria.tpl');
     }
 
-    function ShowBusquedas($servicios){
+    function ShowBusquedas($servicios,$msg=''){
         $this->smarty->assign('servicios',$servicios);
+        $this->smarty->assign('msg',$msg);
         $this->smarty->display('templates/busquedas.tpl');
     }
 }

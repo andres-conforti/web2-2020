@@ -460,9 +460,7 @@ input{
 .busquedas{
     display:flex;
     justify-content: center;
-    
     align-self: center;
-    
     margin-top: 5%; 
     width: 80%;
     margin-bottom: 40px;

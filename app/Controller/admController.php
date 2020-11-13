@@ -156,6 +156,7 @@ syv        $img = $_FILES['imagenes']['tmp_name'];
         move_uploaded_file($img, $ruta);
         return $ruta;
     }
+    
     function administracion(){
         $usuarios = $this->userModel->getAllUsers();
         $this->adminView->ShowAdministracion($usuarios);
