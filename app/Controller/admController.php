@@ -129,29 +129,32 @@ class admController extends Controller{
 
     function newCategoria(){
         $nombre = $_POST['nombre'];
-        $img = basename($_FILES["imagen"]["name"]);
+syv        $img = $_FILES['imagenes']['tmp_name'];
 
-        if($nombre!=''){
-            if($img!=''){
-            $this->uploadImage();
-            }
+        if (!empty($nombre)) {
+            if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" ||
+            $_FILES['input_name']['type'] == "image/png"){
+                $this->uploadImage($img);
+        }
             else{
                 $img = "no-image.png";
             }
+
             $this->Cmodel->InsertCategoria($nombre,$img);
             header('Location: '.SERVICIOS);
+
             }
         else{
             $msg = "NOMBRE OBLIGATORIO";
             $this->addCategoria($msg);
-            }
+                }
 
     }
 
-    function uploadImage(){
-        $name = basename($_FILES["imagen"]["name"]); //asignale a $name, el nombre de la imagen que subi (ej: imagen.png)
-        move_uploaded_file($_FILES['imagen']['tmp_name'],"img/servicios/".$_FILES['imagen']['name']);  //agrega la imagen a la carpeta "img/servicios/" de nuestra pagina   
-        return $name;
+    function uploadImage($img){
+        $ruta = uniqid() . '.jpg';
+        move_uploaded_file($img, $ruta);
+        return $ruta;
     }
     function administracion(){
         $usuarios = $this->userModel->getAllUsers();
