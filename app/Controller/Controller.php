@@ -57,7 +57,31 @@ class Controller{
     function BusquedaServicios($params){
         $id = $_POST['buscar'];
         $servicios =$this->Smodel->BuscarServicio($id);
-        $this->view->ShowBusquedas($servicios);
+        if($servicios){
+            $this->view->ShowBusquedas($servicios);
+        }else{
+            $msg= "No se encontraron resultados";
+            $this->view->ShowBusquedas($servicios, $msg);
+        }
+    }
+
+    function BusquedaHonorarios($params){
+        $servicios = null;
+        if(!empty($_POST['valor']) && !empty($_POST['honorario'])){
+            $valor = $_POST['valor'];
+            $honorario = $_POST['honorario'];
+            if($valor == "mayor"){
+                $servicios =$this->Smodel->BuscarHonorarioMayor($honorario);
+            }else{
+                $servicios =$this->Smodel->BuscarHonorarioMenor($honorario);
+            }
+        }
+        if($servicios){
+            $this->view->ShowBusquedas($servicios);
+        }else{
+            $msg= "No se encontraron resultados";
+            $this->view->ShowBusquedas($servicios, $msg);
+        }
     }
 }
 

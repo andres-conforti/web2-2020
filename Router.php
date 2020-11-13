@@ -39,7 +39,9 @@
     $r->addRoute("infoServicio/:ID", "GET", "Controller", "ServicioDetalle");
 
     $r->addRoute("filtrar", "POST", "Controller", "CategoriaDetalle");
-    $r->addRoute("buscar", "POST", "Controller", "BusquedaServicios");
+    
+    $r->addRoute("buscarServicio", "POST", "Controller", "BusquedaServicios");
+    $r->addRoute("buscarHonorario", "POST", "Controller", "BusquedaHonorarios");
 
     $r->addRoute("borrarCategoria/:ID", "GET", "admController", "borrarCategoria");
     $r->addRoute("editarCategoria/:ID", "GET", "admController", "editarCategoria"); // view de editar
