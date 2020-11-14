@@ -348,7 +348,7 @@ input{
     display:flex;
     justify-content: space-around;
     flex-flow: row wrap;
-    margin: 80px 0;
+    margin: 10px 0;
     
 }
 .servicios ul{
@@ -388,13 +388,21 @@ input{
     padding: 20px;
 }
 
+.primeroFiltrado{
+    display: block;
+    flex-direction: column;
+    margin: 0 5% 10px 5%; 
+    border-radius: 25px;
+    border: 2px solid #041131;
+    padding: 15px;
+
+}
+
 .primeroTOP{
     display: flex;
     flex-direction: column;
-    margin: 0 20% 60px 20%; 
+    margin: 0 10% 40px 10%; 
     width: 40%;
-    border-radius: 25px;
-    border: 2px solid #041131;
     padding: 20px;
 }
 
@@ -440,13 +448,14 @@ input{
 .filtrar h5{
     margin-right: 1%;
 }
-.filtrar select{
+.filtroCategoria{
     display: table-column;
     background-color:   #041131;
     color: white;
     text-align-last: center;
     font-weight: bold;
     padding: 2px;
+    margin-top: 2%;
     border-radius: 10px;
     font-size: 20px; 
 }
@@ -748,14 +757,29 @@ footer {
 }
 
 .myButtonFiltrar {
-	background-color:#7892c2;
+	background-color:#254683;
 	border-radius:4px;
 	border:1px solid #4e6096;
 	display:inline;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:25px;
+	font-size:20px;
+	font-weight:bold;
+	padding:6px 12px;
+    text-decoration:none;
+
+}
+
+.myButtonFiltrar2 {
+	background-color:#254683;
+	border-radius:4px;
+	border:1px solid #4e6096;
+	display:inline;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
 	font-weight:bold;
 	padding:6px 12px;
     text-decoration:none;
@@ -884,4 +908,27 @@ footer {
     background-color: rgb(255, 64, 64);
     text-align: center;
     margin-bottom: 0px;
+  }
+  
+
+  .pagination {
+    display: inline-block;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
   }

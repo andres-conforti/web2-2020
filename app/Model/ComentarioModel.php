@@ -13,7 +13,7 @@
             $sentencia->execute(array($id_servicio,$comentario,$puntaje,$id_user));
         }
 
-        function getcomentario(){
+        function getcomentarios(){
             $sentencia = $this->db->prepare('SELECT * FROM comentario');
             $sentencia->execute(array());
             return $sentencia->fetchAll(PDO::FETCH_OBJ);

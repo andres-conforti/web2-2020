@@ -41,17 +41,4 @@
 
     }
 
-
-    /*
-            checkear si es administrador
-
-            public function checkAdmin() {
-            if ($_SESSION['ISADMIN']==0) {
-                session_destroy();
-                header('Location: '.LOGIN);
-                die();
-            }   
-        }
-    
-    */
 ?>

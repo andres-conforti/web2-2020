@@ -12,7 +12,7 @@
     </div>
     <div class="FAQContenido">
         <div class="FAQ">
-            <h4>¿Soy MONOTRIBUTISTA, que tengo que pagar?</h4>
+            <h2>¿Soy MONOTRIBUTISTA, que tengo que pagar?</h2>
             <h5>AFIP</h5>
             <p><span>AUTÓNOMOS (Jubilación): </span> Pago mensual conforme a la categoría. Vencimiento por
                 finalización de CUIT, comenzando los días 05 de cada mes.
@@ -40,7 +40,7 @@
 
         </div>
         <div class="FAQ">
-            <h4>¿Soy RESPONSABLE INSCRIPTO, que tengo que pagar?</h4>
+            <h2>¿Soy RESPONSABLE INSCRIPTO, que tengo que pagar?</h2>
             <h5>AFIP</h5>
             <p><span>MONOTRIBUTO: </span>Pago mensual conforme a la categoría.
                 La cuota incluye el impuesto integrado (IVA y Ganancias), y la parte previsional (aportes y obra
@@ -62,7 +62,7 @@
             </p>
         </div>
         <div class="FAQ">
-            <h4>¿Que documentación debo exhibir en mi local?</h4>
+            <h2>¿Que documentación debo exhibir en mi local?</h2>
             <h5>AFIP</h5>
             <p><span>Formulario 960/D: </span> Debe ubicarse en un lugar visible cercano al sector en el que se
                 realice

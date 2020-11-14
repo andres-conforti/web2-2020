@@ -26,23 +26,39 @@ class authController{
         $password = $_POST['pass'];
 
         // verifico campos obligatorios
-        if (empty($email) || empty($password)) {
-            $msg = " DATOS FALTANTES ";
-            $this->view->ShowLogin($msg);
-            die();
+        if (empty($email)||empty($password)) {
+        if (empty($email)) {
+            $msg = "NO INGRESO EL EMAIL";
         }
+        else if (empty($password)) {
+            $msg = "NO INGRESO LA CONTRASEÑA";
+        }
+        $this->view->ShowLogin($msg);
+        die();
+    } 
+        
 
         // obtengo el usuario
         $user = $this->model->getByEmail($email);
 
         // si el usuario existe, y las contraseñas coinciden
-        if ($user && password_verify($password, $user->pass)) {
-            $this->authHelper->login($user);
-            header('Location: ' . BASE_URL);
-        } else {
-            $msg = " DATOS INCORRECTOS ";
+        if(!empty($user)){
+            $passTrue = password_verify($password, $user->pass);
+            if(!$passTrue){
+                $msg = "CONTRASEÑA INCORRECTA";
+                $this->view->ShowLogin($msg);
+            }
+            else if($user && $passTrue){
+                $this->authHelper->login($user);
+                header('Location: ' . BASE_URL);
+            }
+        }
+        else{
+            $msg = "EL USUARIO NO EXISTE";
             $this->view->ShowLogin($msg);
         }
+
+
     }
 
 
@@ -59,17 +75,36 @@ class authController{
         $password = $_POST['pass'];
         $password2 = $_POST['pass2'];
         
-        if($password == $password2){
-            $clave = password_hash($password, PASSWORD_DEFAULT);
-            $this->model->addUsuario($email,$clave);
-            //$user = $this->model->getByEmail($email);
-            //$this->authHelper->login($user);
-            $this->verifyLogin();
-            //header('Location: ' . BASE_URL);
-        }else{
-            $msg = " Las contraseñas no coinciden ";
+        if(!empty($email)){
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            
+            if(!empty($password)){
+                if($password == $password2){
+                    $clave = password_hash($password, PASSWORD_DEFAULT);
+                    $this->model->addUsuario($email,$clave);
+                    $this->verifyLogin();
+                }
+                else{
+                    $msg = "LAS CONTRASEÑAS NO COINCIDEN";
+                    $this->view->ShowRegistracion($msg);
+                }
+            }
+            else{
+                $msg = "INGRESE UNA CONTRASEÑA";
+                $this->view->ShowRegistracion($msg);
+            }
+
+        }
+        else{
+            $msg = "EMAIL INVALIDO";
             $this->view->ShowRegistracion($msg);
         }
+    }
+    else{
+        $msg = "INGRESE UN EMAIL";
+        $this->view->ShowRegistracion($msg);
+    }
+
        
     } 
 }

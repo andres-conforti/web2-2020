@@ -10,6 +10,7 @@
     define("LOGOUT", BASE_URL . 'logout');
     define("SERVICIOS", BASE_URL . 'servicios');
     define("ADM", BASE_URL . 'administrar');
+    define("REGISTER", BASE_URL . 'registrar');
     
     
     $r = new Router();
@@ -17,45 +18,57 @@
     //Ruta por defecto.
     $r->setDefaultRoute("Controller", "Home");
 
-    // rutas
+    // Auths
     $r->addRoute("home", "GET", "Controller", "Home");
     $r->addRoute("login", "GET", "authController", "Login");
     $r->addRoute("logout", "GET", "authController", "logout");
-
-   $r->addRoute("administrar", "GET", "admController", "administracion");
-
-   $r->addRoute("editarPermisos/:A/:B", "GET", "admController", "editPermisos");
-   $r->addRoute("borrarUsuario/:ID", "GET", "admController", "deleteUser");
-
+    $r->addRoute("registrar", "GET", "authController", "registrar");//vista de registrar
     $r->addRoute("registrarse", "POST", "authController", "registracion");
-    $r->addRoute("registrar", "GET", "authController", "registrar");
-
     $r->addRoute("verificar", "POST", "authController", "verifyLogin");
-    
-    $r->addRoute("faq", "GET", "Controller", "Faq");
-    $r->addRoute("contacto", "GET", "Controller", "Contacto");
    
+    //Servicios
+    $r->addRoute("servicios/:ID", "GET", "Controller", "Servicios");
     $r->addRoute("servicios", "GET", "Controller", "Servicios");
     $r->addRoute("infoServicio/:ID", "GET", "Controller", "ServicioDetalle");
-
     $r->addRoute("filtrar", "POST", "Controller", "CategoriaDetalle");
-    
     $r->addRoute("buscarServicio", "POST", "Controller", "BusquedaServicios");
     $r->addRoute("buscarHonorario", "POST", "Controller", "BusquedaHonorarios");
 
-    $r->addRoute("borrarCategoria/:ID", "GET", "admController", "borrarCategoria");
-    $r->addRoute("editarCategoria/:ID", "GET", "admController", "editarCategoria"); // view de editar
-    $r->addRoute("editCategoria/:ID", "POST", "admController", "editCategoria"); // llamado a editar de lo anterior
+   //ADMINISTRACION
+    $r->addRoute("administrar", "GET", "admController", "administracion");
+    $r->addRoute("editarPermisos", "POST", "admController", "editPermisos");
+    $r->addRoute("borrarUsuario", "POST", "admController", "deleteUser");
 
-    $r->addRoute("borrarServicio/:ID", "GET", "admController", "borrarServicio");
-    $r->addRoute("editarServicio/:ID", "GET", "admController", "editarServicio"); // view de editar
-    $r->addRoute("editServicio/:ID", "POST", "admController", "editServicio"); // llamado a editar de lo anterior
+    //ABM Categorias
+
+        //Alta
+        $r->addRoute("agregarCategoria", "GET", "admController", "addCategoria"); // view
+        $r->addRoute("nuevaCategoria", "POST", "admController", "newCategoria"); // funcion
+
+        //Baja
+        $r->addRoute("borrarCategoria/:ID", "GET", "admController", "borrarCategoria");
+
+        //Modificacion
+        $r->addRoute("editarCategoria/:ID", "GET", "admController", "editarCategoria"); // view
+        $r->addRoute("editCategoria/:ID", "POST", "admController", "editCategoria"); // funcion
+
+    //ABM Servicios
+
+        //Alta
+        $r->addRoute("agregarServicio", "GET", "admController", "addServicio"); // view
+        $r->addRoute("nuevoServicio", "POST", "admController", "newServicio"); // funcion
+
+        //Baja
+        $r->addRoute("borrarServicio/:ID", "GET", "admController", "borrarServicio");
+
+        //Modificacion
+        $r->addRoute("editarServicio/:ID", "GET", "admController", "editarServicio"); // view
+        $r->addRoute("editServicio/:ID", "POST", "admController", "editServicio"); // funcion
+
+    //Otros
+    $r->addRoute("faq", "GET", "Controller", "Faq");
+    $r->addRoute("contacto", "GET", "Controller", "Contacto");
     
-    $r->addRoute("agregarServicio", "GET", "admController", "addServicio"); // view
-    $r->addRoute("nuevoServicio", "POST", "admController", "newServicio"); // funcion
-    $r->addRoute("agregarCategoria", "GET", "admController", "addCategoria"); // view
-    $r->addRoute("nuevaCategoria", "POST", "admController", "newCategoria"); // funcion
-
     //run
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
 ?>

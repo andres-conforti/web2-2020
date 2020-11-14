@@ -20,10 +20,14 @@
                 {/if}
             </td>
             <td>
-                <a class="" href="editarPermisos/{$usuario->id}/{$usuario->isAdmin}"><i class="fas fa-edit"></i></a>
+            <form method="post" action="editarPermisos">
+            <button type="submit" class="myButtonEditarCAT" name="opcion" value="{$usuario->id}|{$usuario->isAdmin}"><i class="fas fa-edit"></i></button>
+            </form>
             </td>
             <td>
-                <a class="" href="borrarUsuario/{$usuario->id}"><i class="fas fa-trash-alt"></i></a>
+            <form method="post" action="borrarUsuario">
+            <button type="submit" class="myButtonBorrarCAT" name="id" value="{$usuario->id}"><i class="fas fa-trash-alt"></i></button>
+            </form>
             </td>
     </tr>
     {/foreach}

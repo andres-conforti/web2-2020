@@ -129,32 +129,30 @@ class admController extends Controller{
 
     function newCategoria(){
         $nombre = $_POST['nombre'];
-syv        $img = $_FILES['imagenes']['tmp_name'];
-
+        $rutaTemp = $_FILES['imagen']['tmp_name'];
+        $ext = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+        
         if (!empty($nombre)) {
-            if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" ||
-            $_FILES['input_name']['type'] == "image/png"){
-                $this->uploadImage($img);
+            if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" ||
+            $_FILES['imagen']['type'] == "image/png"){
+                $img = $this->uploadImage($rutaTemp,$ext);
         }
             else{
                 $img = "no-image.png";
             }
-
             $this->Cmodel->InsertCategoria($nombre,$img);
             header('Location: '.SERVICIOS);
-
             }
         else{
             $msg = "NOMBRE OBLIGATORIO";
             $this->addCategoria($msg);
                 }
-
     }
 
-    function uploadImage($img){
-        $ruta = uniqid() . '.jpg';
-        move_uploaded_file($img, $ruta);
-        return $ruta;
+    function uploadImage($rutaTemp,$ext){
+        $img = uniqid() . "." . $ext;
+        move_uploaded_file($rutaTemp,"img/servicios/".$img);
+        return $img;
     }
     
     function administracion(){
@@ -162,24 +160,31 @@ syv        $img = $_FILES['imagenes']['tmp_name'];
         $this->adminView->ShowAdministracion($usuarios);
     }
 
-
-
     function editPermisos($params){
-        $id = $params[':A'];
-        $isAdmin = $params[':B'];
-        if($isAdmin==0){
-            $isAdmin=1;
+
+        if(!empty($_POST['opcion'])){
+            $paraExplodear = $_POST['opcion'];
+            $explode = explode('|', $paraExplodear);
+            $id = $explode[0];
+            $isAdmin = $explode[1];
+    
+            if($isAdmin==0){
+                $isAdmin=1;
+            }
+            else{
+                $isAdmin=0;
+            }
+            $this->userModel->EditUsuario($isAdmin,$id);
         }
-        else{
-            $isAdmin=0;
-        }
-        $this->userModel->EditUsuario($isAdmin,$id);
+
         header('Location: '.ADM);
     }
 
     function deleteUser($params = null){
-        $id = $params[':ID'];
-        $this->userModel->borrarUsuario($id);
+        if(!empty($_POST['id'])){
+            $id = $_POST['id'];
+            $this->userModel->borrarUsuario($id);
+        }
         header('Location: '.ADM);
     }
 }

@@ -20,6 +20,6 @@
         
     </div>
 
-    <script src="js/verificaciones.js"></script>
+    {*<script src="js/verificaciones.js"></script>*}
     
 {include file="footer.tpl"}

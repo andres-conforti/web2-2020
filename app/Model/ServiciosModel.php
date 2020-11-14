@@ -27,8 +27,14 @@ class ServiciosModel{
   }
 
   function getServiciosConCategoria($id){
-    $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.nombre, categoria.img as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE categoria.id = ? ");
+    $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.img, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE categoria.id = ? ");
     $sentencia->execute([$id]);
+    return $sentencia->fetchAll(PDO::FETCH_OBJ);
+  }
+
+  function getServiciosConCategoriaTODOS(){
+    $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.img, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id");
+    $sentencia->execute();
     return $sentencia->fetchAll(PDO::FETCH_OBJ);
   }
 
@@ -48,7 +54,7 @@ class ServiciosModel{
   }
 
   function BuscarServicio($id){
-    $sentencia = $this->db->prepare( "SELECT * from servicio WHERE descripcion OR nombre  LIKE '%$id%' ");
+    $sentencia = $this->db->prepare( "SELECT * FROM servicio WHERE descripcion LIKE '%$id%' OR nombre LIKE '%$id%'");
     $sentencia->execute([$id]);
     return $sentencia->fetchAll(PDO::FETCH_OBJ);
   }
