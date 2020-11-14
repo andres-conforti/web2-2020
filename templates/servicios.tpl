@@ -47,15 +47,21 @@
     <div class="primeroTOP">
         <div class="primeroFiltrado">
             <div class="pagination">
-        <a href="servicios/{$anterior}">&laquo;</a>
+                {if $paginaActual!=1} <a href="servicios/{$paginaActual-1}">&laquo;</a>{/if}
                 
                 {foreach from=$cantidadPaginas item=pagina}
                     <a href="servicios/{$pagina}">{$pagina}</a>
                 {/foreach}
-                <a href="servicios/{$siguiente}">&raquo;</a>
+
+
+                {if $paginaActual!=$maxPaginas}<a href="servicios/{$paginaActual+1}">&raquo;</a>{/if}
+
 
             </div>
+
         </div>
+        <p>Valor de pagina:{$paginaActual} </p>
+        <p>Valor de MaxPaginas:{$maxPaginas} </p>
     </div>
     {*PAGINACION*}
 </section>

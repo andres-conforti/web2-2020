@@ -31,7 +31,7 @@
   </section>
 
 
-{include file='vue/comentarios.tpl'}
+{include file='comentarios.tpl'}
 
 
 {include file="footer.tpl"}

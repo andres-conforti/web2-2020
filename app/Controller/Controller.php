@@ -3,7 +3,6 @@
 require_once 'app/View/ServiciosView.php';
 require_once 'app/Model/ServiciosModel.php';
 require_once 'app/Model/CategoriasModel.php';
-require_once 'app/Controller/Paginacion.php';
 require_once 'helpers/authHelper.php';
 
 
@@ -13,14 +12,12 @@ class Controller{
     private $Smodel;
     private $Cmodel;
     private $authHelper;
-    private $paginacion;
 
     function __construct(){
         $authHelper = new AuthHelper();
         $this->view = new ServiciosView();
         $this->Smodel = new ServiciosModel();
         $this->Cmodel = new CategoriasModel();
-        $this->pag = new Paginacion();
     }
 
     function Home(){
@@ -35,6 +32,7 @@ class Controller{
         $this->view->ShowFaq();
     }
 
+
     function Servicios($params){
         if(isset($params[':ID'])){
             $id = $params[':ID'];
@@ -42,43 +40,41 @@ class Controller{
         else{
             $id = 1;
         }
+
+        /*if($id<0 && $id>$maxPaginas)
+        $id=1;*/
         
-        $maxPaginas = 4; //maximo de paginas
+        $maxCategoriasPagina = 4; //maximo de paginas
         $servicios = $this->Smodel->GetServicios();
         $categorias = $this->Cmodel->GetCategorias();
         $filtro = $categorias;
-        $cantidadPaginas = $this->pag->Paginar($categorias,$maxPaginas,$id);
-        $categorias = $this->pag->fetchResult();
-        //var_dump($id);
-        //var_dump($cantidadPaginas);
-        $aux = count($cantidadPaginas);
-        if($id==1){
-            //echo "IF";
-            $anterior = 1;
-            $siguiente = $anterior+1;
-        }
-        elseif($id==$aux){
-            //echo "ElseIF";
-            $siguiente = $aux;
-            $anterior = $aux-1;
-        }
-        else{
-            //echo "ELSE";
-            $siguiente = $id+1;
-            $anterior = $id-1;
-        }
+        $cantidadPaginas = $this->CantidadPaginas($categorias,$maxCategoriasPagina);
+        $maxPaginas= count($cantidadPaginas);
 
-        $this->view->ShowServicios($servicios,$categorias,$cantidadPaginas,$siguiente,$anterior,$filtro);
-        /*
-        echo "<br>"."<br>"."<br>";
-        var_dump($categorias);
-        echo "<br>"."<br>"."<br>";
-        var_dump($servicios);
-        echo "<br>"."<br>"."<br>";
-        var_dump($cantidadPaginas);
-        echo "<br>"."<br>"."<br>";
-        */
+
+
+        $categorias = $this->Paginar($categorias,$maxCategoriasPagina,$id);
+        $this->view->ShowServicios($servicios,$categorias,$cantidadPaginas,$filtro,$id,$maxPaginas);
+
     }
+
+    
+    function Paginar($Categorias,$maxCategorias,$paginaActual){
+        $param1 = ($paginaActual-1)*$maxCategorias;
+        $this->categorias = array_slice($Categorias,$param1,$maxCategorias);//Corta el arreglo de categorias.(Arreglo de 4 categ)
+        return $this->categorias;
+    }
+
+
+    function CantidadPaginas($categorias,$maxCategoriasPagina){
+    $cantidadCategorias = count($categorias);
+    $maxPaginas = ceil($cantidadCategorias/$maxCategoriasPagina);//Redondea para arriba.
+
+    for($x=1; $x<=$maxPaginas; $x++){
+        $paginas[]=$x;
+    }
+    return $paginas;
+    }   
 
     function ServicioDetalle($params){
         $id = $params[':ID'];

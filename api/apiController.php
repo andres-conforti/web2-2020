@@ -1,17 +1,22 @@
 <?php
 
-abstract class ApiController {     
-    protected $model; // lo instancia el hijo     
+require_once 'app/model/comentarioModel.php';
+
+abstract class ApiController {
+
+    protected $comentariosModel;
     protected $view;
-    private $data; //De esta manera esta disponible siempre que queremos usarlo     
+    protected $model;
+
+    private $data;
     
-    public function __construct() {         
-        $this->view = new APIView();         
-        $this->data = file_get_contents("php://input");     
+    public function __construct() {
+        $this->model = new ComentarioModel();
+        $this->view = new JSONView();
+        $this->data = file_get_contents("php://input");    
     }
 
-    function getData(){         
+    public function getData(){
         return json_decode($this->data);
     }
 }
-;

@@ -76,12 +76,12 @@ class ServiciosView{
         $this->smarty->display('templates/busquedas.tpl');
     }
 
-    function ShowServicios($servicios,$categorias,$cantidadPaginas,$siguiente,$anterior,$filtro){
+    function ShowServicios($servicios,$categorias,$cantidadPaginas,$filtro,$id,$maxPaginas){
         $this->smarty->assign('servicios',$servicios);
         $this->smarty->assign('categorias',$categorias);
         $this->smarty->assign('filtro',$filtro);
-        $this->smarty->assign('siguiente',$siguiente);
-        $this->smarty->assign('anterior',$anterior);
+        $this->smarty->assign('paginaActual',$id);
+        $this->smarty->assign('maxPaginas',$maxPaginas);
         $this->smarty->assign('cantidadPaginas',$cantidadPaginas);
         $this->smarty->display('templates/servicios.tpl');
     }

@@ -136,7 +136,7 @@ class admController extends Controller{
             if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" ||
             $_FILES['imagen']['type'] == "image/png"){
                 $img = $this->uploadImage($rutaTemp,$ext);
-        }
+            }
             else{
                 $img = "no-image.png";
             }

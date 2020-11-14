@@ -13,8 +13,8 @@ function cargarPagina() {
         },
 
     methods: {
-        del: function (id_comentario) {
-          fetch("api/comentarios/" + id_comentario, {
+        del: function (id) {
+          fetch("api/comentarios/" + id, {
               method: 'DELETE',
            })
            .then(response => {
@@ -31,12 +31,11 @@ function cargarPagina() {
         e.preventDefault();
 
         let data = {
-            "id_cerveza" :  window.location.pathname.split('/')[4],
-            "texto" :  document.querySelector('textarea[name=text-comentario]').value ,
+            "id" :  window.location.pathname.split('/')[4],
+            "comentario" :  document.querySelector('textarea[name=comentario-comentario]').value ,
             "puntaje" :  document.querySelector('select[name=puntaje-comentario]').value ,
-            "id_usuario": document.querySelector('input[name=id_usuario-comentario]').value,
+            "id_user": document.querySelector('input[name=id_user-comentario]').value,
         }
-        
         
         fetch('api/comentarios', {
             method: 'POST',
