@@ -1,14 +1,17 @@
 <?php
 
-class UserModel{
+  include_once 'helpers/dbHelper.php';
+  
+  class UserModel{
+  
     private $db;
-
-    function __construct(){
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=estudio_perez;charset=utf8', 'root', '');
-    }
-    /**
-     * Devuelve un usuario dado un email.
-     */
+    private $dbHelper;
+  
+    function __construct() {
+      $this->dbHelper = new DBHelper();
+      $this->db = $this->dbHelper->connect();
+      }
+      
     public function getByEmail($email) {
         $query = $this->db->prepare('SELECT * FROM user WHERE email = ?');
         $query->execute(array($email));

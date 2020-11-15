@@ -1,12 +1,16 @@
 <?php
 
-class ServiciosModel{
-         
-  private $db;
-
-  function __construct(){
-      $this->db = new PDO('mysql:host=localhost;'.'dbname=estudio_perez;charset=utf8', 'root', '');
-  }
+  include_once 'helpers/dbHelper.php';
+  
+  class ServiciosModel{
+  
+    private $db;
+    private $dbHelper;
+  
+    function __construct() {
+      $this->dbHelper = new DBHelper();
+      $this->db = $this->dbHelper->connect();
+      }
        
   function GetServicios(){
       $sentencia = $this->db->prepare("SELECT * FROM servicio");

@@ -1,26 +1,44 @@
 <?php
+include_once 'helpers/db.helper.php';
 
-    class ComentarioModel{
+class ComentarioModel {
 
-        private $db;
+    private $db;
+    private $dbHelper;
 
-        function __construct(){
-            $this->db = new PDO('mysql:host=localhost;'.'dbname=estudio_perez;charset=utf8', 'root', '');
-        }
-
-        function addComentario($comentario,$puntaje,$id_user,$id_servicio){ // agrega un comentario
-            $sentencia = $this->db->prepare('INSERT INTO comentario(comentario,puntaje,id_user,id_servicio) VALUES (?,?,?,?)');
-            $sentencia->execute(array($comentario,$puntaje,$id_user,$id_servicio));
-        }
-
-        function getIdComentarios($id){ //trae todos los comentarios de un servicio
-            $sentencia = $this->db->prepare('SELECT * FROM comentario WHERE id_servicio = ?');
-            $sentencia->execute(array($id));
-            return $sentencia->fetchAll(PDO::FETCH_OBJ);
-        }
-
-        function borraComentario($id){ // borra un comentario
-            $sentencia = $this->db->prepare('DELETE FROM comentario WHERE id=?');
-            $sentencia->execute(array($id));
-        }
+    function __construct() {
+        $this->dbHelper = new DBHelper();
+         // 1. Abro la conexión
+        $this->db = $this->dbHelper->connect();
     }
+
+
+   //Devuelve todas las tareas de la base de datos.
+    function getComentarios($parametros = null) {
+        $sentencia = $this->db->prepare("SELECT * FROM comentario");
+        $sentencia->execute();
+        // 3. Obtengo la respuesta con un fetchAll (porque son muchos)
+        return $sentencia->fetchAll(PDO::FETCH_OBJ); // arreglo de tareas
+    }
+
+    function getComentario($id) {
+        $sentencia = $this->db->prepare('SELECT * FROM comentario WHERE id=?');
+        $sentencia->execute([$id]);
+        return $sentencia->fetch(PDO::FETCH_OBJ);
+    }
+
+    //Inserta la tarea en la base de datos
+    function addComentario($idServicio,$idUsuario,$comentario,$puntaje) {
+        // 2. Enviar la consulta (2 sub-pasos: prepare y execute)
+        $sentencia = $this->db->prepare('INSERT INTO comentario(id_servicio,id_user,comentario,puntaje) VALUES (?,?,?,?)');
+        $sentencia->execute(array($idServicio,$idUsuario,$comentario,$puntaje));
+        // 3. Obtengo y devuelo el ID de la tarea nueva
+        return $this->db->lastInsertId();
+    }
+
+    function deleteComentario($id) {  
+        $sentencia = $this->db->prepare('DELETE FROM comentario WHERE id=?');
+        $sentencia->execute([$id]);
+        return $sentencia->rowCount();
+  }
+}

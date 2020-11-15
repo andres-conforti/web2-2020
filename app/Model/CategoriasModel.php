@@ -1,12 +1,16 @@
 <?php
 
+include_once 'helpers/dbHelper.php';
+
 class CategoriasModel{
 
   private $db;
+  private $dbHelper;
 
-  function __construct(){
-      $this->db = new PDO('mysql:host=localhost;'.'dbname=estudio_perez;charset=utf8', 'root', '');
-  }
+  function __construct() {
+    $this->dbHelper = new DBHelper();
+    $this->db = $this->dbHelper->connect();
+    }
          
     function GetCategorias(){
       $sentencia = $this->db->prepare("SELECT * FROM categoria");

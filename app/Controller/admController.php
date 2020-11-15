@@ -79,11 +79,12 @@ class admController extends Controller{
         
         $id = $params[':ID'];
         $nombre = $_POST['nombre'];
-        $img = basename($_FILES["imagen"]["name"]);
+        $rutaTemp = $_FILES['imagen']['tmp_name'];
+        $nombreImagen = $_FILES['imagen']['name'];
 
         if($nombre!=''){
-            if($img!=''){
-            $this->uploadImage();
+            if($nombreImagen!=''){
+            $this->uploadImage($rutaTemp,$nombreImagen);
             }
             else{
                 $img = "no-image.png";
@@ -130,12 +131,12 @@ class admController extends Controller{
     function newCategoria(){
         $nombre = $_POST['nombre'];
         $rutaTemp = $_FILES['imagen']['tmp_name'];
-        $ext = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+        $nombreImagen = $_FILES['imagen']['name'];
         
         if (!empty($nombre)) {
             if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" ||
             $_FILES['imagen']['type'] == "image/png"){
-                $img = $this->uploadImage($rutaTemp,$ext);
+                $img = $this->uploadImage($rutaTemp,$nombreImagen);
             }
             else{
                 $img = "no-image.png";
@@ -149,8 +150,8 @@ class admController extends Controller{
                 }
     }
 
-    function uploadImage($rutaTemp,$ext){
-        $img = uniqid() . "." . $ext;
+    function uploadImage($rutaTemp,$nombreImagen){
+        $img = uniqid() . "." . pathinfo($nombreImagen, PATHINFO_EXTENSION);;
         move_uploaded_file($rutaTemp,"img/servicios/".$img);
         return $img;
     }
