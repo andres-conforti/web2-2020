@@ -1,79 +1,66 @@
-"use strict";
+"use strict"
 
-function cargarPagina() {
+const app = new Vue({
+    el: "#app",
+    data: {
+        comentarios: [], // esto es como un assign de smarty
+    }, 
+});
+
+document.addEventListener('DOMContentLoaded', e => {
     
-    document.querySelector(".form-comentario").addEventListener('submit', addComentario);
+    GetComments();
 
-    let app = new Vue({
-        el: ".vue-comentarios",
-        data: {
-            admin : document.querySelector('input[name=admin-comentario]').value,
-            comments: [], 
-            auth : true,
-        },
 
-    methods: {
-        del: function (id_comentario) {
-          fetch("api/comentarios/" + id_comentario, {
-              method: 'DELETE',
-           })
-           .then(response => {
-                getComentario();
-                //getComentarios();
-           })
-           .catch(error => console.log(error));
-         }
-      }
-    });
-  
-    
-    function addComentario(e) {
+    //agregar comentario
+    document.querySelector('#comentarios-form').addEventListener('submit', e => {
         e.preventDefault();
+        AgregarComment();
+    });
 
-        let data = {
-            "id_cerveza" :  window.location.pathname.split('/')[4],
-            "texto" :  document.querySelector('textarea[name=text-comentario]').value ,
-            "puntaje" :  document.querySelector('select[name=puntaje-comentario]').value ,
-            "id_usuario": document.querySelector('input[name=id_usuario-comentario]').value,
-        }
+});
+
+
+async function GetComments() {
+    try {
+        const response = await fetch('api/comentarios/' + window.location.pathname.split('/')[4]); 
+        const comment = await response.json();
         
-        
-        fetch('api/comentarios', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},       
-            body: JSON.stringify(data),
-        })
-        .then(response => {
-            getComentario();
-            //getComentarios();
-        })
-        .catch(error => console.log(error));
+        // imprimo las tareas
+        app.comentarios = comment;
+
+    } catch(e) {
+        console.log(e);
     }
-
-    function getComentarios() {
-        fetch('api/comentarios') //comentarios/:ID
-        .then(response => response.json())
-        .then(comments => {
-            app.comments = comments; // similar a $this->smarty->assign("tasks", $tasks)
-        })
-        .catch(error => console.log(error));
-    }
-
-    function getComentario() {
-        let id = window.location.pathname.split('/')[4]; //id del producto           
-        fetch("api/comentarios/" + id) //comentarios/:ID
-        .then(response => response.json())
-        .then(comments => {
-            app.comments = comments; // similar a $this->smarty->assign("tasks", $tasks)
-        })
-        .catch(comments => {
-            app.comments = comments});
-    }
-
-    getComentario();
-
-    //getComentarios();
-
 }
 
-document.addEventListener("DOMContentLoaded", cargarPagina);
+
+
+async function AgregarComment() {
+
+    // armo la tarea
+    const comment = {
+       
+        idServicio: window.location.pathname.split('/')[4],
+        idUsuario: document.querySelector('input[name=idUsuario]').value,
+        comentario: document.querySelector('textarea[name=comentario]').value,
+        puntaje: document.querySelector('select[name=puntaje]').value
+        
+    }
+
+    try {
+        const response = await fetch('api/comentarios/' , {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'}, 
+            body: JSON.stringify(comment)
+        });
+
+        const t = await response.json();
+        app.comentarios.push(t);
+
+    } catch(e) {
+        console.log(e);
+    }
+
+
+}

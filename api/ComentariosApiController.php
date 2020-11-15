@@ -1,10 +1,9 @@
 <?php
-require_once 'api/apiController.php';
 require_once 'api/jsonView.php';
 require_once 'app/Model/ComentarioModel.php';
 
 
-class ApiTaskController {
+class ComentariosApiController {
 
     private $model;
     private $view;
@@ -20,26 +19,33 @@ class ApiTaskController {
         return json_decode($this->data); 
     } 
 
-    public function getComentarios($params = null) {
+    public function getTodosLosComentarios($params = null) {
         $parametros = [];
-
-        $tasks = $this->model->getAll($parametros);
+        $tasks = $this->model->getTodosLosComentarios($parametros);
         $this->view->response($tasks, 200);
     }
 
-    public function getComentario($params = null) {
+    
+
+    public function getComentariosServicio($params = null) {
         // $params es un array asociativo con los parámetros de la ruta
-        $idTask = $params[':ID'];
-        $task = $this->model->get($idTask);
-        if ($task)
-            $this->view->response($task, 200);
+        $idServicio = $params[':ID'];
+        $comentarios = $this->model->getComentariosServicio($idServicio);
+        //id:1
+        //comentario:comentario de prueba
+        //puntaje:5
+        //id_user:1
+        //id_servicio:1
+        //user:admin
+        if ($comentarios)
+            $this->view->response($comentarios, 200);
         else
-            $this->view->response("La tarea con el id=$idTask no existe", 404);
+            $this->view->response("El servicio con el id=$idServicio no existe", 404);
     }
 
     public function deleteComentario($params = null) {
         $idTask = $params[':ID'];
-        $success = $this->model->remove($idTask);
+        $success = $this->model->deleteComentario($idTask);
         if ($success) {
             $this->view->response("La tarea con el id=$idTask se borró exitosamente", 200);
         }
@@ -51,15 +57,16 @@ class ApiTaskController {
     public function addComentario($params = null) {
 
         $body = $this->getData();
+        
+        $idServicio = $body->idServicio;
+        $idUsuario  = $body->idUsuario;
+        $comentario = $body->comentario;
+        $puntaje    = $body->puntaje;
 
-        $titulo       = $body->titulo;
-        $descripcion  = $body->descripcion;
-        $prioridad    = $body->prioridad;
-
-        $id = $this->model->insert($titulo, $descripcion, $prioridad);
+        $id = $this->model->addComentario($idServicio,$idUsuario,$comentario,$puntaje);
 
         if ($id > 0) {
-            $task = $this->model->get($id);
+            $task = $this->model->getComentario($id);
             $this->view->response($task, 200);
         }
         else { 
@@ -72,3 +79,4 @@ class ApiTaskController {
     }
 
 }
+

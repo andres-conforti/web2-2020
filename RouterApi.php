@@ -1,5 +1,5 @@
 <?php
-    require_once('Router.php');
+    require_once('RouterClass.php');
     require_once('api/ComentariosApiController.php');
     
 
@@ -7,10 +7,18 @@
 
     $router = new Router();
 
-    // rutas
-    $router->addRoute("comentarios", "GET", "ComentariosApiController", "getComentarios");
+    // trae todos los comentarios
+    $router->addRoute("comentarios", "GET", "ComentariosApiController", "getTodosLosComentarios"); 
+
+    // trae todos los comentarios de ese servicio
+    $router->addRoute("comentarios/:ID", "GET", "ComentariosApiController", "getComentariosServicio");
+
+    // agrega un nuevo comentario
     $router->addRoute("comentarios", "POST", "comentariosApiController", "addComentario");
+
+    // elimina un comentario
     $router->addRoute("comentarios/:ID", "DELETE", "comentariosApiController", "deleteComentario");
 
+    
     //run
     $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 

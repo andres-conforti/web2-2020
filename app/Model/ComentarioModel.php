@@ -1,5 +1,6 @@
 <?php
-include_once 'helpers/db.helper.php';
+require_once 'helpers/dbHelper.php';
+
 
 class ComentarioModel {
 
@@ -14,17 +15,23 @@ class ComentarioModel {
 
 
    //Devuelve todas las tareas de la base de datos.
-    function getComentarios($parametros = null) {
+    function getTodosLosComentarios($parametros = null) {
         $sentencia = $this->db->prepare("SELECT * FROM comentario");
         $sentencia->execute();
-        // 3. Obtengo la respuesta con un fetchAll (porque son muchos)
         return $sentencia->fetchAll(PDO::FETCH_OBJ); // arreglo de tareas
     }
 
-    function getComentario($id) {
-        $sentencia = $this->db->prepare('SELECT * FROM comentario WHERE id=?');
+    function getComentariosServicio($id) {
+        $sentencia = $this->db->prepare("SELECT comentario.*, user.email as usuario FROM comentario JOIN user ON comentario.id_user = user.id WHERE comentario.id_servicio = ?");
         $sentencia->execute([$id]);
-        return $sentencia->fetch(PDO::FETCH_OBJ);
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    function getComentario($id) {
+        $query = $this->db->prepare('SELECT * FROM comentario WHERE id = ?');
+        $query->execute([$id]);
+        $task = $query->fetch(PDO::FETCH_OBJ);
+        return $task;
     }
 
     //Inserta la tarea en la base de datos

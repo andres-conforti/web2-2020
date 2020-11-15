@@ -28,10 +28,10 @@
         </tbody>
       </table>
     </div>
-  </section>
+  
 
-
+    </section>
+    
 {include file='comentarios.tpl'}
-
 
 {include file="footer.tpl"}

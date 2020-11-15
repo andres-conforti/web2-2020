@@ -1,6 +1,6 @@
 <?php
 
-  include_once 'helpers/dbHelper.php';
+require_once 'helpers/dbHelper.php';
   
   class ServiciosModel{
   
