@@ -1,18 +1,17 @@
 {literal}
-<section id="app" class="servicios">
+
+<section id="vue-comentarios" class="servicios">
 
 <div class="primero">
 <br>
     <ul>
-        <li v-for="comment in comentarios"> 
+        <li v-for="comentario in comments"> 
         
-         <div class="primeroFiltrado">USUARIO: {{ comment.usuario }} - PUNTAJE: {{ comment.puntaje }}</div>
+         <div class="primeroFiltrado">USUARIO: {{ comentario.usuario }} - PUNTAJE: {{ comentario.puntaje }}</div>
          
-         <div class="primeroFiltrado">{{ comment.comentario }}</div>
+         <div class="primeroFiltrado">{{ comentario.texto }}</div>
         <br><br>
-         
-
-         <span v-if="comment.admin == 1"><a v-on:click="del(comment.id_comentario)"  :data-id="comment.id_comentario" class="btn-eliminar"><i class="fas fa-trash-alt"></i></a></span>
+    
         
         </li>
     </ul>

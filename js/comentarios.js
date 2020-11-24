@@ -1,19 +1,19 @@
 "use strict"
 
-const app = new Vue({
-    el: "#app",
+let app = new Vue({
+    el: '#vue-comentarios',
     data: {
-        comentarios: [], // esto es como un assign de smarty
+        comments: [], // esto es como un assign de smarty
     }, 
 });
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener('DOMContentLoaded', () => {
     
-    GetComments();
+    getComentario();
 
 
     //agregar comentario
-    document.querySelector('#comentarios-form').addEventListener('submit', e => {
+    document.querySelector('.btn-primary').addEventListener('submit', e => {
         e.preventDefault();
         AgregarComment();
     });
@@ -21,46 +21,49 @@ document.addEventListener('DOMContentLoaded', e => {
 });
 
 
-async function GetComments() {
-    try {
-        const response = await fetch('api/comentarios/' + window.location.pathname.split('/')[4]); 
-        const comment = await response.json();
+function GetComments() {
+    fetch('api/comentarios')
+        .then(response => response.json())
+        .then(comentarios => {app.comments = comentarios})
         
-        // imprimo las tareas
-        app.comentarios = comment;
+        .catch(error => console.log(error));
+}
 
-    } catch(e) {
-        console.log(e);
-    }
+function getComentario() {
+    let id = window.location.pathname.split('/')[3]; //id del producto  
+    fetch("api/comentarios/" + id) //comentarios/:ID
+    .then(response => response.json())
+    .then(comments => {
+        app.comments = comments; // similar a $this->smarty->assign("tasks", $tasks)
+    })
+    .catch(comments => {
+        app.comments = comments});
 }
 
 
 
-async function AgregarComment() {
+function AgregarComment() {
 
     // armo la tarea
-    const comment = {
+    const coment = {
        
-        idServicio: window.location.pathname.split('/')[4],
+        idServicio: window.location.pathname.split('/')[3],
         idUsuario: document.querySelector('input[name=idUsuario]').value,
-        comentario: document.querySelector('textarea[name=comentario]').value,
+        texto: document.querySelector('textarea[name=texto]').value,
         puntaje: document.querySelector('select[name=puntaje]').value
+
+    }
+    console.log(coment);
+
+    fetch('api/comentarios', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(coment)
+    })
+        .then(response => {getComentario()})
         
-    }
+        .catch(error => console.log(error));
 
-    try {
-        const response = await fetch('api/comentarios/' , {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'}, 
-            body: JSON.stringify(comment)
-        });
-
-        const t = await response.json();
-        app.comentarios.push(t);
-
-    } catch(e) {
-        console.log(e);
-    }
 
 
 }

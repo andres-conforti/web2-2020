@@ -5,7 +5,7 @@
         <form id="comentarios-form" method="POST">
             <div>
             <h5>COMENTARIO</h5><br>
-            <textarea name="comentario" class="form-control" rows="4" cols="40"></textarea>
+            <textarea name="texto" class="form-control" rows="4" cols="40"></textarea>
             </div><br>
                     <h5>CALIFICACION</h5><br>
                     <select name="puntaje" class="form-control">
@@ -15,13 +15,13 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-
+                    {if $smarty.session}
                     <input type="hidden" name="idUsuario" value="{($smarty.session.ID_USER)}">
                     <input type="hidden" name="admin" value="{($smarty.session.ISADMIN)}">
-               
+                    {/if}
             
         
-        <button type="submit" class="btn btn-primary">ENVIAR COMENTARIO</button>
+        <button type="submit" class="btn-primary">ENVIAR COMENTARIO</button>
     </form>
 
 

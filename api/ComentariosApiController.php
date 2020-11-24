@@ -1,23 +1,15 @@
 <?php
 require_once 'api/jsonView.php';
 require_once 'app/Model/ComentarioModel.php';
+require_once 'api/ApiController.php';
 
 
-class ComentariosApiController {
-
-    private $model;
-    private $view;
+class ComentariosApiController extends ApiController {
 
     function __construct() {
+        parent::__construct();
         $this->model = new ComentarioModel();
-        $this->view = new jsonView();
-        $this->data = file_get_contents("php://input");
     }
-
-    // Lee la variable asociada a la entrada estandar y la convierte en JSON
-    function getData(){ 
-        return json_decode($this->data); 
-    } 
 
     public function getTodosLosComentarios($params = null) {
         $parametros = [];
@@ -29,6 +21,7 @@ class ComentariosApiController {
 
     public function getComentariosServicio($params = null) {
         // $params es un array asociativo con los parámetros de la ruta
+
         $idServicio = $params[':ID'];
         $comentarios = $this->model->getComentariosServicio($idServicio);
         //id:1
@@ -46,7 +39,7 @@ class ComentariosApiController {
     public function deleteComentario($params = null) {
         $idTask = $params[':ID'];
         $success = $this->model->deleteComentario($idTask);
-        if ($success) {
+        if ($success > 0) {
             $this->view->response("La tarea con el id=$idTask se borró exitosamente", 200);
         }
         else { 
@@ -55,19 +48,17 @@ class ComentariosApiController {
     }
 
     public function addComentario($params = null) {
-
-        $body = $this->getData();
+    
         
-        $idServicio = $body->idServicio;
-        $idUsuario  = $body->idUsuario;
-        $comentario = $body->comentario;
-        $puntaje    = $body->puntaje;
+        $idServicio = 1;
+        $idUsuario  = 1;
+        $texto = "fcgvbhkklml";
+        $puntaje   =5;
 
-        $id = $this->model->addComentario($idServicio,$idUsuario,$comentario,$puntaje);
+        $id = $this->model->addComentario($idServicio,$idUsuario,$texto,$puntaje);
 
-        if ($id > 0) {
-            $task = $this->model->getComentario($id);
-            $this->view->response($task, 200);
+        if (!empty($id)) {
+            $this->view->response( $this->model->getComentario($id), 201);
         }
         else { 
             $this->view->response("No se pudo insertar", 500);
@@ -80,3 +71,4 @@ class ComentariosApiController {
 
 }
 
+?>
