@@ -6,13 +6,13 @@ class JSONView {
     // Responde cualquier coleccion de objetos en formato JSON.
     public function response($data, $status) {
         header("Content-Type: application/json");
-        header("HTTP/1.1". $status." ". $this->_requestStatus($status));
+        header("HTTP/1.1". $status. " " . $this->requestStatus($status));
         echo json_encode($data);
     }
 
     
     //Asocia un mensaje a una respuesta.
-    private function _requestStatus($code){
+    private function requestStatus($code){
         $status = array(
           200 => "OK",
           305 => "RESPUESTA VACIA",

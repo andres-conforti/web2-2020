@@ -5,6 +5,7 @@ let app = new Vue({
     data: {
         comments: [], // esto es como un assign de smarty
     }, 
+    
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,25 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     //agregar comentario
-    document.querySelector('.btn-primary').addEventListener('submit', e => {
+    document.querySelector('.btn-primary').addEventListener('click', e => {
         e.preventDefault();
         AgregarComment();
     });
-
+    
 });
 
 
-function GetComments() {
-    fetch('api/comentarios')
-        .then(response => response.json())
-        .then(comentarios => {app.comments = comentarios})
-        
-        .catch(error => console.log(error));
-}
-
 function getComentario() {
     let id = window.location.pathname.split('/')[3]; //id del producto  
-    fetch("api/comentarios/" + id) //comentarios/:ID
+    fetch('api/comentarios/' + id) //comentarios
     .then(response => response.json())
     .then(comments => {
         app.comments = comments; // similar a $this->smarty->assign("tasks", $tasks)
@@ -45,15 +38,14 @@ function getComentario() {
 function AgregarComment() {
 
     // armo la tarea
-    const coment = {
+    let coment = {
        
-        idServicio: window.location.pathname.split('/')[3],
-        idUsuario: document.querySelector('input[name=idUsuario]').value,
-        texto: document.querySelector('textarea[name=texto]').value,
-        puntaje: document.querySelector('select[name=puntaje]').value
+        id_servicio: window.location.pathname.split('/')[3],
+        id_user: document.querySelector('#idUser').value,
+        texto: document.querySelector('#input-text').value,
+        puntaje: document.querySelector('#select-puntaje').value
 
     }
-    console.log(coment);
 
     fetch('api/comentarios', {
         method: 'POST',
@@ -62,6 +54,7 @@ function AgregarComment() {
     })
         .then(response => {getComentario()})
         
+
         .catch(error => console.log(error));
 
 

@@ -35,9 +35,9 @@ class ComentarioModel {
     }
 
     
-    function addComentario($idServicio,$idUsuario,$comentario,$puntaje) {
+    function addComentario($id_servicio,$id_user,$texto,$puntaje) {
         $sentencia = $this->db->prepare('INSERT INTO comentario(id_servicio,id_user,texto,puntaje) VALUES (?,?,?,?)');
-        $sentencia->execute(array($idServicio,$idUsuario,$comentario,$puntaje));
+        $sentencia->execute(array($id_servicio,$id_user,$texto,$puntaje));
         return $this->db->lastInsertId();
     }
 

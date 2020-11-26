@@ -48,17 +48,12 @@ class ComentariosApiController extends ApiController {
     }
 
     public function addComentario($params = null) {
-    
+        $body = $this->getData();
         
-        $idServicio = 1;
-        $idUsuario  = 1;
-        $texto = "fcgvbhkklml";
-        $puntaje   =5;
-
-        $id = $this->model->addComentario($idServicio,$idUsuario,$texto,$puntaje);
+        $id = $this->model->addComentario($body->id_servicio,$body->id_user,$body->texto,$body->puntaje);
 
         if (!empty($id)) {
-            $this->view->response( $this->model->getComentario($id), 201);
+            $this->view->response( $id, 201);
         }
         else { 
             $this->view->response("No se pudo insertar", 500);
