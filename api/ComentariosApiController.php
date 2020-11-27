@@ -20,8 +20,8 @@ class ComentariosApiController extends ApiController {
     
 
     public function getComentariosServicio($params = null) {
-        // $params es un array asociativo con los parámetros de la ruta
-
+        
+        
         $idServicio = $params[':ID'];
         $comentarios = $this->model->getComentariosServicio($idServicio);
         if ($comentarios)
@@ -59,5 +59,3 @@ class ComentariosApiController extends ApiController {
     }
 
 }
-
-?>

@@ -8,11 +8,13 @@ class JSONView {
         header("Content-Type: application/json");
         header("HTTP/1.1". $status. " " . $this->requestStatus($status));
         echo json_encode($data);
+ 
     }
 
     
     //Asocia un mensaje a una respuesta.
     private function requestStatus($code){
+
         $status = array(
           200 => "OK",
           305 => "RESPUESTA VACIA",

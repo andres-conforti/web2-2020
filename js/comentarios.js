@@ -1,22 +1,16 @@
 "use strict"
+const el = document.querySelector('#data');
+
 
 let app = new Vue({
     el: '#vue-comentarios',
     data: {
         comments: [], // esto es como un assign de smarty
-        admin : document.querySelector('#isAdmin').value,
+        admin : el.dataset.isAdmin,
     }, 
-    /*
-    methods: {
-        del: function (id) { //id del comentario, no del servicio
-          fetch("api/comentarios/" + id, {
-              method: 'DELETE',
-           })
-           .then(response => { getComentario();})
-           .catch(error => console.log(error));
-        }
-    }*/
+
 });
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -53,12 +47,13 @@ function borrarComment(id){
 }
 
 function AgregarComment() {
+    
 
     // armo la tarea
     let coment = {
        
-        id_servicio: window.location.pathname.split('/')[3],
-        id_user: document.querySelector('#idUser').value,
+        id_servicio: el.dataset.serv,
+        id_user: el.dataset.user,
         texto: document.querySelector('#input-text').value,
         puntaje: document.querySelector('#select-puntaje').value
 
