@@ -12,13 +12,10 @@
          
          <div class="primeroFiltrado">{{ comentario.texto }}</div>
 
-         <div><span v-if="admin == 1"><a v-on:click="del(comentario.id)"  :data-id="comentario.id"><i class="fas fa-trash-alt"></i></a></span></div>
+         <div><span v-if="admin == 1"><a id = "btn-borrar" v-on:click="del(comentario.id)"  :data-id="comentario.id"><i class="fas fa-trash-alt"></i></a></span></div>
 
         <br><br>
-         </li>
-    
-        
-        
+        </li>
     </ul>
 </div>
 
