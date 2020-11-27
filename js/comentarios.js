@@ -4,9 +4,21 @@ let app = new Vue({
     el: '#vue-comentarios',
     data: {
         comments: [], // esto es como un assign de smarty
+        admin : document.querySelector('#isAdmin').value,
+        auth : true,
     }, 
-    
-});
+
+    methods: {
+        del: function (id) { //id del comentario, no del servicio
+          fetch("api/comentarios/" + id, {
+              method: 'DELETE',
+           })
+           .then(response => { getComentario();})
+           .catch(error => console.log(error));
+         }
+      }
+    });
+
 
 document.addEventListener('DOMContentLoaded', () => {
     

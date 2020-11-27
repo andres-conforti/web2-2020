@@ -24,16 +24,10 @@ class ComentariosApiController extends ApiController {
 
         $idServicio = $params[':ID'];
         $comentarios = $this->model->getComentariosServicio($idServicio);
-        //id:1
-        //comentario:comentario de prueba
-        //puntaje:5
-        //id_user:1
-        //id_servicio:1
-        //user:admin
         if ($comentarios)
             $this->view->response($comentarios, 200);
         else
-            $this->view->response("El servicio con el id=$idServicio no existe", 404);
+            $this->view->response(null, 404);
     }
 
     public function deleteComentario($params = null) {
@@ -53,7 +47,7 @@ class ComentariosApiController extends ApiController {
         $id = $this->model->addComentario($body->id_servicio,$body->id_user,$body->texto,$body->puntaje);
 
         if (!empty($id)) {
-            $this->view->response( $id, 201);
+            $this->view->response($id, 201);
         }
         else { 
             $this->view->response("No se pudo insertar", 500);
