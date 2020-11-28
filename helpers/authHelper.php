@@ -18,6 +18,13 @@
             $_SESSION['ISADMIN'] = $user->isAdmin;
         }
 
+        public function isAdmin() {
+            $isAdmin = 0;
+            if(!empty($_SESSION)){
+                $isAdmin = $_SESSION['ISADMIN'];
+             }
+             return $isAdmin;
+        }
    
         public function logout() {
             session_destroy();

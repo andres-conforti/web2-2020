@@ -1,8 +1,12 @@
-{if $smarty.session}     
-<section class="servicios" data-serv="{$servicio->id}" data-isAdmin ="{($smarty.session.ISADMIN)}" id="data">
-<div class="primero"> 
 
-        <form id="comentarios-form" method="POST" data-user ="{($smarty.session.ID_USER)}">
+<section class="servicios" id="servicio" data-id="{$servicio->id}" data-isadmin="{$isadmin}">
+
+{if !($smarty.session)}
+    <div id="usuario" data-user=""></div>
+{else}
+<div class="primero" id="usuario" data-user="{($smarty.session.ID_USER)}">
+
+        <form id="comentarios-form" method="POST" >
             <div>
             <h5>COMENTARIO</h5><br>
             <textarea id="input-text" name="texto" class="form-control" rows="4" cols="40"></textarea>
@@ -17,16 +21,14 @@
                     </select>
             
         
-        <button type="submit" class="btn-primary">ENVIAR COMENTARIO</button>
+        <button type="submit" class="btn-primary" >ENVIAR COMENTARIO</button>
     </form>
 
+    </div>
 
 
-
-    
-        </div>
-</section>
 {/if}
+</section>
 
 {include file="vue/list-comentarios.tpl"}
 <script src="js/comentarios.js"></script> {*comentarios*}

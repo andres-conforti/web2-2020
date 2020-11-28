@@ -62,6 +62,8 @@ class authController{
     }
 
 
+
+
     public function logout() {
         $this->authHelper->logout();
     }

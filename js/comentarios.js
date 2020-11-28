@@ -1,13 +1,30 @@
 "use strict"
-const el = document.querySelector('#data');
+const servicio = document.querySelector('#servicio');
+
+const usuario = document.querySelector('#usuario');
+
+
 
 
 let app = new Vue({
     el: '#vue-comentarios',
     data: {
         comments: [], // esto es como un assign de smarty
-        admin : el.dataset.isAdmin,
-    }, 
+        admin : servicio.dataset.isadmin,
+        
+    },
+    methods: {
+        del: function (id_comentario) {
+          fetch("api/comentarios/" + id_comentario, {
+              method: 'DELETE',
+           })
+           .then(response => {
+                getComentario();
+
+           })
+           .catch(error => console.log(error));
+         }
+      } 
 
 });
 
@@ -16,19 +33,22 @@ let app = new Vue({
 document.addEventListener('DOMContentLoaded', () => {
     
     getComentario();
-    document.querySelector('#btn-borrar').addEventListener('click', e=>{borrarComment();})
 
+    
+    if(usuario.dataset.user !== ""){
     //agregar comentario
-    document.querySelector('.btn-primary').addEventListener('click', e => {
+    document.querySelector('.btn-primary').addEventListener('click', e=>{
         e.preventDefault();
         AgregarComment();
     });
-    
+    }
+
+
 });
 
-
+//traer comentarios
 function getComentario() {
-    let id = window.location.pathname.split('/')[3]; //id del producto  
+    let id = servicio.dataset.id; //id del producto  
     fetch('api/comentarios/' + id) //comentarios
     .then(response => response.json())
     .then(comments => {
@@ -38,22 +58,16 @@ function getComentario() {
         app.comments = comments});
 }
 
-function borrarComment(id){
-    fetch("api/comentarios/" + id, {
-        method: 'DELETE',
-    })
-     .then(response => { getComentario();})
-     .catch(error => console.log(error));
-}
 
+//agregar comentarios
 function AgregarComment() {
-    
+  
 
     // armo la tarea
     let coment = {
        
-        id_servicio: el.dataset.serv,
-        id_user: el.dataset.user,
+        id_servicio: servicio.dataset.id,
+        id_user: usuario.dataset.user,
         texto: document.querySelector('#input-text').value,
         puntaje: document.querySelector('#select-puntaje').value
 
@@ -70,3 +84,6 @@ function AgregarComment() {
 
 
 }
+
+//console.log("Servicio: ",servicio.dataset);
+//console.log("User: ", user.dataset);

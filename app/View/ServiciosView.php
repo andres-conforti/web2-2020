@@ -14,8 +14,9 @@ class ServiciosView{
         $this->smarty->display('templates/index.tpl');
     }
 
-    function ShowDetalleServicio($servicio){
+    function ShowDetalleServicio($servicio,$admin){
         $this->smarty->assign('servicio',$servicio);
+        $this->smarty->assign('isadmin',$admin);
         $this->smarty->display('templates/detalleServicio.tpl');
     }
 

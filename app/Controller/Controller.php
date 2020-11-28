@@ -14,7 +14,7 @@ class Controller{
     private $authHelper;
 
     function __construct(){
-        $authHelper = new AuthHelper();
+        $this->authHelper = new AuthHelper();
         $this->view = new ServiciosView();
         $this->Smodel = new ServiciosModel();
         $this->Cmodel = new CategoriasModel();
@@ -33,29 +33,41 @@ class Controller{
     }
 
 
-    function Servicios($params){
-        if(isset($params[':ID'])){
-            $id = $params[':ID'];
-        }
-        else{
-            $id = 1;
-        }
 
-        /*if($id<0 && $id>$maxPaginas)
-        $id=1;*/
+     /* PAGINACION CIERRE*/
+
+
+    function Servicios($params){
+
+        $maxCategoriasPagina = 4;
+
+        if(isset($params[':ID'])){
+            $paginaActual = $params[':ID'];
+            $inicio = ($paginaActual - 1) * $maxCategoriasPagina;
+         }
+        else{
+            $paginaActual = 1;
+            $inicio = 0;
+        }
         
-        $maxCategoriasPagina = 4; //maximo de paginas
-        $servicios = $this->Smodel->GetServicios();
-        $categorias = $this->Cmodel->GetCategorias();
+        $categorias = $this->Cmodel->GetCategoriasPaginadas($maxCategoriasPagina,$inicio);
+        //$cantidadCategorias = array_count_values($categorias);
+        var_dump($categorias);
+
+
+        /*$maxPaginas = ceil($cantidadCategorias/$maxCategoriasPagina);//Redondea para arriba.
+        
+//miro a ver el número total de campos que hay en la tabla con esa búsqueda
+$num_total_registros = mysql_num_rows($categorias);
+//calculo el total de páginas
+$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
+
         $filtro = $categorias;
         $cantidadPaginas = $this->CantidadPaginas($categorias,$maxCategoriasPagina);
         $maxPaginas= count($cantidadPaginas);
-
-
-
-        $categorias = $this->Paginar($categorias,$maxCategoriasPagina,$id);
-        $this->view->ShowServicios($servicios,$categorias,$cantidadPaginas,$filtro,$id,$maxPaginas);
-
+        $categorias = $this->Paginar($categorias,$maxCategoriasPagina,$paginaActual);
+        $this->view->ShowServicios($servicios,$categorias,$cantidadPaginas,$filtro,$paginaActual,$maxPaginas);
+*/
     }
 
     
@@ -76,11 +88,16 @@ class Controller{
     return $paginas;
     }   
 
+
+    /* PAGINACION CIERRE*/
+
+
+
     function ServicioDetalle($params){
         $id = $params[':ID'];
-        $servicio =$this->Smodel->getServicioConCategoria($id);
-        //print_r($servicio);
-        $this->view->ShowDetalleServicio($servicio);
+        $isAdmin = $this->authHelper->isAdmin();
+        $servicio = $this->Smodel->getServicioConCategoria($id);
+        $this->view->ShowDetalleServicio($servicio,$isAdmin);
     }
 
     function CategoriaDetalle(){
@@ -123,9 +140,7 @@ class Controller{
         }
     }
 
-    function PaginacionCategorias(){
 
-    }
 }
 
 

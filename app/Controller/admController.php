@@ -32,7 +32,6 @@ class admController extends Controller{
         $id = $params[':ID'];
         $this->Smodel->borrarServicio($id);
         header('Location: '.SERVICIOS);
-        
     }
 
     function borrarCategoria($params = null){
