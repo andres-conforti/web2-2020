@@ -20,8 +20,9 @@ class ServiciosView{
         $this->smarty->display('templates/detalleServicio.tpl');
     }
 
-    function ShowDetalleCategoria($servicios){
+    function ShowDetalleCategoria($servicios,$filtro){
         $this->smarty->assign('servicios',$servicios);
+        $this->smarty->assign('filtro',$filtro);
         $this->smarty->display('templates/filtrado.tpl');
     }
 
@@ -77,13 +78,13 @@ class ServiciosView{
         $this->smarty->display('templates/busquedas.tpl');
     }
 
-    function ShowServicios($servicios,$categorias,$cantidadPaginas,$filtro,$id,$maxPaginas){
-        $this->smarty->assign('servicios',$servicios);
+    function ShowServicios($categorias,$servicios,$paginasTotales,$filtro,$paginaActual,$maximo){
         $this->smarty->assign('categorias',$categorias);
+        $this->smarty->assign('servicios',$servicios);
+        $this->smarty->assign('paginasTotales',$paginasTotales);
         $this->smarty->assign('filtro',$filtro);
-        $this->smarty->assign('paginaActual',$id);
-        $this->smarty->assign('maxPaginas',$maxPaginas);
-        $this->smarty->assign('cantidadPaginas',$cantidadPaginas);
+        $this->smarty->assign('paginaActual',$paginaActual);
+        $this->smarty->assign('maximo',$maximo);
         $this->smarty->display('templates/servicios.tpl');
     }
 }

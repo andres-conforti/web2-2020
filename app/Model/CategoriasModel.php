@@ -24,14 +24,14 @@ class CategoriasModel{
       return $sentencia->fetch(PDO::FETCH_OBJ);
     }
    
-    
-//SELECT column_list FROM table1 ORDER BY column_list LIMIT row_count OFFSET offset;
-
+    //PIDE TODOS DE CATEGORIAS, MIENTRAS QUE ESTE ENTRE LOS LIMITES Y OFFSETS DE LA PAGINA ACTUAL, Y LOS ORDENA POR ID DE MENOR A MAYOR 
       function GetCategoriasPaginadas($limit,$offset){
-        $sentencia = $this->db->prepare( "SELECT * FROM (SELECT * FROM categoria LIMIT 4 OFFSET 0) as categorias LEFT JOIN servicio as servicios on servicios.id_categoria_fk = categorias.id ORDER BY categorias.id ASC");
+        $sentencia = $this->db->prepare( "SELECT categorias.* FROM (SELECT * FROM categoria LIMIT $offset,$limit) as categorias ORDER BY categorias.id ASC");
         $sentencia->execute([$limit,$offset]);
-        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);  
       }
+
+        
 
     //administrar
     function EditarCategoria($nombre,$imagen,$id){

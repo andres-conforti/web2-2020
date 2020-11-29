@@ -1,7 +1,9 @@
 {include file="header.tpl"}
 
 <section class="servicios">
-        
+
+{include file="filtros.tpl"}
+
  <div class="primero">
  <div>
             <img src="img/servicios/{$servicios[0]->img}" alt="{$servicios[0]->categoria}">

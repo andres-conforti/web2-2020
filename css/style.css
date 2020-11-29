@@ -8,6 +8,10 @@ body{
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
 @font-face{
     font-family: 'Baloo';
     src: url('https://fonts.gstatic.com/s/raleway/v11/0dTEPzkLWceF7z0koJaX1A.woff2');
@@ -99,6 +103,9 @@ ul.navigation a:hover {
     color:   #5273C7;
     transition: 0.3s;
 }
+
+
+
 
 
 /*ABOUT US*/
@@ -909,9 +916,28 @@ footer {
     margin-bottom: 0px;
   }
   
+  .volverFiltro {
+    display: inline-block;
+    flex-direction: row;
+    align-self: center;
+    margin: 0 5% 10px 5%; 
+    border-radius: 25px;
+    border: 2px solid #041131;
+    padding: 15px;
+  }
+
+
+  /*paginacion*/
+
 
   .pagination {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: row;
+    align-self: center;
+    margin: 0 5% 10px 5%; 
+    border-radius: 25px;
+    border: 2px solid #041131;
+    padding: 15px;
   }
   
   .pagination a {
@@ -924,6 +950,12 @@ footer {
   .pagination a.active {
     background-color: #4CAF50;
     color: white;
+    border-radius: 5px;
+  }
+
+  .pagination a.hover {
+    color:   #5273C7;
+    transition: 0.3s;
     border-radius: 5px;
   }
   

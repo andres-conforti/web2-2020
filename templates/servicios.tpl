@@ -10,7 +10,7 @@
     
         <div class="primero">
             <div>
-                <img src="img/servicios/{$categoria->img}" alt="{$categoria->nombre}">
+                <img src="img/servicios/{$categoria->img}" alt="{$categoria->nombre|capitalize:true}">
     
             </div>
     
@@ -22,9 +22,8 @@
             </h3>
     
     
-    
             {foreach from=$servicios item=servicio}
-                {if $categoria->id == $servicio->id_categoria_fk}
+                {if $categoria->id == $servicio->idFk}
             
                     <ul>
             
@@ -43,27 +42,36 @@
     {/foreach}
 
 
-    {*PAGINACION*}
+    {*PAGINAR*}
+    
     <div class="primeroTOP">
-        <div class="primeroFiltrado">
-            <div class="pagination">
-                {if $paginaActual!=1} <a href="servicios/{$paginaActual-1}">&laquo;</a>{/if}
+    <p>PRIMERA: {$paginasTotales.0}</p>
+    <br>
+    <p>ACTUAL: {$paginaActual} </p>
+    <br>
+    <p>ULTIMA: {$paginasTotales|@end}</p>
+    <br>
+    <p>~TOTAL~  {foreach from=$paginasTotales item=pagina} {$pagina} {/foreach}</p>
+            
+        
+        <div class="pagination">
+
+                {if $paginaActual!=$paginasTotales.0} <a href="servicios/{$paginaActual-1}">&laquo;</a> {/if}
                 
-                {foreach from=$cantidadPaginas item=pagina}
-                    <a href="servicios/{$pagina}">{$pagina}</a>
+                {foreach from=$paginasTotales item=pagina}
+
+                <a href="servicios/{$pagina}">{$pagina}</a>
+               
                 {/foreach}
 
-
-                {if $paginaActual!=$maxPaginas}<a href="servicios/{$paginaActual+1}">&raquo;</a>{/if}
-
+                {if $paginaActual!=($paginasTotales|@end)} <a href="servicios/{$paginaActual+1}">&raquo;</a> {/if}
 
             </div>
-
-        </div>
-        <p>Valor de pagina:{$paginaActual} </p>
-        <p>Valor de MaxPaginas:{$maxPaginas} </p>
     </div>
-    {*PAGINACION*}
+    {*PAGINAR*}
+
+
+    
 </section>
 
 

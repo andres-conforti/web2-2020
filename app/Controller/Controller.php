@@ -39,55 +39,39 @@ class Controller{
 
     function Servicios($params){
 
-        $maxCategoriasPagina = 4;
+        $maxCategorias = 4; // Declaro la cantidad de categorias que quiero ver por pagina
 
         if(isset($params[':ID'])){
             $paginaActual = $params[':ID'];
-            $inicio = ($paginaActual - 1) * $maxCategoriasPagina;
+            // Declaro el offset que voy a utilizar para los llamados a la BBDD.
+            // seria como $inicio+=$maxCategorias sin guardar la variable cada llamado;
+            // osea segun la pagina, le suma el valor $maxCategorias las cantidades necesarias.
+            // Se le resta 1 a $paginaActual por que sino nos salteamos 1 pagina.
+            $inicio = ($paginaActual - 1) * $maxCategorias; 
          }
         else{
+            //si no le pasamos parametros a web2-2020/servicios/:ID, nos muestra la pagina 1 por defecto.
             $paginaActual = 1;
             $inicio = 0;
         }
         
-        $categorias = $this->Cmodel->GetCategoriasPaginadas($maxCategoriasPagina,$inicio);
-        //$cantidadCategorias = array_count_values($categorias);
-        var_dump($categorias);
-
-
-        /*$maxPaginas = ceil($cantidadCategorias/$maxCategoriasPagina);//Redondea para arriba.
+        //TRAIGO "X" CANTIDAD DE CATEGORIAS, COMENZANDO A BUSCAR DESDE UN OFFSET $INICIO.
+        $categorias = $this->Cmodel->GetCategoriasPaginadas($maxCategorias,$inicio);
+        //TRAIGO TODOS LOS SERVICIOS, QUE COINCIDAN CON EL MISMO LIMITE Y OFFSET ANTERIOR.
+        $servicios = $this->Smodel->GetServiciosPaginados($maxCategorias,$inicio);
+        //FILTRO SOLO ES PARA MOSTRAR TODAS LAS CATEGORIAS EXISTENTES.
+        $filtro = $this->Cmodel->getCategorias();
+        //CALCULO CUANTAS PAGINAS VOY A NECESITAS MOSTRAR EN LA BARRA DE PAGINACION
+        //DIVIDIENDO TODAS LAS CATEGORIAS QUE TENGO POR EL MAXIMO QUE MUESTRO UTILIZANDO EL CEIL PARA OBTENER UN VALOR MAS ARRIBA DEL QUE ES
+        //DE ESTA FORMA NO ME QUEDA LA ULTIMA PAGINA DE LA BARRA DE PAGINACION SIN MOSTRARSE
+        //EJ: SI NO LO HAGO Y TENGO 5 CATEGORIAS Y MUESTRO 4, LA BARRA DE PAGINACION ME MOSTRARIA 1 SOLA PAGINA PARA SELECCIONAR, EN VES DE 2.
+        $maximo = ceil((count($filtro))/$maxCategorias);
+        //CREO UN ARREGLO DE NUMEROS QUE VA DEL 1 AL $MAXIMO INCLUSIVE, PARA PODER UTILIZARLO COMO BARRA DE PAGINACION.
+        $paginasTotales = range(1,$maximo);
         
-//miro a ver el número total de campos que hay en la tabla con esa búsqueda
-$num_total_registros = mysql_num_rows($categorias);
-//calculo el total de páginas
-$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
+        $this->view->ShowServicios($categorias,$servicios,$paginasTotales,$filtro,$paginaActual,$maximo);
 
-        $filtro = $categorias;
-        $cantidadPaginas = $this->CantidadPaginas($categorias,$maxCategoriasPagina);
-        $maxPaginas= count($cantidadPaginas);
-        $categorias = $this->Paginar($categorias,$maxCategoriasPagina,$paginaActual);
-        $this->view->ShowServicios($servicios,$categorias,$cantidadPaginas,$filtro,$paginaActual,$maxPaginas);
-*/
     }
-
-    
-    function Paginar($Categorias,$maxCategorias,$paginaActual){
-        $param1 = ($paginaActual-1)*$maxCategorias;
-        $this->categorias = array_slice($Categorias,$param1,$maxCategorias);//Corta el arreglo de categorias.(Arreglo de 4 categ)
-        return $this->categorias;
-    }
-
-
-    function CantidadPaginas($categorias,$maxCategoriasPagina){
-    $cantidadCategorias = count($categorias);
-    $maxPaginas = ceil($cantidadCategorias/$maxCategoriasPagina);//Redondea para arriba.
-
-    for($x=1; $x<=$maxPaginas; $x++){
-        $paginas[]=$x;
-    }
-    return $paginas;
-    }   
-
 
     /* PAGINACION CIERRE*/
 
@@ -104,7 +88,8 @@ $total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
         if (isset($_POST['filtrar']) && ("ERROR"!=$_POST['filtrar'])) {
             $categoriaFiltrada = $_POST['filtrar'];
             $servicios = $this->Smodel->getServiciosConCategoria($categoriaFiltrada);
-            $this->view->ShowDetalleCategoria($servicios);
+            $filtro = $this->Cmodel->getCategorias();
+            $this->view->ShowDetalleCategoria($servicios,$filtro);
         }
         else {
             header('Location: '.SERVICIOS);
