@@ -1,8 +1,8 @@
 <div class="primeroTOP">
         {*FILTRO POR CATEGORIA*}
-        {if $smarty.server.REQUEST_URI==("/web2-2020/filtrar/")}
-            <div class="volverFiltro">
-            <a href="myButtonFiltrar"><button class="myButtonFiltrar">VOLVER A SERVICIOS</button></a>
+        {if $smarty.server.REQUEST_URI|strstr:"filtrar"}
+            <div class="servicios">
+            <a href="servicios"><button class="myButtonFiltrar">VOLVER A SERVICIOS</button></a>
             </div>
         {/if}
 

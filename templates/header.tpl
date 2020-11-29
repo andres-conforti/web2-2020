@@ -24,6 +24,14 @@
       {/if}
 
 
+        {if ($smarty.session)}
+
+        <div class="usuario"> 
+        {$smarty.session.EMAIL}
+        </div>
+
+        {/if}
+
         <header>
         <div class="logo">
             <img src="img/logo.png" alt="logo">

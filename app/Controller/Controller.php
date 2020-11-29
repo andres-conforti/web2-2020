@@ -75,8 +75,7 @@ class Controller{
 
     /* PAGINACION CIERRE*/
 
-
-
+    //para ver los detalles de un servicio
     function ServicioDetalle($params){
         $id = $params[':ID'];
         $isAdmin = $this->authHelper->isAdmin();
@@ -84,10 +83,11 @@ class Controller{
         $this->view->ShowDetalleServicio($servicio,$isAdmin);
     }
 
+    //el filtro para ver que servicios pertenecen a cierta categoria.
     function CategoriaDetalle(){
         if (isset($_POST['filtrar']) && ("ERROR"!=$_POST['filtrar'])) {
             $categoriaFiltrada = $_POST['filtrar'];
-            $servicios = $this->Smodel->getServiciosConCategoria($categoriaFiltrada);
+            $servicios = $this->Smodel->GetDetalleServicios($categoriaFiltrada);
             $filtro = $this->Cmodel->getCategorias();
             $this->view->ShowDetalleCategoria($servicios,$filtro);
         }
@@ -95,20 +95,34 @@ class Controller{
             header('Location: '.SERVICIOS);
         }
     }
+
+    
+    //PARA FILTRAR POR PALABRA CLAVE
     function BusquedaServicios($params){
+        $servicios = null;
+        if(!empty($_POST['buscar'])){
         $id = $_POST['buscar'];
-        $servicios =$this->Smodel->BuscarServicio($id);
+        $servicios = $this->Smodel->BuscarServicio($id);
+
         if($servicios){
             $this->view->ShowBusquedas($servicios);
-        }else{
-            $msg= "No se encontraron resultados";
+        }
+        else{
+            $msg= "NO SE ENCONTRARON RESULTADOS";
+            $this->view->ShowBusquedas($servicios, $msg);
+            }
+        }
+
+        else{
+            $msg= "POR FAVOR INGRESE UN PARAMETRO PARA BUSCAR";
             $this->view->ShowBusquedas($servicios, $msg);
         }
     }
 
+    //PARA FILTRAR POR HONORARIOS
     function BusquedaHonorarios($params){
         $servicios = null;
-        if(!empty($_POST['valor']) && !empty($_POST['honorario'])){
+        if(!empty($_POST['valor']) && !empty($_POST['honorario'])){ //REVISA QUE ESTEN SETEADOS LOS VALORES PARA BUSCAR
             $valor = $_POST['valor'];
             $honorario = $_POST['honorario'];
             if($valor == "mayor"){
@@ -116,13 +130,21 @@ class Controller{
             }else{
                 $servicios =$this->Smodel->BuscarHonorarioMenor($honorario);
             }
+
+            if($servicios){// SI SE ENCONTRARON VALORES PARA $SERVICIOS ENTRA
+                $this->view->ShowBusquedas($servicios);
+            }else{
+                $msg= "NO SE ENCONTRARON RESULTADOS";
+                $this->view->ShowBusquedas($servicios, $msg);
+            }
         }
-        if($servicios){
-            $this->view->ShowBusquedas($servicios);
-        }else{
-            $msg= "No se encontraron resultados";
+
+        else{
+            $msg= "COMPLETE TODOS LOS CAMPOS";
             $this->view->ShowBusquedas($servicios, $msg);
         }
+
+
     }
 
 

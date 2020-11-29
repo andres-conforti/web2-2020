@@ -1,5 +1,14 @@
 {include file="header.tpl"}
+
+{if $smarty.server.REQUEST_URI|strstr:"buscarServicio"}
+  <div class="servicios">
+  <a href="servicios"><button class="myButtonFiltrar">VOLVER A SERVICIOS</button></a>
+  </div>
+  
+{/if}
+
 <section class ="servicios">
+
     <div class="primero">
 
         <table>

@@ -45,15 +45,6 @@
     {*PAGINAR*}
     
     <div class="primeroTOP">
-    <p>PRIMERA: {$paginasTotales.0}</p>
-    <br>
-    <p>ACTUAL: {$paginaActual} </p>
-    <br>
-    <p>ULTIMA: {$paginasTotales|@end}</p>
-    <br>
-    <p>~TOTAL~  {foreach from=$paginasTotales item=pagina} {$pagina} {/foreach}</p>
-            
-        
         <div class="pagination">
 
                 {if $paginaActual!=$paginasTotales.0} <a href="servicios/{$paginaActual-1}">&laquo;</a> {/if}

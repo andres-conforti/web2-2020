@@ -11,18 +11,13 @@ require_once 'helpers/dbHelper.php';
       $this->dbHelper = new DBHelper();
       $this->db = $this->dbHelper->connect();
       }
-       
-  function GetServicios(){
-      $sentencia = $this->db->prepare("SELECT * FROM servicio");
-      $sentencia->execute();
-      return $sentencia->fetchAll(PDO::FETCH_OBJ);
-    }
+  
 
-    //PARA VER LOS DETALLES DEL SERVICIO
-  function GetServicio($id){
-      $sentencia = $this->db->prepare( "SELECT * from servicio where id=?");
-      $sentencia->execute([$id]);
-      return $sentencia->fetch(PDO::FETCH_OBJ);
+  //SE UTILIZA PARA EL FILTRO POR CATEGORIA
+  function GetDetalleServicios($id){
+    $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.img, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE categoria.id = ? ");
+    $sentencia->execute([$id]);
+    return $sentencia->fetchAll(PDO::FETCH_OBJ);
   }
 
   //PARA VER LOS DETALLES DEL SERVICIO Y SU CATEGORIA
@@ -32,19 +27,7 @@ require_once 'helpers/dbHelper.php';
     return $sentencia->fetch(PDO::FETCH_OBJ);
   }
 
-  function getServiciosConCategoria($id){
-    $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.img, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id WHERE categoria.id = ? ");
-    $sentencia->execute([$id]);
-    return $sentencia->fetchAll(PDO::FETCH_OBJ);
-  }
-
-  function getServiciosConCategoriaTODOS(){
-    $sentencia = $this->db->prepare( "SELECT servicio.*, categoria.img, categoria.nombre as categoria FROM servicio JOIN categoria ON servicio.id_categoria_fk = categoria.id");
-    $sentencia->execute();
-    return $sentencia->fetchAll(PDO::FETCH_OBJ);
-  }
-
-
+  //SE UTILIZA PARA LA PAGINACION
   //PIDE NOMBRE ID ID_categoria_fk DE TODOS LOS SERVICIOS MIENTRAS QUE ESTEN ENTRE LOS LIMITES Y OFFSETS DE LA PAGINA ACTUAL Y LOS ORDENA X ID DE MENOR A MAYOR
   function GetServiciosPaginados($limit,$offset){
     $sentencia = $this->db->prepare( "SELECT servicios.nombre, servicios.id, servicios.id_categoria_fk as idFk
@@ -53,6 +36,15 @@ require_once 'helpers/dbHelper.php';
     $sentencia->execute();
     return $sentencia->fetchAll(PDO::FETCH_OBJ);
   }
+
+
+
+  //SE UTILIZA PARA EDITAR SERVICIO
+  function GetServicio($id){
+    $sentencia = $this->db->prepare( "SELECT * from servicio where id=?");
+    $sentencia->execute([$id]);
+    return $sentencia->fetch(PDO::FETCH_OBJ);
+}
 
   function EditServicio($nombre,$descripcion,$honorarios,$id_categoria_fk,$id){
       $sentencia = $this->db->prepare("UPDATE servicio SET nombre=?,descripcion=?,honorarios=?,id_categoria_fk=? WHERE id=?");
