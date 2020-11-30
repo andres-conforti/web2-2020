@@ -8,6 +8,10 @@ body{
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
 @font-face{
     font-family: 'Baloo';
     src: url('https://fonts.gstatic.com/s/raleway/v11/0dTEPzkLWceF7z0koJaX1A.woff2');
@@ -99,6 +103,9 @@ ul.navigation a:hover {
     color:   #5273C7;
     transition: 0.3s;
 }
+
+
+
 
 
 /*ABOUT US*/
@@ -348,7 +355,8 @@ input{
     display:flex;
     justify-content: space-around;
     flex-flow: row wrap;
-    margin: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 20px;
     
 }
 .servicios ul{
@@ -910,8 +918,18 @@ footer {
   }
   
 
+
+  /*paginacion*/
+
+
   .pagination {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: row;
+    align-self: center;
+    margin: 0 5% 10px 5%; 
+    border-radius: 25px;
+    border: 2px solid #041131;
+    padding: 15px;
   }
   
   .pagination a {
@@ -926,16 +944,31 @@ footer {
     color: white;
     border-radius: 5px;
   }
+
+  .pagination a.hover {
+    color:   #5273C7;
+    transition: 0.3s;
+    border-radius: 5px;
+  }
   
   .pagination a:hover:not(.active) {
     background-color: #ddd;
     border-radius: 5px;
   }
 
-  
-/* COMENTARIOS */
 
-
+.usuario {
+	background-color:#041131;
+    border:1px solid #314179;
+    padding: 2px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+}
 
   
 

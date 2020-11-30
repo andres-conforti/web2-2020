@@ -1,12 +1,6 @@
 {include file="header.tpl"}
-        {if ($smarty.session)}
-        <section class="contenido">
-        <h1>NOMBRE DE USER: {$smarty.session.EMAIL}</h1>
-        </section>
-        {/if}
-<section class="contenido">
 
-        
+<section class="contenido">
 
     <figure class="imgcontenido">
         <img src="img/home/home1.jpg" alt="trabajo en equipo">

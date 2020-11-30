@@ -1,5 +1,11 @@
 <div class="primeroTOP">
         {*FILTRO POR CATEGORIA*}
+        {if $smarty.server.REQUEST_URI|strstr:"filtrar"}
+            <div class="servicios">
+            <a href="servicios"><button class="myButtonFiltrar">VOLVER A SERVICIOS</button></a>
+            </div>
+        {/if}
+
         <div class="primeroFiltrado">
             
             <form method="post" action="filtrar/" class="select">
@@ -9,7 +15,7 @@
                     <a href="agregarServicio" class="myButtonAdd">AGREGAR SERVICIO</a>
                 {/if}
 
-                <h5>FILTRAR POR CATEGORIA</h5>
+                <h5>FILTRAR SERVICIOS POR SU CATEGORIA</h5>
 
                 <select name="filtrar" class="filtroCategoria">
                         <option value="ERROR">SELECCIONE UNA CATEGORIA</option>
@@ -17,8 +23,9 @@
                         <option value="{$fil->id}">{$fil->nombre}</option>
                     {/foreach}
                 </select>
-
+                {* BOTON *}
                 <button type="submit" class="myButtonFiltrar">FILTRAR</button>
+                {* BOTON *}
             </form>
         </div>
         {*/////////////////////*}
@@ -26,7 +33,7 @@
         {*FILTRO DE PALABRAS*}
         <div class="primeroFiltrado">
             <form method="post" action="buscarServicio">
-                <h5>FILTRAR POR PALABRA CLAVE</h5><br>
+                <h5>FILTRAR SERVICIOS POR PALABRA CLAVE</h5><br>
                 <input type="search" name="buscar" placeholder="Texto a filtrar...">
                 <button type="submit" class="myButtonFiltrar2"> <i class="fas fa-search"></i></button>
             </form>
@@ -38,7 +45,7 @@
         {*FILTRO DE HONORARIOS*}
         <div class="primeroFiltrado">
             <form method="post" action="buscarHonorario">
-                <h5>FILTRAR POR HONORARIOS</h5><br>
+                <h5>FILTRAR SERVICIOS POR HONORARIOS</h5><br>
                 <input type="radio" name="valor" value="mayor">
                 <label for="mayor">MAYORES A</label>
 
