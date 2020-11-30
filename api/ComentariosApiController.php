@@ -17,11 +17,7 @@ class ComentariosApiController extends ApiController {
         $this->view->response($tasks, 200);
     }
 
-    
-
     public function getComentariosServicio($params = null) {
-        
-        
         $idServicio = $params[':ID'];
         $comentarios = $this->model->getComentariosServicio($idServicio);
         if ($comentarios)

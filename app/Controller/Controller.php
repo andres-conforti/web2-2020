@@ -54,13 +54,12 @@ class Controller{
         //$cantidadCategorias = array_count_values($categorias);
         var_dump($categorias);
 
-
         /*$maxPaginas = ceil($cantidadCategorias/$maxCategoriasPagina);//Redondea para arriba.
         
-//miro a ver el número total de campos que hay en la tabla con esa búsqueda
-$num_total_registros = mysql_num_rows($categorias);
-//calculo el total de páginas
-$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
+        /miro a ver el número total de campos que hay en la tabla con esa búsqueda
+        $num_total_registros = mysql_num_rows($categorias);
+        //calculo el total de páginas
+        $total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
 
         $filtro = $categorias;
         $cantidadPaginas = $this->CantidadPaginas($categorias,$maxCategoriasPagina);
