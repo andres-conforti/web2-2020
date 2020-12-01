@@ -26,7 +26,7 @@ class CategoriasModel{
     
     //PIDE TODOS DE CATEGORIAS, MIENTRAS QUE ESTE ENTRE LOS LIMITES Y OFFSETS DE LA PAGINA ACTUAL, Y LOS ORDENA POR ID DE MENOR A MAYOR 
       function GetCategoriasPaginadas($limit,$offset){
-        $sentencia = $this->db->prepare( "SELECT categorias.* FROM (SELECT * FROM categoria LIMIT $offset,$limit) as categorias ORDER BY categorias.id ASC");
+        $sentencia = $this->db->prepare( "SELECT * FROM categoria ORDER BY categoria.id ASC LIMIT $offset,$limit");
         $sentencia->execute([$limit,$offset]);
         return $sentencia->fetchAll(PDO::FETCH_OBJ);  
       }
@@ -48,7 +48,10 @@ class CategoriasModel{
       $sentencia = $this->db->prepare("INSERT INTO categoria(nombre,img) VALUES(?,?)");
       $sentencia->execute(array($nombre,$imagen));
     } 
-
+    function borrarImg($id){
+      $sentencia = $this->db->prepare("DELETE img FROM categoria WHERE id=?");
+      $sentencia->execute(array($id));
+    }
     
 
 }

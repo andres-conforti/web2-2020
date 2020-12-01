@@ -1,5 +1,5 @@
 <?php
-require_once 'api/jsonView.php';
+
 require_once 'app/Model/ComentarioModel.php';
 
 abstract class ApiController {

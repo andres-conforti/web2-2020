@@ -4,7 +4,7 @@
 {if !($smarty.session)}
     <div id="usuario" data-user=""></div>
 {else}
-<div class="primero" id="usuario" data-user="{($smarty.session.ID_USER)}">
+    <div class="primero" id="usuario" data-user="{($smarty.session.ID_USER)}">
 
         <form id="comentarios-form" method="POST" >
             <div>
@@ -21,14 +21,12 @@
                     </select>
             
         
-        <button type="submit" class="btn-primary" >ENVIAR COMENTARIO</button>
-    </form>
+            <button type="submit" class="btn-primary" >ENVIAR COMENTARIO</button>
+        </form>
 
     </div>
-
-
 {/if}
 </section>
 
 {include file="vue/list-comentarios.tpl"}
-<script src="js/comentarios.js"></script> {*comentarios*}
+<script src="js/comentarios.js"></script>

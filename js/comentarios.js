@@ -1,10 +1,7 @@
 "use strict"
-const servicio = document.querySelector('#servicio');
+const servicio = document.querySelector('#servicio');//section
 
 const usuario = document.querySelector('#usuario');
-
-
-
 
 let app = new Vue({
     el: '#vue-comentarios',
@@ -75,7 +72,7 @@ function AgregarComment() {
 
     fetch('api/comentarios', {
         method: 'POST',
-        headers: { "Content-Type": "application/json" },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(coment)
     })
         .then(response => {getComentario()})

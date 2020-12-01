@@ -11,6 +11,7 @@
     define("SERVICIOS", BASE_URL . 'servicios');
     define("ADM", BASE_URL . 'administrar');
     define("REGISTER", BASE_URL . 'registrar');
+    define("EDITAR", BASE_URL . 'editarCategoria');
     
     
     $r = new Router();
@@ -23,7 +24,7 @@
     $r->addRoute("login", "GET", "authController", "Login");
     $r->addRoute("logout", "GET", "authController", "logout");
     $r->addRoute("registrar", "GET", "authController", "registrar");//vista de registrar
-    $r->addRoute("registrarse", "POST", "authController", "registracion");
+    $r->addRoute("registrarse", "POST", "authController", "registracion");//func de registrar
     $r->addRoute("verificar", "POST", "authController", "verifyLogin");
    
     //Servicios
@@ -47,10 +48,13 @@
 
         //Baja
         $r->addRoute("borrarCategoria/:ID", "GET", "admController", "borrarCategoria");
+        $r->addRoute("borrarImg/:ID", "POST", "admController", "borrarImg"); // funcion
+
 
         //Modificacion
         $r->addRoute("editarCategoria/:ID", "GET", "admController", "editarCategoria"); // view
         $r->addRoute("editCategoria/:ID", "POST", "admController", "editCategoria"); // funcion
+
 
     //ABM Servicios
 

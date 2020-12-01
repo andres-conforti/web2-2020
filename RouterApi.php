@@ -7,9 +7,6 @@
 
     $router = new Router();
 
-    // trae todos los comentarios
-    $router->addRoute("comentarios", "GET", "ComentariosApiController", "getTodosLosComentarios"); 
-
     // trae todos los comentarios de ese servicio
     $router->addRoute("comentarios/:ID", "GET", "ComentariosApiController", "getComentariosServicio");
 

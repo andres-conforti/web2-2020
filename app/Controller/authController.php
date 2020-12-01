@@ -35,9 +35,7 @@ class authController{
         }
         $this->view->ShowLogin($msg);
         die();
-    } 
-        
-
+        } 
         // obtengo el usuario
         $user = $this->model->getByEmail($email);
 
@@ -49,7 +47,7 @@ class authController{
                 $this->view->ShowLogin($msg);
             }
             else if($user && $passTrue){
-                $this->authHelper->login($user);
+                $this->authHelper->login($user);//creo la sesion 
                 header('Location: ' . BASE_URL);
             }
         }
@@ -58,11 +56,7 @@ class authController{
             $this->view->ShowLogin($msg);
         }
 
-
     }
-
-
-
 
     public function logout() {
         $this->authHelper->logout();
@@ -105,9 +99,7 @@ class authController{
     else{
         $msg = "INGRESE UN EMAIL";
         $this->view->ShowRegistracion($msg);
-    }
-
-       
+    }   
     } 
 }
 

@@ -21,7 +21,9 @@
             </td>
             <td>
             <form method="post" action="editarPermisos">
-            <button type="submit" class="myButtonEditarCAT" name="opcion" value="{$usuario->id}|{$usuario->isAdmin}"><i class="fas fa-edit"></i></button>
+            <input name="id" type="hidden" value="{$usuario->id}">
+            <input name="isAdmin" type="hidden" value="{$usuario->isAdmin}">
+            <button type="submit" class="myButtonEditarCAT"><i class="fas fa-edit"></i></button>
             </form>
             </td>
             <td>

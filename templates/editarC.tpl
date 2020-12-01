@@ -4,6 +4,16 @@
 <div class="vencimientos">
 
 <div class="tblvencimientos">
+
+<form action="borrarImg/{$categoria->id}" method="post" enctype="multipart/form-data">
+<div>
+<img src="img/servicios/{$categoria->img}" alt="{$categoria->nombre|capitalize:true}">
+<input name="img" type="hidden" value="{$categoria->img}">
+</div>
+  <h3><input type="submit" value="BORRAR IMAGEN" name="submit" class="myButtonAdd2"></h3>
+</form>
+</div>
+<div class="tblvencimientos">
 <form action="editCategoria/{$categoria->id}" method="post" enctype="multipart/form-data">
  <h3>NOMBRE:</h3>
  <p>(CAMPO OBLIGATORIO)</p>

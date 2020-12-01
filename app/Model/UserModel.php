@@ -19,7 +19,7 @@
     }
 
     public function getAllUsers(){
-        $query = $this->db->prepare('SELECT id, email, isAdmin FROM user ');
+        $query = $this->db->prepare('SELECT * FROM user ');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }

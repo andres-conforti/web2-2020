@@ -11,19 +11,17 @@ class ComentariosApiController extends ApiController {
         $this->model = new ComentarioModel();
     }
 
-    public function getTodosLosComentarios($params = null) {
-        $parametros = [];
-        $tasks = $this->model->getTodosLosComentarios($parametros);
-        $this->view->response($tasks, 200);
-    }
-
     public function getComentariosServicio($params = null) {
         $idServicio = $params[':ID'];
-        $comentarios = $this->model->getComentariosServicio($idServicio);
-        if ($comentarios)
-            $this->view->response($comentarios, 200);
+        if(isset($params[':ID'])){
+            $comentarios = $this->model->getComentariosServicio($idServicio);
+            if ($comentarios)
+                $this->view->response($comentarios, 200);
+            else
+                $this->view->response(null, 404);
+        }
         else
-            $this->view->response(null, 404);
+            $this->view->response("No estaba seteado el id", 500);
     }
 
     public function deleteComentario($params = null) {
@@ -50,8 +48,8 @@ class ComentariosApiController extends ApiController {
         }
     }
 
-    public function show404($params = null) {
+    /*public function show404($params = null) {
         $this->view->response("El recurso solicitado no existe", 404);
-    }
+    }*/
 
 }

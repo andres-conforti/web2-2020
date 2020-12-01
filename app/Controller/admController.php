@@ -53,6 +53,18 @@ class admController extends Controller{
         $this->view->ShowEditarCategoria($categoria,$msg);
     }
 
+    function borrarImg($params = null){
+        $id = $params[':ID'];
+        $img = $_POST['img'];
+       var_dump($img);
+        if($img != null ){
+            $this->Cmodel->borrarImg($id);
+            unlink("img/servicios/".$img);
+            
+        }
+        header('Location: '.EDITAR."/".$id);
+    }
+
     function editServicio($params = null){ //este es para la funcion luego de poner los datos, no para la pagina (tpl)
         $id = $params[':ID'];
         $nombre = $_POST['nombre'];
@@ -83,12 +95,12 @@ class admController extends Controller{
 
         if($nombre!=''){
             if($nombreImagen!=''){
-            $this->uploadImage($rutaTemp,$nombreImagen);
+            $img = $this->uploadImage($rutaTemp,$nombreImagen);
             }
             else{
-                $img = "no-image.png";
+                $img= $_POST['img'];
             }
-            $this->model->EditarCategoria($nombre,$img,$id);
+            $this->Cmodel->EditarCategoria($nombre,$img,$id);
             header('Location: '.SERVICIOS);
             }
         else{
@@ -96,7 +108,6 @@ class admController extends Controller{
             $categoria = $this->Cmodel->GetCategoria($id);
             $this->view->ShowEditarCategoria($categoria,$msg);
             }
-
 
     }
 
@@ -138,7 +149,7 @@ class admController extends Controller{
                 $img = $this->uploadImage($rutaTemp,$nombreImagen);
             }
             else{
-                $img = "no-image.png";
+                $img = null;
             }
             $this->Cmodel->InsertCategoria($nombre,$img);
             header('Location: '.SERVICIOS);
@@ -160,22 +171,16 @@ class admController extends Controller{
         $this->adminView->ShowAdministracion($usuarios);
     }
 
-    function editPermisos($params){
-
-        if(!empty($_POST['opcion'])){
-            $paraExplodear = $_POST['opcion'];
-            $explode = explode('|', $paraExplodear);
-            $id = $explode[0];
-            $isAdmin = $explode[1];
-    
-            if($isAdmin==0){
-                $isAdmin=1;
-            }
-            else{
-                $isAdmin=0;
-            }
-            $this->userModel->EditUsuario($isAdmin,$id);
+    function editPermisos($params = null){
+        $id = $_POST['id'];
+        $isAdmin = $_POST['isAdmin'];
+        if($isAdmin==0){
+            $isAdmin=1;
         }
+        else{
+            $isAdmin=0;
+        }
+        $this->userModel->EditUsuario($isAdmin,$id);
 
         header('Location: '.ADM);
     }
@@ -187,9 +192,9 @@ class admController extends Controller{
         }
         header('Location: '.ADM);
     }
+
+  
 }
-    
-    
 
 
 
