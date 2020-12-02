@@ -31,7 +31,7 @@ require_once 'helpers/dbHelper.php';
   //PIDE NOMBRE ID ID_categoria_fk DE TODOS LOS SERVICIOS MIENTRAS QUE ESTEN ENTRE LOS LIMITES Y OFFSETS DE LA PAGINA ACTUAL Y LOS ORDENA X ID DE MENOR A MAYOR
   function GetServiciosPaginados($limit,$offset){
     $sentencia = $this->db->prepare( "SELECT servicios.nombre, servicios.id, servicios.id_categoria_fk as idFk
-     FROM (SELECT * FROM categoria LIMIT $offset,$limit) as categorias INNER JOIN (SELECT * FROM servicio) as servicios
+     FROM (SELECT * FROM categoria LIMIT $offset,$limit) as categorias INNER JOIN servicio as servicios
       on servicios.id_categoria_fk = categorias.id ORDER BY id ASC");
     $sentencia->execute();
     return $sentencia->fetchAll(PDO::FETCH_OBJ);

@@ -6,8 +6,9 @@
 <br>
     <ul>
         <li v-for="comentario in comments"> 
-         <div class="primeroFiltrado">{{ comentario.usuario }}
-         <div class="">{{ comentario.puntaje }} ESTRELLAS</div>
+         <div class="primeroFiltrado">
+         Usuario: {{ comentario.usuario }}
+         <div class="">Puntuacion: {{ comentario.puntaje }}</div>
          </div>
          
          <div class="primeroFiltrado">{{ comentario.texto }}</div>

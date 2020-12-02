@@ -140,10 +140,11 @@ class admController extends Controller{
 
     function newCategoria(){
         $nombre = $_POST['nombre'];
-        $rutaTemp = $_FILES['imagen']['tmp_name'];
-        $nombreImagen = $_FILES['imagen']['name'];
+        $rutaTemp = $_FILES['imagen']['tmp_name'];//ruta+nombre del archivo temporal 'C:\TUDAI\PROGRAMAS\xampp\tmp\php241F.tmp'
+        $nombreImagen = $_FILES['imagen']['name'];//nombre del archivo original image.png
         
         if (!empty($nombre)) {
+            //se encarga de mover la imagen a la carpeta del proyecto
             if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" ||
             $_FILES['imagen']['type'] == "image/png"){
                 $img = $this->uploadImage($rutaTemp,$nombreImagen);
